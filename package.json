@@ -1,0 +1,30 @@
+{
+  "name": "fire-breathing-rubber-duckies",
+  "version": "1.0.0",
+  "description": "IMY 320 Project",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Phahla/2020_IMY320_FireBreathingRubberDuckies.git"
+  },
+  "keywords": [
+    "imy"
+  ],
+  "author": "Gian Uys",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Phahla/2020_IMY320_FireBreathingRubberDuckies/issues"
+  },
+  "homepage": "https://github.com/Phahla/2020_IMY320_FireBreathingRubberDuckies#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.3.0",
+    "grunt-text-replace": "^0.4.0"
+  }
+}
