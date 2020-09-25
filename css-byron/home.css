@@ -118,4 +118,33 @@ body {
     }
 }
 
+#text-container{
+    
+    width: 100%;
+}
+
+#_w{
+    position: absolute;
+    left: 800px;
+    top: 1500px;
+}
+
+#_a{
+    position: absolute;
+    left: 800px;
+    top: 2300px;
+}
+
+#_v{
+    position: absolute;
+    left: 800px;
+    top: 3200px;
+}
+
+#_ab{
+    position: absolute;
+    left: 800px;
+    top: 4200px;
+}
+
 
