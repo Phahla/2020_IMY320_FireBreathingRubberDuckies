@@ -28,22 +28,44 @@ body {
 
 .helloText{
     font: bold 180px Sans-serif; fill: black;
-    opacity: 80%;
-    animation: 2s opacity;
+    opacity: 0.8;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
+            
 }
 
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
 
-@keyframes opacity {
-    15% {opacity: 0} 
-    35% {opacity: 0}
-    65% {opacity: 0.8} 
-    85% {opacity: 0.8}
-    100% {opacity: 0.8}
-  }
-  #hg2 {animation-delay: 0.5s}
-  #hg3 {animation-delay: 1.0s}
-  #hg4 {animation-delay: 1.5s}
-  #hg5 {animation-delay: 2.0s}
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity:0.8; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+}
+ 
 
 
 .ellipse{
