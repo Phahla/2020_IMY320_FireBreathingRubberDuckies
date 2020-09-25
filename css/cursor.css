@@ -1,0 +1,85 @@
+body {
+	margin: 0;
+	height: 100vh;
+	cursor: none;
+}
+
+#cursor {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	border-radius: 50%;
+	/*opacity: .75;*/
+	position: absolute;
+	pointer-events: none;
+	animation: cursorAnimation 1.0s infinite alternate;
+}
+
+#cursor::after {
+	content: "";
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	border: 4px solid black;
+	opacity: .25;
+	border-radius: 50%;
+	top: -4px;
+	left: -4px;
+	animation: cursorAnimationAfter 1.0s infinite alternate;
+}
+
+@keyframes cursorAnimation {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.9);
+	}
+}
+
+@keyframes cursorAnimationAfter {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.85);
+	}
+}
+
+.cursorCenter {
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border: 1px solid black;
+	border-radius: 50%;
+	background-color: black;
+	opacity: .85;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cursorCenterHover {
+	position: absolute;
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.cursorHover {
+	width: 100px !important;
+	height: 100px !important;
+}
+
+.cursorHover::after {
+	width: 100px !important;
+	height: 100px !important;
+}
+
+.clickable {
+	cursor: none;
+}
