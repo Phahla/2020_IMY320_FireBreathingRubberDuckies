@@ -1,7 +1,10 @@
 console.clear();
 
 var textPath = document.querySelector('#text-path');
-console.log(textPath);
+var textPath2 = document.querySelector('#text-path2');
+var textPath3 = document.querySelector('#text-path3');
+var textPath4 = document.querySelector('#text-path4');
+var textPath5 = document.querySelector('#text-path5');
 
 var textContainer = document.querySelector('#text-container');
 console.log(textContainer);
@@ -14,17 +17,21 @@ console.log(pathLength);
 
 function updateTextPathOffset(offset){
   textPath.setAttribute('startOffset', offset); 
+  textPath2.setAttribute('startOffset', offset + 4600); 
+  textPath3.setAttribute('startOffset', offset + 9100); 
+  textPath4.setAttribute('startOffset', offset + 13600); 
+  textPath5.setAttribute('startOffset', offset + 18100); 
 }
 
 
-updateTextPathOffset(960);
+updateTextPathOffset(4390);
 
 function onScroll(){
   requestAnimationFrame(function(){
     var rect = textContainer.getBoundingClientRect();
     var scrollPercent = rect.y / window.innerHeight;
 
-    updateTextPathOffset( scrollPercent * pathLength + 940 );
+    updateTextPathOffset( scrollPercent * pathLength + 4340);
   });
 }
 
