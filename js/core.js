@@ -124,17 +124,20 @@ let temp_2 = 0;
         WEBSITES: {
             curr: 'computer_tilted',
             next: 'mobile_tilted',
-            prev: 'computer_tilted'
+            prev: 'computer_tilted',
+            enlarged: 'computer_upright'
         },
         APPS: {
             curr: 'mobile_tilted',
             next: 'video_small',
-            prev: 'computer_tilted'
+            prev: 'computer_tilted',
+            enlarged: 'mobile_upright'
         },
         VIDEOS: {
             curr: 'video_small',
             next: 'video_small',
-            prev: 'mobile_tilted'
+            prev: 'mobile_tilted',
+            enlarged: 'video_large'
         },
         ABOUT: {
             next: PAGES.ABOUT,
@@ -156,16 +159,16 @@ let temp_2 = 0;
             detail: 'Big Data is an ever-growing source of information, with governments and corporations generating more Big Data than ever. It proves to be extremely valuable for companies and governments to be able to extract trends and patterns from this data and use this information to better prepare and/or optimize any services they offer.'
         },
         APPS: {
-            next: PAGES.VIDEOS,
-            prev: PAGES.WEBSITES
+            next: 'Some Content',
+            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         },
         VIDEOS: {
-            next: PAGES.ABOUT,
-            prev: PAGES.APPS
+            next: 'Some Content',
+            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         },
         ABOUT: {
-            next: PAGES.ABOUT,
-            prev: PAGES.VIDEOS
+            next: 'Some Content',
+            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         }
     };
 
@@ -210,6 +213,8 @@ let temp_2 = 0;
             idElementExitPage.style.opacity = '0.0';
             idElementSideBar.style.left = (currentSideTextLeft) + 'px';
             idElementExitPage.style.opacity = '0.0';
+            idElementContentInformation.style.opacity = '0.0';
+            morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr);
         }
     };
 
@@ -258,7 +263,7 @@ let temp_2 = 0;
 
             setPrevPage();
 
-            idElementPageInformation.innerText = (PAGES_INDEXES[page]+1) + ' / 4';
+            idElementPageInformation.innerText = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1)) + ' / 4';
         },
         SCROLL_DOWN: function () {
             elementBody.style.backgroundColor = PAGE_COLOURS[page];
@@ -278,7 +283,7 @@ let temp_2 = 0;
             animatePageText(false);
             setNextPage();
 
-            idElementPageInformation.innerText = (PAGES_INDEXES[page]+1) + ' / 4';
+            idElementPageInformation.innerText = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1)) + ' / 4';
         }
     };
 
@@ -591,7 +596,10 @@ function animatePagesTextScroll(down) {
         console.debug('tmptmp + \'px\'', tmptmp + 'px')
         // idElementSideBar.style.top = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]) + 'px';
 
-        if (page !== PAGES.VIDEOS || page !== PAGES.ABOUT || PAGE_LINKAGE[page].next !== PAGES.ABOUT)
+        console.debug('page !== PAGES.VIDEOS', page !== PAGES.VIDEOS)
+        console.debug('page !== PAGES.ABOUT', page !== PAGES.ABOUT)
+
+        if (page !== PAGES.VIDEOS && page !== PAGES.ABOUT && PAGE_LINKAGE[page].next !== PAGES.ABOUT)
             morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].next);
         animatePagesTextScrollRec((page === PAGES.WEBSITES ? 0 : sideTextOffsets[PAGES_INDEXES[page]-1]), sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1], down);
 

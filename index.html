@@ -26,9 +26,11 @@
     </head>
     <body>
 
+        <div id="exit_page" onclick="onBackClick();">< Back</div>
+
         <div id="side_bar" style="opacity: 0.0" >WEBSITES</div>
 
-        <div onclick="temp -= 100; updateTextPathOffset(temp)">click here</div>
+<!--        <div onclick="temp -= 100; updateTextPathOffset(temp)">click here</div>-->
 
         <!--<div onclick="changePage('mobile_tilted')">click here</div>-->
         <!--<div onclick="changePage('computer_tilted')">click here2</div>-->
@@ -229,7 +231,7 @@
 
                 <!--        Mobile device tilted -->
 
-<!--                <image class="image_fade_in" style="overflow:visible;" width="406" height="723" xlink:href="./assets/png/app1.png"  transform="matrix(0.6696 -0.257 0 0.6696 170.8058 209.8699)"></image>-->
+                <image id="mobile_tilted_image_0" style="opacity: 0.0; overflow:visible;" width="406" height="723" xlink:href="./assets/png/app1.png"  transform="matrix(0.6696 -0.257 0 0.6696 170.8058 209.8699)"></image>
 
                 <path id="mobile_tilted_0" class="mobile_tilted_cls-1" stroke-width="0.5" d="M436.1,108.3v477.9l-256.8,97.5V205.8L436.1,108.3 M437.1,106.9l-258.8,98.3v480l258.8-98.3V106.9L437.1,106.9z"/>
                 <path id="mobile_tilted_1" class="mobile_tilted_cls-1" d="M329.3,661.6c0,13-10.1,27.3-22.5,32.1c-12.4,4.7-22.5-2-22.5-14.9c0-10.3,6.3-21.4,15.1-27.9c2.3-1.7,4.8-3.1,7.4-4.1C319.2,642,329.3,648.6,329.3,661.6z"/>
@@ -240,7 +242,7 @@
                 <!--        Mobile device upright -->
 
 
-<!--                <image style="overflow:visible;" width="406" height="723" xlink:href="./assets/png/app1.png"  transform="matrix(0.6612 0 0 0.6612 44.5616 103)"></image>-->
+                <image id="mobile_upright_image_0" style="opacity: 0.0; overflow:visible;" width="406" height="723" xlink:href="./assets/png/app1.png"  transform="matrix(0.6612 0 0 0.6612 44.5616 103)"></image>
 <!--                <image style="overflow:visible;" width="407" height="723" xlink:href="./assets/png/app2.png"  transform="matrix(0.6562 0 0 0.6611 45 103)"></image>-->
 <!--                <image style="overflow:visible;" width="417" height="741" xlink:href="./assets/png/app3.png"  transform="matrix(0.6451 0 0 0.6451 44 103)"></image>-->
 
@@ -275,8 +277,7 @@
 
 
                 <!--        Video small-->
-<!--                    <image style="overflow:visible;" width="1918" height="802" xlink:href="./assets/jpg/2017A9D.jpg"  transform="matrix(0.3115 0 0 0.3115 100.297 143.1093)">-->
-<!--                    </image>-->
+                <image id="video_small_image_0" style="opacity: 0.0; overflow:visible;" width="1918" height="802" xlink:href="./assets/jpg/2017A9D.jpg"  transform="matrix(0.3115 0 0 0.3115 100.297 143.1093)"></image>
 
                 <path id="video_small_0" class="video_small_st1" d="M698.6,436.2H100.8h-0.4V99.8h598.2V436.2z"/>
                 <path id="video_small_1" class="video_small_st1" d="M83.6,457V99.2c0-15.5,13.6-28.1,30.5-28.1h570.7c16.8,0,30.5,12.6,30.5,28.1V457"/>
@@ -298,6 +299,12 @@
                 <div id="content_title">title</div>
                 <div id="content_detail">more informatio </div>
             </span>
+        </div>
+
+        <div id="page_indicator">
+            <div id="page_indicator_top" class="page_indicator_line"></div>
+            <div id="page_indicator_information">1 / 4</div>
+            <div id="page_indicator_bottom" class="page_indicator_line"></div>
         </div>
 
     </body>
