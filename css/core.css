@@ -1,5 +1,6 @@
 body {
     overflow: hidden;
+    background-color: #FFC6FF;
 }
 
 #main_content {
@@ -10,7 +11,8 @@ body {
     width: 60vw;
     height: 80vh;
 
-    border: 1px solid red;
+    /*border: 1px solid red;*/
+    opacity: 0.0;
 }
 
 body::-webkit-scrollbar {
@@ -43,7 +45,7 @@ body::-webkit-scrollbar {
 }
 
 #main_svg {
-    border: 1px solid green;
+    /*border: 1px solid green;*/
 }
 
 #content_information {
@@ -52,9 +54,12 @@ body::-webkit-scrollbar {
     margin-left: -400px;
     height: 60vh;
     width: 30%;
-    border: 1px solid aqua;
-    padding: 15px;
+    /*border: 1px solid aqua;*/
+    padding: 20px;
     background-color: white;
+
+
+    opacity: 0.0;
 }
 
 #content_title {
@@ -64,5 +69,33 @@ body::-webkit-scrollbar {
 }
 
 #content_detail {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#exit_page {
+    position: fixed;
+    left: 300px;
+    top: 80px;
+    padding: 15px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid black;
+    opacity: 0.0;
+}
+
+#page_indicator {
+    position: fixed;
+    top: 10%;
+    left: 97%;
+
+}
+
+.page_indicator_line {
+    border-right: 1px solid black;
+    height: 200px;
+    width: 1px;
+}
+
+#page_indicator_information {
+    margin-left: -15px;
     font-family: 'Open Sans', sans-serif;
 }

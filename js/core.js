@@ -36,13 +36,13 @@ let temp_2 = 0;
         mobile_tilted: {
             elements: 5,
             stop: 5,
-            imageStop: 0
+            imageStop: 1
             // stop: 4
         },
         mobile_upright: {
             elements: 4,
             stop: 4,
-            imageStop: 0
+            imageStop: 1
         },
         computer_tilted: {
             elements: 5,
@@ -58,7 +58,7 @@ let temp_2 = 0;
             elements: 8,
             stop: 3,
             pathStop: 7,
-            imageStop: 0
+            imageStop: 1
         },
         video_large: {
             elements: 3,
@@ -121,27 +121,34 @@ let temp_2 = 0;
     };
 
     const PAGE_MORPH_LINKAGE = {
-        HOME: {
-            next: PAGES.WEBSITES,
-            prev: PAGES.HOME
-        },
         WEBSITES: {
-            next: PAGES.APPS,
-            prev: PAGES.HOME
+            curr: 'computer_tilted',
+            next: 'mobile_tilted',
+            prev: 'computer_tilted'
         },
         APPS: {
-            next: PAGES.VIDEOS,
-            prev: PAGES.WEBSITES
+            curr: 'mobile_tilted',
+            next: 'video_small',
+            prev: 'computer_tilted'
         },
         VIDEOS: {
-            next: PAGES.ABOUT,
-            prev: PAGES.APPS
+            curr: 'video_small',
+            next: 'video_small',
+            prev: 'mobile_tilted'
         },
         ABOUT: {
             next: PAGES.ABOUT,
             prev: PAGES.VIDEOS
         }
     };
+
+    const PAGE_COLOURS = {
+        HOME: '#FFFFFC',
+        WEBSITES: '#9BF6FF',
+        APPS: '#A0C4FF',
+        VIDEOS: '#BDB2FF',
+        ABOUT: '#9BF6FF'
+    }
 
     const PAGE_INFORMATION = {
         WEBSITES: {
@@ -168,24 +175,41 @@ let temp_2 = 0;
                 classElementScroll[el].style.opacity = '0.7';
             for (let el = 0; el < classElementEllipse.length; el++)
                 classElementEllipse[el].style.opacity = '0.7';
+            idElementDuckLogo.style.opacity = '0.7';
+            idElementCircleText.style.opacity = '0.7';
         },
         WEBSITES: function() {
+
             idElementSideBar.style.opacity = '0.7';
             console.debug('SDFJKLSDFJKLJKLSDFJKLSDF')
+        },
+        LOCKED: function () {
+            idElementExitPage.style.opacity = '1.0';
+            idElementSideBar.style.left = (currentSideTextLeft - 100) + 'px';
+            idElementExitPage.style.opacity = '1.0';
         }
     };
 
     const HIDE = {
         HOME: function() {
+            showNothing();
             console.debug('elementScrollsdfsdf', classElementScroll)
             for (let el = 0; el < classElementScroll.length; el++)
                 classElementScroll[el].style.opacity = '0.0';
             for (let el = 0; el < classElementEllipse.length; el++)
                 classElementEllipse[el].style.opacity = '0.0';
+            idElementDuckLogo.style.opacity = '0.0';
+            idElementCircleText.style.opacity = '0.0';
         },
         WEBSITES: function() {
             console.debug('SDFJKLSDFJKLJKLSDFJKLSDF')
             idElementSideBar.style.opacity = '0.0';
+            showNothing();
+        },
+        LOCKED: function () {
+            idElementExitPage.style.opacity = '0.0';
+            idElementSideBar.style.left = (currentSideTextLeft) + 'px';
+            idElementExitPage.style.opacity = '0.0';
         }
     };
 
@@ -198,10 +222,13 @@ let temp_2 = 0;
                 animatePageText(false);
                 window.scrollTo(window.innerHeight, 0);
                 PAGE_LINKAGE[page].nextPage();
+
             }
         },
         WEBSITES: {
             CLICK: function () {
+                SHOW['LOCKED']();
+                idElementContentInformation.style.opacity = '1.0';
                 morph('computer_tilted', 'computer_upright');
                 fillContent();
             }
@@ -216,7 +243,13 @@ let temp_2 = 0;
     const INSTRUCTIONS = {
         SCROLL_UP: function () {
 
+            elementBody.style.backgroundColor = PAGE_COLOURS[page];
             if (page === PAGES.HOME) {
+
+            } else if (page === PAGES.WEBSITES) {
+                SHOW[PAGES.HOME]();
+                HIDE[PAGES.WEBSITES]();
+                animatePageText(true);
 
             } else {
                 console.debug('am oding this')
@@ -224,8 +257,11 @@ let temp_2 = 0;
             }
 
             setPrevPage();
+
+            idElementPageInformation.innerText = (PAGES_INDEXES[page]+1) + ' / 4';
         },
         SCROLL_DOWN: function () {
+            elementBody.style.backgroundColor = PAGE_COLOURS[page];
             // console.debug('lkj')
             // PAGE_ACTIONS[page].SCROLL_DOWN();
 
@@ -241,6 +277,8 @@ let temp_2 = 0;
             currentState = STATES.SCROLLING;
             animatePageText(false);
             setNextPage();
+
+            idElementPageInformation.innerText = (PAGES_INDEXES[page]+1) + ' / 4';
         }
     };
 
@@ -249,6 +287,7 @@ let temp_2 = 0;
     let shapes;
     let shapeAttributes;
     let shapeImages;
+    let lockedOnPage;
 
     /** Internal */
     let previousPage;
@@ -269,7 +308,11 @@ let temp_2 = 0;
     let classElementScroll, classElementEllipse;
     let idElementSideBar;
     let idElementContentInformation, idElementContentTitle, idElementContentDetail;
+    let idElementDuckLogo, idElementCircleText;
     let snapContentInformation;
+    let idElementExitPage;
+    let elementBody;
+    let idElementPageInformation;
 
 /** ---------------------------------- */
 
@@ -377,6 +420,11 @@ function showNothing() {
                 opacity: 0.0
             });
         }
+        for (let e = 0; e < SHAPES[shape].imageStop; e++) {
+            shapeImages[shape][e].attr({
+                opacity: 0.0
+            });
+        }
     }
 }
 
@@ -418,7 +466,7 @@ function initializeCursor() {
             cursor.classList.add('cursorHover');
             offset = 50;
             let text = document.createElement('div');
-            text.innerHTML = '<b>click</b>';
+            text.innerHTML = 'CLICK';
             text.classList.add('cursorCenterHover');
             cursor.innerHTML = "";
             cursor.appendChild(text);
@@ -438,8 +486,6 @@ function initializeCursor() {
 }
 
 function updateTextPathOffset(offset){
-
-    console.debug('offset', offset)
 
     requestAnimationFrame(function() {
         temp_2 = offset;
@@ -545,7 +591,8 @@ function animatePagesTextScroll(down) {
         console.debug('tmptmp + \'px\'', tmptmp + 'px')
         // idElementSideBar.style.top = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]) + 'px';
 
-        morph();
+        if (page !== PAGES.VIDEOS || page !== PAGES.ABOUT || PAGE_LINKAGE[page].next !== PAGES.ABOUT)
+            morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].next);
         animatePagesTextScrollRec((page === PAGES.WEBSITES ? 0 : sideTextOffsets[PAGES_INDEXES[page]-1]), sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1], down);
 
 
@@ -562,6 +609,8 @@ function animatePagesTextScroll(down) {
 
 
 
+        if (page !== PAGES.ABOUT || PAGE_LINKAGE[page].next !== PAGES.ABOUT)
+            morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].prev);
         animatePagesTextScrollRec(sideTextOffsets[PAGES_INDEXES[page]-1], (page === PAGES.APPS ? 0 : sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]-1]), down);
     }
 }
@@ -714,7 +763,15 @@ function initializeVariables() {
     classElementEllipse = document.getElementsByClassName('ellipse');
     classElementScroll = document.getElementsByClassName('scroll');
 
+    idElementDuckLogo = document.getElementById('duck');
+    idElementCircleText = document.getElementById('circleText');
+
     snapContentInformation = Snap.select('#content_information');
+    idElementExitPage = document.getElementById('exit_page');
+
+    elementBody = document.getElementsByTagName("BODY")[0];
+
+    idElementPageInformation = document.getElementById('page_indicator_information');
 
     /** Global Variables */
     pathLength = path.getTotalLength();
@@ -738,6 +795,8 @@ function initializeVariables() {
     };
 
     queuedInstruction = null;
+
+    lockedOnPage = false;
 
     for (let shape in SHAPES) {
         shapes[shape] = new Array(SHAPES[shape].elements);
@@ -765,17 +824,20 @@ function mainScrollHandler(deltaY) {
     //     SCROLL_DELTA = deltaY;
     console.debug('lkj')
 
-    if (isReady()) {
-        if (deltaY > 0) {
-            /** scrolled downwards */
-            INSTRUCTIONS.SCROLL_DOWN();
+    if (!lockedOnPage) {
+        if (isReady()) {
+            if (deltaY > 0) {
+                /** scrolled downwards */
+                INSTRUCTIONS.SCROLL_DOWN();
+            } else {
+                /** scrolled upwards */
+                INSTRUCTIONS.SCROLL_UP();
+            }
         } else {
-            /** scrolled upwards */
-            INSTRUCTIONS.SCROLL_UP();
+            queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
         }
-    } else {
-        queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
     }
+
 
     // currentScrollDelta = deltaY;
 
@@ -807,6 +869,11 @@ function mainScrollHandler(deltaY) {
 
 function onContentClick() {
     PAGE_ACTIONS[page].CLICK();
+}
+
+function onBackClick() {
+    lockedOnPage = false;
+    HIDE['LOCKED']();
 }
 
 /** ---------------------------------- */

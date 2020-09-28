@@ -14,6 +14,8 @@ body {
 	z-index: 10000;
 	pointer-events: none;
 	animation: cursorAnimation 1.0s infinite alternate;
+
+	font-family: 'Open Sans', sans-serif;
 }
 
 #cursor::after {
@@ -66,8 +68,8 @@ body {
 	width: 25px;
 	height: 25px;
 	position: absolute;
-	top: 50%;
-	left: 50%;
+	top: 48%;
+	left: 40%;
 	transform: translate(-50%, -50%);
 }
 
