@@ -1,23 +1,27 @@
 
 
-html { 
-  overflow-y: auto;
-}
+/*html { */
+/*  overflow-y: auto;*/
+/*}*/
 
 body { 
-  min-height: 150vh;
+  /*min-height: 150vh;*/
   font-family: 'Merriweather';
   line-height: 1.5;
   font-size: 3vmin;
-  @media (min-width: 600px) {
-    font-size: 18px;
-  }
+}
+
+@media (min-width: 600px) {
+    body {
+        font-size: 18px;
+    }
 }
 
 #duck{
     position: absolute;
-    margin-left: 80px;
+    margin-left: 86px;
     margin-top: 63px;
+    width: 60px;
 }
 
 #circleText{
@@ -146,28 +150,28 @@ body {
     width: 100%;
 }
 
-#_w{
-    position: absolute;
-    left: 800px;
-    top: 1500px;
-}
+/*#_w{*/
+/*    position: absolute;*/
+/*    left: 800px;*/
+/*    top: 1500px;*/
+/*}*/
 
-#_a{
-    position: absolute;
-    left: 800px;
-    top: 2300px;
-}
+/*#_a{*/
+/*    position: absolute;*/
+/*    left: 800px;*/
+/*    top: 2300px;*/
+/*}*/
 
-#_v{
-    position: absolute;
-    left: 800px;
-    top: 3200px;
-}
+/*#_v{*/
+/*    position: absolute;*/
+/*    left: 800px;*/
+/*    top: 3200px;*/
+/*}*/
 
-#_ab{
-    position: absolute;
-    left: 800px;
-    top: 4200px;
-}
+/*#_ab{*/
+/*    position: absolute;*/
+/*    left: 800px;*/
+/*    top: 4200px;*/
+/*}*/
 
 

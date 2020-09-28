@@ -1,0 +1,17 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 299 616">
+  <defs>
+    <style>
+      .mobile-upright_cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <title>mobile_upright_exportas</title>
+  <path d="M313,103.19v478H45v-478H313m1-1H44v480H314v-480Z" transform="translate(-29 -34)"/>
+  <path class="mobile-upright_cls-1" d="M201.5,616A23.5,23.5,0,1,1,178,592.5,23.5,23.5,0,0,1,201.5,616Z" transform="translate(-29 -34)"/>
+  <path class="mobile-upright_cls-1" d="M288.27,649.5H68.73A39.23,39.23,0,0,1,29.5,610.27V73.73A39.23,39.23,0,0,1,68.73,34.5H288.27A39.23,39.23,0,0,1,327.5,73.73V610.27A39.23,39.23,0,0,1,288.27,649.5Z" transform="translate(-29 -34)"/>
+  <path class="mobile-upright_cls-1" d="M199,76.5H158a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h41a3.5,3.5,0,0,1,3.5,3.5h0A3.5,3.5,0,0,1,199,76.5Z" transform="translate(-29 -34)"/>
+
+</svg>

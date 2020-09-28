@@ -10,7 +10,8 @@ body {
 	border: 1px solid black;
 	border-radius: 50%;
 	/*opacity: .75;*/
-	position: absolute;
+	position: fixed;
+	z-index: 10000;
 	pointer-events: none;
 	animation: cursorAnimation 1.0s infinite alternate;
 }
