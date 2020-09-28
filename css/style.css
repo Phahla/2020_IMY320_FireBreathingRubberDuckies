@@ -1,0 +1,77 @@
+/**{*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    width:100%;*/
+/*    height: 100%;*/
+/*    box-sizing: border-box;*/
+/*}*/
+
+
+body {
+    /*font-family: Open Sans, sans-serif;*/
+    /*font-weight: bold;*/
+    transition: background-color 1s ease;
+    background-color: #FFFFFC;
+    /*overflow-x: hidden;*/
+}
+
+/*.main-wrapper{*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: flex-start;*/
+/*    justify-content: flex-start;*/
+/*}*/
+
+/*.slide{*/
+/*    height: 100vh;*/
+/*    width: 100vw;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    justify-content: flex-start;*/
+/*    align-items: flex-start;*/
+/*}*/
+
+/*p {*/
+/*    color: #000000;*/
+/*    font-size: 2em;*/
+/*    text-align: center;    */
+/*}*/
+
+/*.slide .inside {*/
+/*    display: table;*/
+/*    height: 100%;*/
+/*    width: 80%;*/
+/*    */
+/*}*/
+
+/*#Home{*/
+/*  width: 100%;  */
+/*}*/
+
+/*.inside p {*/
+/*    display: table-cell;*/
+/*    width: auto;*/
+/*    clear: both;*/
+/*    vertical-align: middle; */
+/*    text-align: center; */
+/*}*/
+
+/*.side-nav{*/
+/*    background-color: transparent;*/
+/*    width: 20%;*/
+/*    height: 100%;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*}*/
+
+/*.side-nav > a {*/
+/*    width: auto;*/
+/*    height: auto;*/
+/*    transform: rotate(-90deg);*/
+/*    text-decoration: none;*/
+/*    margin-left:5px;*/
+/*    font-size: 5em;*/
+/*    color: #000000;*/
+/*}*/

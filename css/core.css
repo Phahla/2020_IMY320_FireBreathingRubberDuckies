@@ -1,0 +1,82 @@
+body {
+    overflow: hidden;
+}
+
+#main_content {
+    position: fixed;
+    top: 10%;
+    left: 30%;
+    z-index: 100;
+    width: 60vw;
+    height: 80vh;
+
+    /*border: 1px solid red;*/
+    opacity: 0.0;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+#side_bar {
+    position: fixed;
+    /*top: 10px;*/
+    /*left: 0;*/
+    left: -100px;
+    /*left: -2871px;*/
+    /*top: -4353px;*/
+    transform: rotate(-90deg);
+    font: bold 180px Sans-serif;
+    color: black;
+    opacity: 0.8;
+    display: inline-block;
+    white-space: pre;
+    z-index: 1000;
+}
+
+.image_fade_in {
+
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+}
+
+#main_svg {
+    /*border: 1px solid green;*/
+}
+
+#content_information {
+    position: absolute;
+    top: 5px;
+    margin-left: -400px;
+    height: 60vh;
+    width: 30%;
+    /*border: 1px solid aqua;*/
+    padding: 15px;
+    background-color: white;
+
+
+    opacity: 0.0;
+}
+
+#content_title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+#content_detail {
+    font-family: 'Open Sans', sans-serif;
+}
+
+#exit_page {
+    position: fixed;
+    left: 300px;
+    top: 80px;
+    padding: 15px;
+    font-family: 'Open Sans', sans-serif;
+    border: 1px solid black;
+    opacity: 0.0;
+}
