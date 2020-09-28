@@ -184,7 +184,6 @@ let temp_2 = 0;
         WEBSITES: function() {
 
             idElementSideBar.style.opacity = '0.7';
-            console.debug('SDFJKLSDFJKLJKLSDFJKLSDF')
         },
         LOCKED: function () {
             lockedOnPage = true;
@@ -197,7 +196,6 @@ let temp_2 = 0;
     const HIDE = {
         HOME: function() {
             showNothing();
-            console.debug('elementScrollsdfsdf', classElementScroll)
             for (let el = 0; el < classElementScroll.length; el++)
                 classElementScroll[el].style.opacity = '0.0';
             for (let el = 0; el < classElementEllipse.length; el++)
@@ -206,7 +204,6 @@ let temp_2 = 0;
             idElementCircleText.style.opacity = '0.0';
         },
         WEBSITES: function() {
-            console.debug('SDFJKLSDFJKLJKLSDFJKLSDF')
             idElementSideBar.style.opacity = '0.0';
             showNothing();
         },
@@ -253,12 +250,15 @@ let temp_2 = 0;
             if (page === PAGES.HOME) {
 
             } else if (page === PAGES.WEBSITES) {
+
+                elementMainContent.classList.remove('clickable');
+                initializeCursor();
+
                 SHOW[PAGES.HOME]();
                 HIDE[PAGES.WEBSITES]();
                 animatePageText(true);
 
             } else {
-                console.debug('am oding this')
                 animatePageText(true);
             }
 
@@ -272,6 +272,10 @@ let temp_2 = 0;
             // PAGE_ACTIONS[page].SCROLL_DOWN();
 
             if (page === PAGES.HOME) {
+
+                elementMainContent.classList.add('clickable');
+                initializeCursor();
+
                 HIDE[PAGES.HOME]();
                 // show('computer_tilted');
                 // animatePageText(false);
@@ -327,16 +331,9 @@ let temp_2 = 0;
 
 function morph(fromShape, toShape) {
 
-    console.debug('runnin this ')
-
     for (let e = 0; e < SHAPES[fromShape].elements; e++) {
-        // was like so below
-        // for (let e = 0; e < SHAPES[fromShape].stop; e++) {
         if (e < SHAPES[toShape].elements) {
             shapes[fromShape][e].animate({d: shapeAttributes[toShape][e]}, ANIMATION_DURATION);
-
-            // set the opacity of fromShape to 0
-            // set the opacity of toShape to 1
 
             setTimeout(function() {
                 shapes[toShape][e].attr({
@@ -428,7 +425,6 @@ function showNothing() {
         }
         for (let e = 0; e < SHAPES[shape].imageStop; e++) {
 
-            console.debug('doing shape', shape)
             shapeImages[shape][e].attr({
                 opacity: 0.0
             });
@@ -437,7 +433,6 @@ function showNothing() {
 }
 
 function fillContent() {
-    console.debug('this war PAGE_INFORMATION[page].title', PAGE_INFORMATION[page].title)
     snapContentInformation.animate({opacity: 1.0}, ANIMATION_DURATION);
 
 
@@ -447,7 +442,6 @@ function fillContent() {
 }
 
 function changePage(newPage) {
-    // console.debug('changing to: ', newPage)
     if (previousPage !== newPage) {
         morph(previousPage, newPage);
         previousPage = newPage;
@@ -569,7 +563,6 @@ function animateHomeTextScroll(from, to) {
 
 function animatePagesTextScrollRec(current, last, down) {
 
-    console.debug('animatePagesTextScrollRec current, last', current, last, down )
     if (down && current < last) {
         idElementSideBar.style.top = (currentSideTextTop + current) + 'px';
         setTimeout(animatePagesTextScrollRec.bind(null, current + SIDE_TEXT_ANIMATION_STEP, last, down), TEXT_ANIMATION_SPEED);
@@ -585,22 +578,10 @@ function animatePagesTextScrollRec(current, last, down) {
 
 function animatePagesTextScroll(down) {
     currentlyAnimating.sideBar = true;
-    let tmptmp;
     if (down) {
-        console.debug('currentSideTextTop', currentSideTextTop)
-        console.debug('(currentSideTextTop + window.innerHeight) + \'px\'', (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]]) + 'px');
-
-
-        console.debug('PAGE_LINKAGE[page].next', PAGE_LINKAGE[page].next)
-        console.debug('PAGES_INDEXES[PAGE_LINKAGE[page].next]', PAGES_INDEXES[PAGE_LINKAGE[page].next])
-        console.debug('sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]]', sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]])
-
-        tmptmp = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]);
-        console.debug('tmptmp + \'px\'', tmptmp + 'px')
+        // tmptmp = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]);
+        // console.debug('tmptmp + \'px\'', tmptmp + 'px')
         // idElementSideBar.style.top = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]) + 'px';
-
-        console.debug('page !== PAGES.VIDEOS', page !== PAGES.VIDEOS)
-        console.debug('page !== PAGES.ABOUT', page !== PAGES.ABOUT)
 
         if (page !== PAGES.VIDEOS && page !== PAGES.ABOUT && PAGE_LINKAGE[page].next !== PAGES.ABOUT)
             morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].next);
@@ -608,13 +589,6 @@ function animatePagesTextScroll(down) {
 
 
     } else {
-        console.debug('(currentSideTextTop - window.innerHeight) + \'px\'', (currentSideTextTop - sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]) + 'px');
-
-
-        console.debug('PAGE_LINKAGE[page].prev', PAGE_LINKAGE[page].prev)
-        console.debug('PAGES_INDEXES[PAGE_LINKAGE[page].prev]', PAGES_INDEXES[PAGE_LINKAGE[page].prev])
-        console.debug('sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]]', sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]])
-
         // idElementSideBar.style.top = (currentSideTextTop + (page === PAGES.APPS ? 0 : sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]-1])) + 'px';
         // currentSideTextTop = currentSideTextTop - window.innerHeight;
 
@@ -627,23 +601,19 @@ function animatePagesTextScroll(down) {
 }
 
 function animatePageText(up) {
-    console.debug('animatePageText up', up)
     if (page === PAGES.HOME || (page === PAGES.WEBSITES && up)) {
         if (up) {
-            console.debug('what is page', page)
 
             HIDE[PAGES.WEBSITES]();
 
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset + 1600);
             currentPageAnimationOffset += 1600;
         } else {
-            console.debug('what is page', page)
 
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset - 1600);
             currentPageAnimationOffset -= 1600;
         }
     } else {
-        console.debug('animatePagesTextScroll')
         animatePagesTextScroll(!up);
     }
 }
@@ -690,9 +660,6 @@ function useWindowHeight() {
 
     currentSideTextLength = idElementSideBar.offsetWidth;
 
-    console.debug('sideTextOffsets', sideTextOffsets)
-    console.debug('afffftteerrr  currentSideTextLength', currentSideTextLength)
-    console.debug('afffftteerrr  window.innerHeight',  window.innerHeight)
     // console.debug('(-1*currentSideTextLength + window.innerHeight) + \'px\'', (-1*currentSideTextLength + window.innerHeight) + 'px')
     currentSideTextTop = (-0.5*currentSideTextLength + window.innerHeight + (page !== PAGES.HOME && page !== PAGES.WEBSITES ? sideTextOffsets[PAGES_INDEXES[page]] : 0) - 150);
     idElementSideBar.style.top = currentSideTextTop + 'px';
@@ -833,7 +800,6 @@ function mainScrollHandler(deltaY) {
 
     // if (SCROLL_DELTA === -1)
     //     SCROLL_DELTA = deltaY;
-    console.debug('lkj')
 
     if (!lockedOnPage) {
         if (isReady()) {
@@ -907,9 +873,7 @@ window.onload = function() {
 
     window.onresize = function() {
         latestWindowSizeUpdateTimestamp = Date.now();
-        // console.debug('Date.now()', Date.now(), 'latestWindowSizeUpdateTimestamp', latestWindowSizeUpdateTimestamp)
         setTimeout(function() {
-            // console.debug('Date.now()', Date.now(), 'latestWindowSizeUpdateTimestamp', latestWindowSizeUpdateTimestamp)
             if ((Date.now() - latestWindowSizeUpdateTimestamp) > 100) {
                 useWindowHeight();
             }

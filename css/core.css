@@ -46,13 +46,14 @@ body::-webkit-scrollbar {
 
 #main_svg {
     /*border: 1px solid green;*/
+    width: 80vw;
 }
 
 #content_information {
     position: absolute;
     top: 5px;
-    margin-left: -400px;
-    height: 60vh;
+    left: 700px;
+    height: 40vh;
     width: 30%;
     /*border: 1px solid aqua;*/
     padding: 30px;
