@@ -146,7 +146,7 @@ let temp_2 = 0;
     };
 
     const PAGE_COLOURS = {
-        HOME: '#FFFFFC',
+        HOME: '#FDFFB6',
         WEBSITES: '#9BF6FF',
         APPS: '#A0C4FF',
         VIDEOS: '#BDB2FF',
@@ -159,16 +159,16 @@ let temp_2 = 0;
             detail: 'Big Data is an ever-growing source of information, with governments and corporations generating more Big Data than ever. It proves to be extremely valuable for companies and governments to be able to extract trends and patterns from this data and use this information to better prepare and/or optimize any services they offer.'
         },
         APPS: {
-            next: 'Some Content',
-            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
+            title: 'Some Content',
+            detail: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         },
         VIDEOS: {
-            next: 'Some Content',
-            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
+            title: 'Some Content',
+            detail: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         },
         ABOUT: {
-            next: 'Some Content',
-            prev: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
+            title: 'Some Content',
+            detail: 'Content itself is what the user derives value from. Thus, "content" can refer to the information provided through the medium, the way in which the information was presented, as well as the added features included in the medium in which that information was delivered.'
         }
     };
 
@@ -187,6 +187,7 @@ let temp_2 = 0;
             console.debug('SDFJKLSDFJKLJKLSDFJKLSDF')
         },
         LOCKED: function () {
+            lockedOnPage = true;
             idElementExitPage.style.opacity = '1.0';
             idElementSideBar.style.left = (currentSideTextLeft - 100) + 'px';
             idElementExitPage.style.opacity = '1.0';
@@ -426,6 +427,8 @@ function showNothing() {
             });
         }
         for (let e = 0; e < SHAPES[shape].imageStop; e++) {
+
+            console.debug('doing shape', shape)
             shapeImages[shape][e].attr({
                 opacity: 0.0
             });
@@ -876,7 +879,15 @@ function mainScrollHandler(deltaY) {
 }
 
 function onContentClick() {
-    PAGE_ACTIONS[page].CLICK();
+    // PAGE_ACTIONS[page].CLICK();
+
+    if (!lockedOnPage) {
+        SHOW['LOCKED']();
+        idElementContentInformation.style.opacity = '1.0';
+        morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged);
+        fillContent();
+    }
+
 }
 
 function onBackClick() {

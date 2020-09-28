@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
     height: 60vh;
     width: 30%;
     /*border: 1px solid aqua;*/
-    padding: 20px;
+    padding: 30px;
     background-color: white;
 
 
@@ -98,4 +98,6 @@ body::-webkit-scrollbar {
 #page_indicator_information {
     margin-left: -15px;
     font-family: 'Open Sans', sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
