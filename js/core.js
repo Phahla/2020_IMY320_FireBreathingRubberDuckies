@@ -168,7 +168,7 @@ let temp_2 = 0;
         HOME: '#262626',
         WEBSITES: '#F5CB67',
         APPS: '#619B99',
-        VIDEOS: '#A16F8D',
+        VIDEOS: '#B5A852',
         ABOUT: '#B84100',
         DEVICES_FOCUS: '#262626'
     };
@@ -192,7 +192,62 @@ let temp_2 = 0;
         }
     };
 
+    const IMG_PATHS = {
+        HOME: {
+            PAPER_WHITE: 'paper_white.png',
+            PAPER_BLACK: 'paper_black.png'
+        },
+        WEBSITES: {
+            PAGES: [
+                '187AAB15__.png', '187AAB0A__.png'
+            ]
+        },
+        APPS: {
+            PAGES: [
+                '187AAB30__.png'
+            ]},
+        VIDEOS: {
+            PAGES: [
+                '187AAB31__.png'
+            ]},
+        ABOUT: {},
+        DEVICES_FOCUS: {
 
+        }
+    };
+
+
+    /**
+     * Constant specification of all DOM elements used.
+     */
+    const DOM_ELEMENTS = {
+        GLOBALS: {currentPage: null},
+        HOME: {topRight__backgroundImage: null},
+        DEVICES: {
+            group: null,
+            container: null,
+            // sidebar: null,
+            sidebarText: null,
+            sizeWebsites: null,
+            sizeApps: null,
+            sizeVideos: null,
+            sizeAbout: null
+        },
+        DEVICES_FOCUS: {
+            header: null,
+            website0: null,
+            website1: null,
+            apps: null,
+            video: null,
+            websiteList: null,
+            websiteControl0: null,
+            websiteControl1: null,
+            information: null
+        },
+        ABOUT: {
+            main: null
+        }
+    };
 
     const DISPLAY = {
         HOME: function() {
@@ -341,12 +396,15 @@ let temp_2 = 0;
 
     const STATES = {
         SCROLLING: 0,
-        READY: 1
+        READY: 1,
+        ANIMATING: 2
     };
 
     const INSTRUCTIONS = {
         SCROLL_UP: function () {
 // todo: DOO THIS
+//             currentState = STATES.SCROLLING;
+
             elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].prev];
 
 
@@ -372,8 +430,15 @@ let temp_2 = 0;
             // DISPLAY[page](false);
             // DISPLAY[PAGE_LINKAGE[page].prev](true);
 
-            if (page === PAGES.VIDEOS) {
+            if (page === PAGES.HOME) {
+                // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE);
+            } else if (page === PAGES.WEBSITES) {
+                SVG_ELEMENTS.HOME.helloPath.instance.attr({visibility: 'visible'});
+            } else if (page === PAGES.VIDEOS) {
                 SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
+            } else if (page === PAGES.ABOUT) {
+
+                DOM_ELEMENTS.ABOUT.main.style.visibility = 'hidden';
             }
 
 
@@ -402,6 +467,10 @@ let temp_2 = 0;
 
         },
         SCROLL_DOWN: function () {
+            // currentState = STATES.SCROLLING;
+
+            currentlyAnimating.sideBar = true;
+
             elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].next];
 
 
@@ -426,16 +495,11 @@ let temp_2 = 0;
             // }
 
 
-            if (page === PAGES.VIDEOS) {
-                SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
-            }
-
 
 
             DISPLAY[SVG_PAGE_LOOKUP[page]](false);
             DISPLAY[SVG_PAGE_LOOKUP[PAGE_LINKAGE[page].next]](true);
 
-            currentState = STATES.SCROLLING;
             animatePageText(false);
 
 
@@ -444,6 +508,14 @@ let temp_2 = 0;
                 SVGController.handleEvent(SVG_EVENTS_NAMED.pageIn, PAGE_LINKAGE[page].next);
             }
 
+
+
+            if (page === PAGES.HOME) {
+                // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK);
+            } else if (page === PAGES.VIDEOS) {
+                SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
+                DOM_ELEMENTS.ABOUT.main.style.visibility = 'visible';
+            }
 
             // SVGController.nextPage();
 
@@ -471,35 +543,6 @@ let temp_2 = 0;
         returnFirst: ([first]) => {
             // console.debug('\t\twas currentValue, newValue', currentValue, newValue)
             return first;
-        }
-    };
-
-    /**
-     * Constant specification of all DOM elements used.
-     */
-    const DOM_ELEMENTS = {
-        GLOBALS: {currentPage: null},
-        HOME: {topRight__backgroundImage: null},
-        DEVICES: {
-            group: null,
-            container: null,
-            // sidebar: null,
-            sidebarText: null,
-            sizeWebsites: null,
-            sizeApps: null,
-            sizeVideos: null,
-            sizeAbout: null
-        },
-        DEVICES_FOCUS: {
-            header: null,
-            website0: null,
-            website1: null,
-            apps: null,
-            video: null,
-            websiteList: null
-        },
-        ABOUT: {
-            main: null
         }
     };
 
@@ -849,7 +892,7 @@ let temp_2 = 0;
                                 mina.linear,
                                 () => {
                                     // console.debug('im ding thsi DOM_ELEMENTS.topRight__backgroundImage', DOM_ELEMENTS.topRight__backgroundImage)
-                                    DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_black.png" );
+                                    DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + (SVG_ELEMENTS.HOME.topRight.animation.direction ? IMG_PATHS.HOME.PAPER_BLACK : IMG_PATHS.HOME.PAPER_WHITE));
                                 }
                             );
                         } else {
@@ -858,7 +901,8 @@ let temp_2 = 0;
                     },
                     stop: () => {SVG_ELEMENTS.HOME.topRight.animation.halt = true},
                     halt: false,
-                    running: false
+                    running: false,
+                    direction: true
                 },
                 dependents: {
                     // unique instance
@@ -944,7 +988,11 @@ let temp_2 = 0;
 
                             // SVG_ELEMENTS.HOME.topRight.animation.start();
                             // console.debug('im ding thsi DOM_ELEMENTS.topRight__backgroundImage', DOM_ELEMENTS.HOME.topRight__backgroundImage)
-                            DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_black.png" );
+                            // DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_black.png" );
+
+
+                            DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK );
+                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK);
                         },
                     },
                     pageIn: {
@@ -954,6 +1002,11 @@ let temp_2 = 0;
 
 
                             // SVG_ELEMENTS.HOME.topRight.animation.start();
+
+
+                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE);
+                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_white.png" );
+                            DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE );
                         },
                     }
                 },
@@ -1279,6 +1332,11 @@ let temp_2 = 0;
                                 callback: () => {
                                     SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({visibility: 'visible'});
                                 }
+                            },
+                            pageOut: {
+                                callback: () => {
+                                    SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({visibility: 'hidden'});
+                                }
                             }
                         }
                     }
@@ -1311,9 +1369,10 @@ let temp_2 = 0;
                     pageOut: {
                         callback: () => {
                             // console.log('qwe');
+                            SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr({visibility: 'hidden'});
                             SVG_ELEMENTS.DEVICES_FOCUS.back.animation.direction = false;
-                            if (!SVG_ELEMENTS.DEVICES_FOCUS.back.animation.running)
-                                SVG_ELEMENTS.DEVICES_FOCUS.back.animation.start();
+                            // if (!SVG_ELEMENTS.DEVICES_FOCUS.back.animation.running)
+                            //     SVG_ELEMENTS.DEVICES_FOCUS.back.animation.start();
                         },
                     }
                 },
@@ -1453,19 +1512,26 @@ let temp_2 = 0;
 
     const DEVICE_FOCUS_PAGES = {
         WEBSITES: [{
-            SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgWebsite_0],
-            DOM_ELEMENTS: ['websiteList', 'website0']
-        }, {
-            SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgWebsite_1],
-            DOM_ELEMENTS: ['website1']
-        }],
+                SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgWebsite_0],
+                DOM_ELEMENTS: ['websiteList', 'website0'],
+                control: 'websiteControl0',
+                informationImagePath: IMG_PATHS.WEBSITES.PAGES[0]
+            }, {
+                SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgWebsite_1],
+                DOM_ELEMENTS: ['website1'],
+                control: 'websiteControl1',
+                informationImagePath: IMG_PATHS.WEBSITES.PAGES[1]
+            }
+        ],
         APPS: [{
             SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgApps_0],
-            DOM_ELEMENTS: ['apps']
+            DOM_ELEMENTS: ['apps'],
+            informationImagePath: IMG_PATHS.APPS.PAGES[0]
         }],
         VIDEOS: [{
             SVG_ELEMENTS: [SVG_ELEMENTS.DEVICES_FOCUS.imgVideo_0],
-            DOM_ELEMENTS: ['video']
+            DOM_ELEMENTS: ['video'],
+            informationImagePath: IMG_PATHS.VIDEOS.PAGES[0]
         }],
     };
 
@@ -2074,6 +2140,12 @@ class SVGController {
 
 function morph(fromShape, toShape) {
 
+    currentState = STATES.ANIMATING;
+
+    currentlyAnimating.busyAnimatingPost = true;
+    currentlyAnimating.busyAnimatingPre = true;
+
+    // let busyAnimatingPre = true, busyAnimatingPost = true;
     let destinationIndex;
     let useLookupArray = ANIMATION_ORDER.hasOwnProperty(fromShape) && ANIMATION_ORDER[fromShape].hasOwnProperty(toShape);
 
@@ -2112,7 +2184,12 @@ function morph(fromShape, toShape) {
                         fillOpacity: 1.0,
                         opacity: 1.0
                     });
-                    currentState = STATES.READY;
+
+                    currentlyAnimating.busyAnimatingPre = false;
+                    // busyAnimatingPre = false;
+                    // if (!busyAnimatingPost) {
+                    //     currentState = STATES.READY;
+                    // }
                 };
             }
 
@@ -2190,7 +2267,7 @@ function morph(fromShape, toShape) {
     // }, 2*ANIMATION_DURATION);
 
 
-    let start = 0, stop = 0, change = '', largerShape = '';
+    let start = 0, stop = 0, change = 0, largerShape = '';
     if (SHAPES[fromShape].elements < SHAPES[toShape].elements) {
         // console.debug('toshape is larger')
         start = SHAPES[fromShape].elements-1;
@@ -2209,6 +2286,10 @@ function morph(fromShape, toShape) {
         largerShape = fromShape;
     }
 
+    if (largerShape === '')
+        currentlyAnimating.busyAnimatingPost = false;
+        // busyAnimatingPost = false;
+
     // if something is showing that should not be showing then: do it fast
     // othersize slowly
 
@@ -2221,8 +2302,16 @@ function morph(fromShape, toShape) {
                 opacity: change,
                 fillOpacity: change
                 //     visibility: 'visible'
-            }, (change + 0.5)*ANIMATION_DURATION_USED, mina.linear, function () {
+            }, (change*1500 + 200), mina.linear, function () {
                 // console.debug('this went fine')
+
+
+                currentlyAnimating.busyAnimatingPost = false;
+
+                // busyAnimatingPost = false;
+                // if (!busyAnimatingPre) {
+                //     currentState = STATES.READY;
+                // }
             });
             // shapes[largerShape][e].attr({
             //     visibility: change
@@ -2385,6 +2474,7 @@ function animateScrollRec(from, to, step) {
             updateTextPathOffset(step);
             setTimeout(animateScrollRec.bind(null, from, to, step), TEXT_ANIMATION_SPEED);
         } else {
+
             currentlyAnimating.sideBar = false;
 
             // SHOW[PAGES.WEBSITES]();
@@ -2468,15 +2558,18 @@ function animatePagesTextScroll(down) {
 
 function animatePageText(up) {
     if (page === PAGES.HOME || (page === PAGES.WEBSITES && up)) {
+        // currentState = STATES.ANIMATING;
         console.debug('gonna animatePageText', up)
         if (up) {
 
             HIDE[PAGES.WEBSITES]();
+            currentPageAnimationOffset = -300;
 
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset + 1300);
             currentPageAnimationOffset += 1300;
         } else {
 
+            currentPageAnimationOffset = 1100;
             console.debug('gonna elseanimatePageText', up)
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset - 1600);
             currentPageAnimationOffset -= 1600;
@@ -2602,7 +2695,8 @@ function useWindowHeight() {
 function checkQueuedInstructions() {
 
     if (queuedInstruction != null) {
-        if (isReady()) {
+        // if (isReady()) {
+        if (currentState === STATES.READY) {
             queuedInstruction();
         } else {
             setTimeout(checkQueuedInstructions, 300);
@@ -2765,7 +2859,9 @@ function initializeVariables() {
 
     currentlyAnimating = {
         sideBar: false,
-        mainSVG: false
+        mainSVG: false,
+        busyAnimatingPre: false,
+        busyAnimatingPost: false
     };
 
     queuedInstruction = null;
@@ -2855,17 +2951,27 @@ function mainScrollHandler(deltaY) {
     // if (SCROLL_DELTA === -1)
     //     SCROLL_DELTA = deltaY;
 
+    console.debug('lockedOnPage', lockedOnPage)
+    console.debug('showingUprightDevice', showingUprightDevice)
+    console.debug('isReady()', isReady())
+
     if (!lockedOnPage && !showingUprightDevice) {
         if (isReady()) {
+        // if (currentState === STATES.READY) {
             if (deltaY > 0) {
                 /** scrolled downwards */
-                INSTRUCTIONS.SCROLL_DOWN();
+                if (page !== PAGES.ABOUT)
+                    INSTRUCTIONS.SCROLL_DOWN();
             } else {
                 /** scrolled upwards */
-                INSTRUCTIONS.SCROLL_UP();
+                if (page !== PAGES.HOME)
+                    INSTRUCTIONS.SCROLL_UP();
             }
         } else {
-            queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
+            // if (queuedInstruction != null) {
+            //     queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
+            //     checkQueuedInstructions();
+            // }
         }
     }
 
@@ -2958,6 +3064,7 @@ function onMouseClickCloseDeviceFocus() {
 
     DOM_ELEMENTS.DEVICES.sidebarText.style.visibility = 'visible';
     DOM_ELEMENTS.DEVICES_FOCUS.header.style.visibility = 'hidden';
+    // DOM_ELEMENTS.DEVICES_FOCUS.
     // DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
 
     // setFocusPage();
@@ -2990,7 +3097,7 @@ function onMouseClickDevice() {
                     DEVICE_FOCUS_PAGES[elementPage][focusPage].SVG_ELEMENTS[svgElement].instance.attr({visibility: (page === elementPage ? 'visible' : 'hidden')});
                 }
                 for (let domElement = 0; domElement < DEVICE_FOCUS_PAGES[elementPage][focusPage].DOM_ELEMENTS.length; domElement++) {
-                    DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[elementPage][focusPage].DOM_ELEMENTS[domElement]].style.visibility = (page === elementPage ? 'visible' : 'hidden');
+                    DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[elementPage][focusPage].DOM_ELEMENTS[domElement]].style.visibility = (page === elementPage && focusPage === 0 ? 'visible' : 'hidden');
                 }
             }
         }
@@ -3010,6 +3117,9 @@ function onMouseClickDevice() {
         DOM_ELEMENTS.DEVICES.sidebarText.style.visibility = 'hidden';
         DOM_ELEMENTS.DEVICES_FOCUS.header.style.visibility = 'visible';
         DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
+
+
+        DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[page][0].informationImagePath );
 
         setFocusPage();
 
@@ -3031,8 +3141,10 @@ function onMouseEnterDevice() {
     if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' && currentState === STATES.READY) {
         if (!showingUprightDevice) {
             showingUprightDevice = true;
+            // currentState = STATES.ANIMATING;
             ANIMATION_DURATION_USED = 500;
             morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged);
+            ANIMATION_DURATION_USED = ANIMATION_DURATION;
         }
     }
 
@@ -3046,8 +3158,10 @@ function onMouseLeaveDevice() {
     if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' && currentState === STATES.READY) {
         if (showingUprightDevice) {
             showingUprightDevice = false;
+            // currentState = STATES.ANIMATING;
             ANIMATION_DURATION_USED = 500;
             morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr);
+            ANIMATION_DURATION_USED = ANIMATION_DURATION;
         }
     }
 }
@@ -3062,6 +3176,26 @@ function onMouseLeaveCloseButton() {
     console.debug('lskjdflkja;lakjsdf')
     if (SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance != null)
         SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({fill: 'none'});
+}
+
+function onPageClick(goToPage) {
+
+    for (let p = 0; p < DEVICE_FOCUS_PAGES[previousDevicePage].length; p++) {
+        for (let s = 0; s < DEVICE_FOCUS_PAGES[previousDevicePage][p].SVG_ELEMENTS.length; s++) {
+            DEVICE_FOCUS_PAGES[previousDevicePage][p].SVG_ELEMENTS[s].instance.attr({visibility: (p === goToPage ? 'visible' : 'hidden')});
+        }
+        for (let s = 0; s < DEVICE_FOCUS_PAGES[previousDevicePage][p].DOM_ELEMENTS.length; s++) {
+            if (!(p === 0 && s === 0)) {
+                DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[previousDevicePage][p].DOM_ELEMENTS[s]].style.display = (p === goToPage ? 'block' : 'none');
+            }
+        }
+        if (goToPage === p)
+            DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[previousDevicePage][p].control].classList.add('selectedPage');
+        else
+            DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[previousDevicePage][p].control].classList.remove('selectedPage');
+    }
+    DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[previousDevicePage][goToPage].informationImagePath );
+
 }
 
 /** ---------------------------------- */
