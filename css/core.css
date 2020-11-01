@@ -3,6 +3,14 @@
 /*    src: local('Fira Code Light'), url(./assets/fonts/fira_code/FiraCode-Light.ttf) format('truetype');*/
 /*}*/
 
+@font-face {
+    font-family: 'Cormorant Garamond Light';
+    src: local('Cormorant Garamond'), url(./../assets/fonts/Cormorant_Garamond/CormorantGaramond-Light.ttf) format('truetype');
+}
+@font-face {
+    font-family: 'Cormorant Garamond SemiBold';
+    src: local('Cormorant Garamond'), url(./../assets/fonts/Cormorant_Garamond/CormorantGaramond-SemiBold.ttf) format('truetype');
+}
 
 @font-face {
     font-family: 'Segoe UI Light';
@@ -293,7 +301,7 @@ svg {
     font-size: 10vw;
 
     /*font-family: 'Booster';*/
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond SemiBold', serif;
 
 
     white-space: pre;
@@ -326,12 +334,14 @@ svg {
     margin-top: 11vw;
     margin-left: 20vw;
     padding: 40px;
-    font-family: 'Piazzolla', serif;
+    font-family: 'Cormorant Garamond Light', serif;
+    /*font-family: 'Piazzolla', serif;*/
     font-size: 18px;
 }
 
 .focus_information_side_header {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Cormorant Garamond SemiBold', serif;
+    /*font-family: 'Cormorant Garamond', serif;*/
     font-size: 6vh;
     margin-bottom: 20px;
 }
@@ -403,9 +413,10 @@ svg {
 }
 
 .pageItem {
-    font-family: 'Cormorant Garamond', serif;
+    /*font-family: 'Cormorant Garamond', serif;*/
+    font-family: 'Cormorant Garamond SemiBold', serif;
     font-size: 20px;
-    font-weight: 600;
+    /*font-weight: 600;*/
     width: 15vw;
     /*height: 10vw;*/
     border: 2px solid black;
@@ -420,4 +431,11 @@ svg {
 
 .devicePage {
     position: absolute;
+}
+
+
+
+
+#svg_devices {
+    border: 3px solid red;
 }

@@ -33,6 +33,7 @@ let temp_2 = 0;
     const DUCK_HEIGHT_HALF = 0.5*DUCK_HEIGHT;
     const PRIMARY_COLOUR = '#EBE0C6';
     const SECONDARY_COLOUR = '#EC573C';
+    const ANIMATION_COLOUR_STEPS = 100;
 
     const SHAPES = {
         // desktop: {
@@ -405,7 +406,9 @@ let temp_2 = 0;
 // todo: DOO THIS
 //             currentState = STATES.SCROLLING;
 
-            elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].prev];
+            animateColourChange(elementBody, PAGE_COLOURS[page], PAGE_COLOURS[PAGE_LINKAGE[page].prev]);
+
+            // elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].prev];
 
 
 
@@ -471,7 +474,8 @@ let temp_2 = 0;
 
             currentlyAnimating.sideBar = true;
 
-            elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].next];
+            animateColourChange(elementBody, PAGE_COLOURS[page], PAGE_COLOURS[PAGE_LINKAGE[page].next]);
+            // elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].next];
 
 
 
@@ -1133,14 +1137,18 @@ let temp_2 = 0;
                 events: {
                     resize: {
                         changes: {
-                            transform: {
-                                enabled: [true],
-                                lookupStop: Number.MAX_VALUE,
-                                parameter: ['width', 'height'],
-                                instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + w/1920 + ' ' + h/1080 + ')'; return SVG_ELEMENTS.DEVICES.group.transformString;},
-                                animate: false, // animate has to be specified
-                                animation: null
-                            }
+                            // transform: {
+                            //     enabled: [true],
+                            //     lookupStop: Number.MAX_VALUE,
+                            //     parameter: ['width', 'height'],
+                            //     // instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + w/1920 + ' ' + h/1080 + ')'; return SVG_ELEMENTS.DEVICES.group.transformString;},
+                            //     // instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + h + ' ' + w + ')'; return SVG_ELEMENTS.DEVICES.group.transformString;},
+                            //     // instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + ((16/9)*h)/1920 + ' ' + ((9/16)*w)/1080 + ')'; return SVG_ELEMENTS.DEVICES.group.transformString;},
+                            //     // instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + ((16/9)*h)/1920 + ' 1)'; return SVG_ELEMENTS.DEVICES.group.transformString;},
+                            //     instruction: ([w, h]) => {SVG_ELEMENTS.DEVICES.group.transformString = 'scale(' + (1+(9/16)*0.2) + ' ' + (1+(16/9)*0.2) + ')'; console.log('SVG_ELEMENTS.DEVICES.group.transformString', SVG_ELEMENTS.DEVICES.group.transformString); return SVG_ELEMENTS.DEVICES.group.transformString;},
+                            //     animate: false, // animate has to be specified
+                            //     animation: null
+                            // }
                         }
                     },
                     pageIn: {
@@ -1879,7 +1887,12 @@ class SVGController {
 
         for (let s = 0; s < SVGContainer.length; s++) {
             // console.debug('SVGContainer[s]', SVGContainer[s])
-            SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerWidth);
+            // SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerWidth);
+            SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerHeight);
+            if (s === 1) {
+                SVGContainer[s].setAttribute('height', window.innerHeight);
+                SVGContainer[s].setAttribute('width', window.innerWidth);
+            }
         }
 
         SVGController.handleEvent(SVG_EVENTS_NAMED.resize, page);
@@ -2465,6 +2478,54 @@ function updateTextPathOffset(offset){
     // textPath3.setAttribute('startOffset', offset + 9100);
     // textPath4.setAttribute('startOffset', offset + 13600);
     // textPath5.setAttribute('startOffset', offset + 18100);
+}
+
+function animateColourChange(element, from, to) {
+
+    console.log('going from', from);
+    console.log('going to', to);
+
+    let redInc = parseInt('0x' + to.substr(1, 2)),
+        greenInc = parseInt('0x' + to.substr(3, 2)),
+        blueInc = parseInt('0x' + to.substr(5, 2));
+    let redTo = parseInt('0x' + to.substr(1, 2)),
+        greenTo = parseInt('0x' + to.substr(3, 2)),
+        blueTo = parseInt('0x' + to.substr(5, 2));
+    let red = parseInt('0x' + from.substr(1, 2)),
+        green = parseInt('0x' + from.substr(3, 2)),
+        blue = parseInt('0x' + from.substr(5, 2));
+
+    redInc = (redTo > red ? redTo - red : red - redTo);
+    greenInc = (greenTo > green ? greenTo - green : green - greenTo);
+    blueInc = (blueTo > blue ? blueTo - blue : blue - blueTo);
+    redInc /= ANIMATION_COLOUR_STEPS;
+    greenInc /= ANIMATION_COLOUR_STEPS;
+    blueInc /= ANIMATION_COLOUR_STEPS;
+
+    let incRed = (redTo > red ? function() {red += redInc;} : function() {red -= redInc;}),
+        incGreen = (greenTo > green ? function() {green += greenInc;} : function() {green -= greenInc;}),
+        incBlue = (blueTo > blue ? function() {blue += blueInc;} : function() {blue -= blueInc;});
+    // let incRed = new Function((redInc > red ? 'return   red - 1;' : 'return ' + redInc +  ';'));
+    // let incRed = new Function((redInc > red ? 'return ' + redInc + ' - red;' : 'return red - ' + redInc +  ';'));
+        // greenOperator = (greenInc > green ? greenInc - green : green - greenInc);
+        // blueOperator = (blueInc > blue ? blueInc - blue : blue - blueInc);
+
+    let animationCounter = 0;
+
+    let intervalID = setInterval(function() {
+        if (animationCounter < ANIMATION_COLOUR_STEPS) {
+            console.log('#' + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16));
+            // console.log(Math.floor(red).toString(16));
+            console.log('red', red, 'green', green, 'blue', blue);
+            element.style.backgroundColor = '#' + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16);
+            incRed();
+            incGreen();
+            incBlue();
+        } else {
+            clearInterval(intervalID);
+        }
+        animationCounter++;
+    }, 10);
 }
 
 function animateScrollRec(from, to, step) {
@@ -3206,7 +3267,7 @@ function onPageClick(goToPage) {
 window.onload = function() {
     initializeVariables();
     initializeContent();
-    // initializeCursor();
+    initializeCursor();
 
     window.onresize = function() {
 
