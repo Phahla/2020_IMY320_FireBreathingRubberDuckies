@@ -3,6 +3,7 @@ let offset, dot;
 window.onload = function()
 {
 	const cursor = document.querySelector('#cursor');
+	const followCursor = document.querySelector('#followCursor');
 	const clickableElements = document.querySelectorAll('.clickable');
 	offset = 25;
 	dot = cursor.innerHTML;
@@ -30,5 +31,6 @@ window.onload = function()
 
 	document.addEventListener('mousemove', event => {
 		cursor.setAttribute('style', 'top: ' + (event.pageY - offset) + "px; left: " + (event.pageX - offset) + "px;");
+		followCursor.setAttribute('style', 'top: ' + (event.pageY - offset) + "px; left: " + (event.pageX - offset) + "px;");
 	});
 }
