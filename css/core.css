@@ -97,7 +97,7 @@ svg {
 /*    -webkit-text-stroke: 3px #ffaa00;*/
 /*}*/
 
-#helloText{
+.helloText{
     font: bold 180px 'Booster';
 
 
@@ -177,6 +177,7 @@ svg {
 
 #DEVICES_container {
     visibility: hidden;
+
 
     /*position: fixed;*/
     /*top: 10%;*/
@@ -438,4 +439,17 @@ svg {
 
 #svg_devices {
     border: 3px solid red;
+    margin-left: 10vw;
+}
+
+#DEVICES_container__hover {
+    position: fixed;
+    z-index: 100000;
+    /*todo: change to be responsive*/
+    left: 40vw;
+    top: 10vh;
+
+    border: 3px solid purple;
+    width: 40vw;
+    height: 70vh;
 }

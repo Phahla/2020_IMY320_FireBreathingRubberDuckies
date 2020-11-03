@@ -1,12 +1,6 @@
 
 let temp = 4400;
 function justrunthis() {
-    // temp -= 100; updateTextPathOffset(temp);
-    // idElementSideBar.style.top = '600px'
-
-    showShape('mobile_tilted');
-    morph('mobile_tilted', 'computer_tilted');
-
 }
 
 let temp_2 = 0;
@@ -36,16 +30,7 @@ let temp_2 = 0;
     const ANIMATION_COLOUR_STEPS = 100;
 
     const SHAPES = {
-        // desktop: {
-        //     elements: 6,
-        //     stop: 5
-        // },
 
-        // mobile: {
-        //     elements: The amount of elements.
-        //     stop: The stopping point when path elements stop.
-        //     imageStop: The index at which image for this object stop.
-        // },
         mobile_tilted: {
             elements: 5,
             stop: 5,
@@ -256,11 +241,9 @@ let temp_2 = 0;
                 classElementScroll[el].style.opacity = '0.7';
             for (let el = 0; el < classElementEllipse.length; el++)
                 classElementEllipse[el].style.opacity = '0.7';
-            // idElementDuckLogo.style.opacity = '0.7';
         },
         DEVICES: function (show) {
 
-            // console.debug('running DEVICES show', show)
 
             if (show) {
                 settings.opacity = DEFAULT_VISIBLE_OPACITY;
@@ -270,42 +253,24 @@ let temp_2 = 0;
                 settings.visibility = 'hidden';
             }
 
-            // for (let pageDOMElement in DOM_ELEMENTS) {
                 for (let domElement in DOM_ELEMENTS.DEVICES) {
                     if (domElement === 'container')
                         settings.visibility = 'visible';
 
-                    // if (pageDOMElement === SVG_PAGE_LOOKUP[page])
 
-                    // if (show && p) {
-                    //     settings.opacity = DEFAULT_VISIBLE_OPACITY;
-                    //     settings.visibility = 'visible';
-                    // } else {
-                    //     settings.opacity = '0.0';
-                    //     settings.visibility = 'hidden';
-                    // }
-
-
-                    // if (page !== 'DEVICES_FOCUS')
                         console.debug('what id domElement', domElement)
                         DOM_ELEMENTS.DEVICES[domElement].style.visibility = settings.visibility;
 
-                    // console.debug('DOM_ELEMENTS[pageDOMElement][domElement]', DOM_ELEMENTS[pageDOMElement][domElement], 'settings.visibility', settings.visibility)
                 }
-            // }
-
-            // showShape('computer_tilted');
         },
         WEBSITES: function(show) {
             // todo: add optimization
             DISPLAY.DEVICES(show);
             DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.7';
-            // idElementSideBar.style.opacity = '0.7';
         },
         LOCKED: function (show) {
             lockedOnPage = true;
             idElementExitPage.style.opacity = '1.0';
-            // idElementSideBar.style.left = (currentSideTextLeft - 100) + 'px';
             idElementExitPage.style.opacity = '1.0';
         }
     };
@@ -337,13 +302,11 @@ let temp_2 = 0;
 
             SHOW.DEVICES();
             DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.7';
-            // idElementSideBar.style.opacity = '0.7';
         },
         LOCKED: function () {
             lockedOnPage = true;
             idElementExitPage.style.opacity = '1.0';
             DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.7';
-            // idElementSideBar.style.left = (currentSideTextLeft - 100) + 'px';
             idElementExitPage.style.opacity = '1.0';
         }
     };
@@ -360,12 +323,9 @@ let temp_2 = 0;
 
         WEBSITES: function() {
             DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.0';
-            // idElementSideBar.style.opacity = '0.0';
-            // showNothing();
         },
         LOCKED: function () {
             idElementExitPage.style.opacity = '0.0';
-            // idElementSideBar.style.left = (currentSideTextLeft) + 'px';
             idElementExitPage.style.opacity = '0.0';
             idElementContentInformation.style.opacity = '0.0';
             morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr);
@@ -377,8 +337,6 @@ let temp_2 = 0;
             SCROLL_DOWN: function() {
                 currentState = STATES.SCROLLING;
                 HIDE[PAGES.HOME]();
-                // showShape('computer_tilted');
-                // showShape('mobile_tilted');
                 animatePageText(false);
                 //remark: was removed:  window.scrollTo(window.innerHeight, 0);
                 PAGE_LINKAGE[page].nextPage();
@@ -408,31 +366,6 @@ let temp_2 = 0;
 
             animateColourChange(elementBody, PAGE_COLOURS[page], PAGE_COLOURS[PAGE_LINKAGE[page].prev]);
 
-            // elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].prev];
-
-
-
-            // if (page === PAGES.HOME) {
-            //
-            // } else if (page === PAGES.WEBSITES) {
-            //
-            //     // elementMainContent.classList.remove('clickable');
-            //     // initializeCursor();
-            //
-            //
-            //
-            //     SHOW[PAGES.HOME]();
-            //     HIDE[PAGES.WEBSITES]();
-            //     animatePageText(true);
-            //
-            // } else {
-            //     animatePageText(true);
-            // }
-
-
-            // DISPLAY[page](false);
-            // DISPLAY[PAGE_LINKAGE[page].prev](true);
-
             if (page === PAGES.HOME) {
                 // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE);
             } else if (page === PAGES.WEBSITES) {
@@ -451,52 +384,21 @@ let temp_2 = 0;
             animatePageText(true);
 
             if (SVG_PAGE_LOOKUP[page] !== SVG_PAGE_LOOKUP[PAGE_LINKAGE[page].prev]) {
-                // SVGController.prevPage();
                 SVGController.handleEvent(SVG_EVENTS_NAMED.pageOut, page);
                 SVGController.handleEvent(SVG_EVENTS_NAMED.pageIn, PAGE_LINKAGE[page].prev);
             }
 
             setPrevPage();
 
-            // SVGController.handleEvent(SVG_EVENTS_NAMED.pageIn);
-
             snapSVGPageInformation.node.textContent = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1));
-            // DOM_ELEMENTS.GLOBALS.currentPage.node.textContent = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1));
-
-            // idElementPageInformation.innerText = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1)) + ' / 4';
-
-
-
-
         },
         SCROLL_DOWN: function () {
-            // currentState = STATES.SCROLLING;
-
             currentlyAnimating.sideBar = true;
 
             animateColourChange(elementBody, PAGE_COLOURS[page], PAGE_COLOURS[PAGE_LINKAGE[page].next]);
             // elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].next];
 
 
-
-
-            // console.debug('lkj')
-            // PAGE_ACTIONS[page].SCROLL_DOWN();
-
-            // if (page === PAGES.HOME) {
-            //
-            //     // todo: elementDivDevicesContainer.classList.add('clickable');
-            //     // todo: initializeCursor();
-            //
-            //     SHOW[PAGES.WEBSITES]();
-            //     HIDE[PAGES.HOME]();
-            //     // showShape('computer_tilted');
-            //     // animatePageText(false);
-            //     // window.scrollTo(window.innerHeight, 0);
-            //     // PAGE_LINKAGE[page].nextPage();
-            // } else {
-            //
-            // }
 
 
 
@@ -526,26 +428,20 @@ let temp_2 = 0;
             setNextPage();
 
             snapSVGPageInformation.node.textContent = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1));
-            // DOM_ELEMENTS.GLOBALS.currentPage.node.textContent = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1));
-            // idElementPageInformation.innerText = (page === PAGES.HOME ? 0 : (PAGES_INDEXES[page]+1)) + ' / 4';
         }
     };
 
     const SVG_INSTRUCTIONS = {
         multiply: ([currentValue, newValue]) => {
-            // console.debug('\t\tmultiply currentValue, newValue', currentValue, newValue)
             return currentValue * newValue;
         },
         returnCurrentValue: ([currentValue, newValue]) => {
-            // console.debug('\t\treturnCurrentValue currentValue, newValue', currentValue, newValue)
             return currentValue;
         },
         returnNewValue: ([currentValue, newValue]) => {
-            // console.debug('\t\twas currentValue, newValue', currentValue, newValue)
             return newValue;
         },
         returnFirst: ([first]) => {
-            // console.debug('\t\twas currentValue, newValue', currentValue, newValue)
             return first;
         }
     };
@@ -609,20 +505,17 @@ let temp_2 = 0;
                          animation: {
                              start: () => {
                                  if (!SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.halt) {
-                                     // console.debug('ANIMATION RUNNING translate', 'translate(' + (0.1*window.innerWidth) + ' ' + (0.4*window.innerHeight + 100) + ')')
                                      SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.running = true;
                                      SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.animate(
                                          {transform: 'translate(0 ' + (0.4*window.innerHeight + 40) + ')', opacity: 1.0},
                                          1000,
                                          mina.linear,
                                          () => {
-                                             // console.debug('ANIMATION DONE SON')
                                              SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.animate(
                                                  {transform: 'translate(0 ' + (0.4*window.innerHeight) + ')', opacity: 0.0},
                                                  1000,
                                                  mina.linear,
                                                  () => {
-                                                                         // console.debug('ANIMATION GOES AGAIN SON')
                                                      SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.start();
                                                  }
                                              );
@@ -849,12 +742,10 @@ let temp_2 = 0;
                             SVG_ELEMENTS.HOME.side.animation.halt = false;
                             SVG_ELEMENTS.HOME.side.animation.direction = false;
                             setTimeout(SVG_ELEMENTS.HOME.side.animation.start, 500);
-                            // SVG_ELEMENTS.HOME.side.animation.start();
                         },
                     },
                     pageIn: {
                         callback: () => {
-                            // setTimeout(SVG_ELEMENTS.HOME.side.animation.start, 500);
                             SVG_ELEMENTS.HOME.side.animation.halt = false;
                             SVG_ELEMENTS.HOME.side.animation.direction = true;
                             if (!SVG_ELEMENTS.HOME.side.animation.running)
@@ -864,17 +755,38 @@ let temp_2 = 0;
                 },
                 external: []
             },
+
             helloPath: {
                 instance: null,
                 dependents: {},
                 events: {
                     resize: {
                         changes: {
-                            transform: {
+                            d: {
                                 enabled: [true],
                                 lookupStop: 2,
                                 parameter: ['width', 'height', 0.2],
-                                instruction: ([w, h, v]) => {return 'scale(' + (w/1920) + ', ' + (h/1080) + ')';},
+                                instruction: ([w, h, v]) => {return 'M ' + 0.1*w + ' ' + h + ' Q ' + 0.1*w + ' ' + 0.5*h + ' ' + 0.7*w + ' ' + 0.5*h;},
+                                animate: false, // animate has to be specified
+                                animation: null
+                            }
+
+                        }
+                    }
+                },
+                external: []
+            },
+            helloTextPath: {
+                instance: null,
+                dependents: {},
+                events: {
+                    resize: {
+                        changes: {
+                            startOffset: {
+                                enabled: [true],
+                                lookupStop: 2,
+                                parameter: [],
+                                instruction: () => {return svgHelloPath.getTotalLength()-300;},
                                 animate: false, // animate has to be specified
                                 animation: null
                             }
@@ -895,7 +807,6 @@ let temp_2 = 0;
                                 1000,
                                 mina.linear,
                                 () => {
-                                    // console.debug('im ding thsi DOM_ELEMENTS.topRight__backgroundImage', DOM_ELEMENTS.topRight__backgroundImage)
                                     DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + (SVG_ELEMENTS.HOME.topRight.animation.direction ? IMG_PATHS.HOME.PAPER_BLACK : IMG_PATHS.HOME.PAPER_WHITE));
                                 }
                             );
@@ -985,31 +896,11 @@ let temp_2 = 0;
                     },
                     pageOut: {
                         callback: () => {
-                            // setTimeout(SVG_ELEMENTS.HOME.side.animation.start, 500);
-
-
-
-
-                            // SVG_ELEMENTS.HOME.topRight.animation.start();
-                            // console.debug('im ding thsi DOM_ELEMENTS.topRight__backgroundImage', DOM_ELEMENTS.HOME.topRight__backgroundImage)
-                            // DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_black.png" );
-
-
                             DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK );
-                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK);
                         },
                     },
                     pageIn: {
                         callback: () => {
-                            // setTimeout(SVG_ELEMENTS.HOME.side.animation.start, 500);
-
-
-
-                            // SVG_ELEMENTS.HOME.topRight.animation.start();
-
-
-                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE);
-                            // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./paper_white.png" );
                             DOM_ELEMENTS.HOME.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE );
                         },
                     }
@@ -1066,22 +957,17 @@ let temp_2 = 0;
                     },
                     pageIn: {
                         callback: () => {
-                            // console.log('qwe');
                             SVG_ELEMENTS.DEVICES.sideBackground.instance.attr({visibility: 'visible', width: 0});
                             SVG_ELEMENTS.DEVICES.sideBackground.animation.direction = true;
                             if (!SVG_ELEMENTS.DEVICES.sideBackground.animation.running)
                                 setTimeout(() => {
                                     SVG_ELEMENTS.DEVICES.sideBackground.animation.start();
                                     DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.8';
-                                    // setTimeout(() => {
-                                    // }, 2000);
                                 }, 2000);
-                            // SVG_ELEMENTS.DEVICES.sideBackground.animation.start();
                         },
                     },
                     pageOut: {
                         callback: () => {
-                            // console.log('qwe');
                             SVG_ELEMENTS.DEVICES.sideBackground.animation.direction = false;
                             if (!SVG_ELEMENTS.DEVICES.sideBackground.animation.running)
                                 SVG_ELEMENTS.DEVICES.sideBackground.animation.start();
@@ -1096,7 +982,7 @@ let temp_2 = 0;
                 animation: {
                     move: (toRight, animationCallback) => {
                         SVG_ELEMENTS.DEVICES.group.instance.animate({
-                                transform: SVG_ELEMENTS.DEVICES.group.transformString +  ' translate(' + (toRight ? (0.35*window.innerWidth) + ' 0' : '0 0') + ')',
+                                transform: SVG_ELEMENTS.DEVICES.group.transformString +  ' translate(' + (toRight ? (0.222*window.innerWidth) + ' ' + 0.05*window.innerWidth : '0 0') + ')',
                                 fill: '#FCECD2',
                                 fillOpacity: (toRight ? 0.0 : 1.0),
                                 stroke: (toRight ? 'white' : 'black')
@@ -1178,8 +1064,6 @@ let temp_2 = 0;
                      start: () => {
                          if (!SVG_ELEMENTS.DEVICES_FOCUS.information.animation.halt) {
                              SVG_ELEMENTS.DEVICES_FOCUS.information.animation.running = true;
-                             console.debug('befores setting this shsitt SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr(\'width\')', SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height'))
-                             console.debug('reeessssssssssss settin', -(SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height') - 0.2 * window.innerWidth))
                              SVG_ELEMENTS.DEVICES_FOCUS.information.instance.animate(
                                  {x: (SVG_ELEMENTS.DEVICES_FOCUS.information.animation.direction ? -(SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height') - 0.6*window.innerWidth) : -(SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height')))},
                                  1000,
@@ -1206,9 +1090,9 @@ let temp_2 = 0;
                              x: {
                                  enabled: [true],
                                  lookupStop: Number.MAX_VALUE,
-                                 parameter: ['width'],
-                                 instruction: ([w]) => {
-                                     return -(SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('width') - 0.6 * w);
+                                 parameter: [],
+                                 instruction: () => {
+                                     return -(SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height') - 0.6 * window.innerWidth);
                                  },
                                  animate: false, // animate has to be specified
                                  animation: null
@@ -1217,24 +1101,14 @@ let temp_2 = 0;
                      },
                      pageIn: {
                          callback: () => {
-                             // console.log('qwe');
                              SVG_ELEMENTS.DEVICES_FOCUS.information.animation.direction = true;
                              SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr({visibility: 'visible', x: -SVG_ELEMENTS.DEVICES_FOCUS.information.instance.attr('height')});
-                             // SVG_ELEMENTS.DEVICES_FOCUS.information.animation.direction = true;
                              if (!SVG_ELEMENTS.DEVICES_FOCUS.information.animation.running)
                                  SVG_ELEMENTS.DEVICES_FOCUS.information.animation.start();
-                             // setTimeout(() => {
-                             //     SVG_ELEMENTS.DEVICES_FOCUS.information.animation.start();
-                             //     // DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.8';
-                             //     // setTimeout(() => {
-                             //     // }, 2000);
-                             // }, 2000);
-                             // SVG_ELEMENTS.DEVICES_FOCUS.information.animation.start();
                          },
                      },
                      pageOut: {
                          callback: () => {
-                             // console.log('qwe');
                              SVG_ELEMENTS.DEVICES_FOCUS.information.animation.direction = false;
                              if (!SVG_ELEMENTS.DEVICES_FOCUS.information.animation.running)
                                  SVG_ELEMENTS.DEVICES_FOCUS.information.animation.start();
@@ -1249,7 +1123,6 @@ let temp_2 = 0;
                      start: () => {
                          if (!SVG_ELEMENTS.DEVICES_FOCUS.more.animation.halt) {
                              SVG_ELEMENTS.DEVICES_FOCUS.more.animation.running = true;
-                             // console.debug('yupy')
                              SVG_ELEMENTS.DEVICES_FOCUS.more.instance.animate(
                                  {x: (SVG_ELEMENTS.DEVICES_FOCUS.more.animation.direction ? -(SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr('height') - 0.2*window.innerWidth) : -(SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr('height')))},
                                  1000,
@@ -1278,7 +1151,6 @@ let temp_2 = 0;
                                  lookupStop: Number.MAX_VALUE,
                                  parameter: ['width'],
                                  instruction: ([w]) => {
-                                     console.debug('jklsdflkjasdfjkl; SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr(\'width\')', SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr('width'));
                                      return -(SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr('height') - 0.2*window.innerWidth);
                                  },
                                  animate: false, // animate has to be specified
@@ -1290,14 +1162,12 @@ let temp_2 = 0;
                          callback: () => {
                              SVG_ELEMENTS.DEVICES_FOCUS.more.animation.direction = true;
                              SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr({visibility: 'visible', x: -SVG_ELEMENTS.DEVICES_FOCUS.more.instance.attr('height')});
-                             // SVG_ELEMENTS.DEVICES_FOCUS.more.animation.direction = true;
                              if (!SVG_ELEMENTS.DEVICES_FOCUS.more.animation.running)
                                  SVG_ELEMENTS.DEVICES_FOCUS.more.animation.start();
                          },
                      },
                      pageOut: {
                          callback: () => {
-                             // console.log('qwe');
                              SVG_ELEMENTS.DEVICES_FOCUS.more.animation.direction = false;
                              if (!SVG_ELEMENTS.DEVICES_FOCUS.more.animation.running)
                                  SVG_ELEMENTS.DEVICES_FOCUS.more.animation.start();
@@ -1312,7 +1182,6 @@ let temp_2 = 0;
                     start: () => {
                         if (!SVG_ELEMENTS.DEVICES_FOCUS.back.animation.halt) {
                             SVG_ELEMENTS.DEVICES_FOCUS.back.animation.running = true;
-                            // console.debug('yupy')
                             SVG_ELEMENTS.DEVICES_FOCUS.back.instance.animate(
                                 {x: (SVG_ELEMENTS.DEVICES_FOCUS.back.animation.direction ? -(SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr('height') - 0.2*window.innerWidth) : 0)},
                                 1000,
@@ -1352,13 +1221,14 @@ let temp_2 = 0;
                 events: {
                     resize: {
                         changes: {
-                            x: {
+                            transform: {
                                 enabled: [true],
                                 lookupStop: Number.MAX_VALUE,
                                 parameter: ['width'],
                                 instruction: ([w]) => {
-                                    console.debug('jklsdflkjasdfjkl; SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr(\'width\')', SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr('width'));
-                                    return -(SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr('height') - 0.2*window.innerWidth);
+                                    return 'translate(' + 0.07*window.innerHeight + ' ' + 0.07*window.innerHeight + ')';
+
+
                                 },
                                 animate: false, // animate has to be specified
                                 animation: null
@@ -1369,18 +1239,12 @@ let temp_2 = 0;
                         callback: () => {
                             SVG_ELEMENTS.DEVICES_FOCUS.back.animation.direction = true;
                             SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr({visibility: 'visible', transform: 'translate(' + 0.05*window.innerWidth + ' ' + 0.05*window.innerWidth + ')'});
-                            // SVG_ELEMENTS.DEVICES_FOCUS.back.animation.direction = true;
-                            // if (!SVG_ELEMENTS.DEVICES_FOCUS.back.animation.running)
-                            //     SVG_ELEMENTS.DEVICES_FOCUS.back.animation.start();
                         },
                     },
                     pageOut: {
                         callback: () => {
-                            // console.log('qwe');
                             SVG_ELEMENTS.DEVICES_FOCUS.back.instance.attr({visibility: 'hidden'});
                             SVG_ELEMENTS.DEVICES_FOCUS.back.animation.direction = false;
-                            // if (!SVG_ELEMENTS.DEVICES_FOCUS.back.animation.running)
-                            //     SVG_ELEMENTS.DEVICES_FOCUS.back.animation.start();
                         },
                     }
                 },
@@ -1392,7 +1256,6 @@ let temp_2 = 0;
                     start: () => {
                         if (!SVG_ELEMENTS.DEVICES_FOCUS.divider.animation.halt) {
                             SVG_ELEMENTS.DEVICES_FOCUS.divider.animation.running = true;
-                            // console.debug('yupy')
                             SVG_ELEMENTS.DEVICES_FOCUS.divider.instance.animate(
                                 {x: (SVG_ELEMENTS.DEVICES_FOCUS.divider.animation.direction ? 0 : window.innerWidth)},
                                 1000,
@@ -1630,6 +1493,11 @@ let temp_2 = 0;
         VIDEOS: 'Videos'
     };
 
+    const MOUSE_POSITIONS = {
+        ON_DEVICE: 0,
+        OFF_DEVICE: 1
+    };
+
     /** Global Variables */
     let snapSVGMain, page, previousDevicePage, layout;
     let shapes;
@@ -1642,6 +1510,7 @@ let temp_2 = 0;
     };
     let showingUprightDevice, showingFocusDevice;
     let currentShape;
+    let currentMousePosition;
 
     /** Internal */
     let previousPage;
@@ -1652,9 +1521,10 @@ let temp_2 = 0;
     let currentSideTextTop, currentSideTextLeft;
     let latestWindowSizeUpdateTimestamp;
     let sideTextOffsets = [0, 0, 0, 0];
-    let currentlyAnimating;
+    let currentlyAnimating, animationOwners;
     let queuedInstruction;
     let timerScheduled;
+    let svgHelloPath;
 
     /** DOM Elements */
     let snapSVGPageInformation;
@@ -1695,52 +1565,25 @@ function animateWrapper(element, animation, changes) {
         element.animate(changes, duration, easing, callback);
     }
 }
-//
-// function translateChange(object, key) {
-//     if (Array.isArray(object)) {
-//         return object[layout].key;
-//     } else {
-//         return object.key;
-//     }
-// }
+
 
 class SVGController {
 
-
-    // static parameterLookup = {
-    //     width: 0,
-    //     height: 0,
-    // };
 
     static initialize() {
 
         for (let elementPage in SVG_ELEMENTS) {
 
-            // console.debug('for elementPage', elementPage)
-
-            // console.debug('what is apge', page)
-
             for (let element in SVG_ELEMENTS[elementPage]) {
 
-
-
                 SVG_ELEMENTS[elementPage][element].instance = Snap.select('#' + elementPage + '_' + element);
-
-                // console.debug('for element', element, 'SVG_ELEMENTS[elementPage][element].instance', SVG_ELEMENTS[elementPage][element].instance)
-
 
                 if (Object.keys(SVG_ELEMENTS[elementPage][element].dependents).length > 0 && SVG_ELEMENTS[elementPage][element].dependents.constructor === Object) {
                     for (let dependentElement in SVG_ELEMENTS[elementPage][element].dependents) {
                         SVG_ELEMENTS[elementPage][element].dependents[dependentElement].instance = Snap.select('#' + elementPage + '_' + element + '__' + dependentElement);
-                        // console.debug('innnnnnnnnneeerrrfor SVG_ELEMENTS SVG_ELEMENTS[elementPage][element].dependents[dependentElement]', SVG_ELEMENTS[elementPage][element].dependents[dependentElement])
                     }
                 }
 
-                // console.debug('after some jazzz ', SVG_ELEMENTS)
-
-                // console.debug('for SVG_ELEMENTS', SVG_ELEMENTS)
-
-                // PAGE_SVG_INDEX_ARRAY[elementPage] = [];
                 if (SVG_EVENT_LISTENERS.hasOwnProperty(elementPage)) {
                     for (let ev = 0; ev < SVG_EVENTS.length; ev++) {
                         if (SVG_ELEMENTS[elementPage][element].events.hasOwnProperty(SVG_EVENTS[ev])) {
@@ -1751,7 +1594,6 @@ class SVGController {
                                 SVG_EVENT_LISTENERS[elementPage][SVG_EVENTS[ev]].push(SVG_ELEMENTS[elementPage][element]);
                             }
                         }
-                        // console.debug('what id udnefined SVG_ELEMENTS[elementPage][element]', SVG_ELEMENTS[elementPage][element])
                         for(let externalElementIndex = 0; externalElementIndex < SVG_ELEMENTS[elementPage][element].external.length;  externalElementIndex++) {
                             SVG_EVENT_LISTENERS[elementPage][SVG_EVENTS[ev]].push(SVG_ELEMENTS[SVG_ELEMENTS[elementPage][element].external[externalElementIndex][0]][SVG_ELEMENTS[elementPage][element].external[externalElementIndex][1]]);
                         }
@@ -1761,28 +1603,19 @@ class SVGController {
 
             }
         }
-        // console.error('for SVG_EVENT_LISTENERS', SVG_EVENT_LISTENERS)
-
-        // console.debug('SVG_ELEMENTS.GLOBALS.sidePageInformation.instance', SVG_ELEMENTS.GLOBALS.sidePageInformation.instance)
-        // SVG_ELEMENTS.GLOBALS.sidePageInformation.instance.toFront();
-
     }
 
     static translateChange(object, key) {
-        // console.debug('translateChange object, key', object, key)
         if (Array.isArray(object)) {
 
-            // console.debug('is array')
             return object[layout][key];
         } else {
-            // console.debug('not array')
             return object[key];
         }
     }
 
     static handleEvent(event, onPage) {
 
-        // console.log('called handleEvent event', event, 'and onPage', onPage, 'SVG_PAGE_LOOKUP[onPage]', SVG_PAGE_LOOKUP[onPage]);
 
         let changes;
         let parameterLookup = {
@@ -1792,35 +1625,22 @@ class SVGController {
 
         for (let subscribedElement = 0; subscribedElement < SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]].length; subscribedElement++) {
 
-
-            // console.debug('for event', SVG_EVENTS[event])
-            // console.debug('event', SVG_EVENTS[event])
-
             let elementPointer;
             let listeningElement = 0;
             let dependentElement = 0;
 
-            // console.debug('SVG_EVENT_LISTENERS[page]', SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]])
-            // console.debug('SVG_EVENTS[event]', SVG_EVENTS[event]);
-            // console.debug('subscribedElement', subscribedElement)
-
             let dependentArray = Object.keys(SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]][subscribedElement].dependents);
             while(listeningElement < SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]].length || dependentElement < dependentArray.length) {
-
-                // console.debug('listeningElement', listeningElement, 'dependentElement', dependentElement)
 
                 /** While body. */
                 if (listeningElement < SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]].length) {
                     elementPointer = SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]][subscribedElement];
-                    // console.debug('lielementPointer', elementPointer)
+
 
                 } else {
                     elementPointer = SVG_EVENT_LISTENERS[SVG_PAGE_LOOKUP[onPage]][SVG_EVENTS[event]][subscribedElement].dependents[dependentArray[dependentElement]];
-                    // console.debug('otherlielementPointer', elementPointer)
-                    // console.debug('AAAAAAAAotherlielementPointer dependentArray[dependentElement]', dependentArray[dependentElement], 'SVG_EVENT_LISTENERS[page][SVG_EVENTS[event]][subscribedElement].dependents[dependentArray[dependentElement]]', SVG_EVENT_LISTENERS[page][SVG_EVENTS[event]][subscribedElement].dependents[dependentArray[dependentElement]])
-                }
 
-                // console.debug('elementPointer', elementPointer)
+                }
 
 
 
@@ -1838,17 +1658,11 @@ class SVGController {
                                     })
                                 );
 
-                                // console.debug('after changes', changes)
-
                                 if (SVGController.translateChange(elementPointer.events.resize.changes[change], 'animate')) {
-
-                                    // console.debug('animate')
 
                                     animateWrapper(elementPointer.instance, SVGController.translateChange(elementPointer.events.resize.changes[change], 'animation'), changes);
 
                                 } else {
-                                    // console.debug('not animate')
-
                                     elementPointer.instance.attr(changes);
 
                                 }
@@ -1859,14 +1673,13 @@ class SVGController {
                 } else if (event === SVG_EVENTS_NAMED.pageIn) {
 
                     if (elementPointer.events.hasOwnProperty('pageIn') && elementPointer.events.pageIn.hasOwnProperty('callback')) {
-                        // console.debug('this element has callback', elementPointer)
                         elementPointer.events.pageIn.callback();
                     }
 
                 } else if (event === SVG_EVENTS_NAMED.pageOut) {
 
                     if (elementPointer.events.hasOwnProperty('pageOut') && elementPointer.events.pageOut.hasOwnProperty('callback')) {
-                        // console.error('this pageOut element has callback', elementPointer, 'with SVG_PAGE_LOOKUP[onPage]', onPage)
+
                         elementPointer.events.pageOut.callback();
                     }
                 }
@@ -1886,12 +1699,13 @@ class SVGController {
         /** Determine layout. */
 
         for (let s = 0; s < SVGContainer.length; s++) {
-            // console.debug('SVGContainer[s]', SVGContainer[s])
-            // SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerWidth);
-            SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerHeight);
+
+
             if (s === 1) {
                 SVGContainer[s].setAttribute('height', window.innerHeight);
                 SVGContainer[s].setAttribute('width', window.innerWidth);
+            } else {
+                SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerHeight);
             }
         }
 
@@ -1899,50 +1713,31 @@ class SVGController {
 
         return;
 
-        // console.debug('width, height', width, height)
-
         let changes;
-        // SVGController.parameterLookup = {
-        //     width: width,
-        //     height: height,
-        //     prevH
-        // };
+
         let parameterLookup = {
             width: width,
             height: height
         };
 
-        // for (let svgEvent = 0; svgEvent < SVG_EVENTS.length; svgEvent++) {
             let svgEvent = 0;
 
             for (let subscribedElement = 0; subscribedElement < SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]].length; subscribedElement++) {
-
-
-                // console.debug('for svgEvent', SVG_EVENTS[svgEvent])
-                // console.debug('svgEvent', SVG_EVENTS[svgEvent])
 
                 let elementPointer;
                 let listeningElement = 0;
                 let dependentElement = 0;
 
-                // console.debug('SVG_EVENT_LISTENERS[page]', SVG_EVENT_LISTENERS[page])
-                // console.debug('SVG_EVENTS[svgEvent]', SVG_EVENTS[svgEvent]);
-                // console.debug('subscribedElement', subscribedElement)
-
                 let dependentArray = Object.keys(SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]][subscribedElement].dependents);
                 while(listeningElement < SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]].length || dependentElement < dependentArray.length) {
-
-                    // console.debug('listeningElement', listeningElement, 'dependentElement', dependentElement)
 
                     /** While body. */
                     if (listeningElement < SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]].length) {
                         elementPointer = SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]][subscribedElement];
-                        // console.debug('lielementPointer', elementPointer)
 
                     } else {
                         elementPointer = SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]][subscribedElement].dependents[dependentArray[dependentElement]];
-                        // console.debug('otherlielementPointer', elementPointer)
-                        // console.debug('AAAAAAAAotherlielementPointer dependentArray[dependentElement]', dependentArray[dependentElement], 'SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]][subscribedElement].dependents[dependentArray[dependentElement]]', SVG_EVENT_LISTENERS[page][SVG_EVENTS[svgEvent]][subscribedElement].dependents[dependentArray[dependentElement]])
+
                     }
 
                     // console.debug('elementPointer', elementPointer)
@@ -1959,17 +1754,12 @@ class SVGController {
                                     })
                                 );
 
-                                // console.debug('after changes', changes)
-
                                 if (SVGController.translateChange(elementPointer.events.resize.changes[change], 'animate')) {
 
-                                    // console.debug('animate')
 
                                     animateWrapper(elementPointer.instance, SVGController.translateChange(elementPointer.events.resize.changes[change], 'animation'), changes);
 
                                 } else {
-                                    // console.debug('not animate')
-
                                     elementPointer.instance.attr(changes);
 
                                 }
@@ -2074,7 +1864,6 @@ class SVGController {
             for (let element in SVG_ELEMENTS[elementPage]) {
 
                 for (let dep in SVG_ELEMENTS[elementPage][element].dependents) {
-                    // console.debug('dep is hidden', dep)
                     SVG_ELEMENTS[elementPage][element].dependents[dep].instance.attr({
                         visibility: 'hidden'
                     });
@@ -2093,8 +1882,6 @@ class SVGController {
         for (let element in SVG_ELEMENTS[pageToShow]) {
 
             for (let dep in SVG_ELEMENTS[pageToShow][element].dependents) {
-
-                // console.debug('dep is visible', dep)
                 SVG_ELEMENTS[pageToShow][element].dependents[dep].instance.attr({
                     visibility: 'visible'
                 });
@@ -2119,31 +1906,6 @@ class SVGController {
             });
         }
 
-
-
-
-        // SVGController.handleEvent(SVG_EVENTS_NAMED.pageIn);
-
-
-
-
-
-        // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.animate(
-        //     {transform: 'translate(' + (0.95*window.innerWidth) + ' ' + (0.4*window.innerHeight + 100) + ')'},
-        //     500,
-        //     mina.linear,
-        //     () => {
-        //         console.debug('ANIMATION DONE SON')
-        //         SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.animate(
-        //             {transform: 'translate(' + (0.95*window.innerWidth) + ' ' + (0.4*window.innerHeight) + ')'},
-        //             500,
-        //             mina.linear,
-        //             () => {
-        //                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.start();
-        //             }
-        //         );
-        //     }
-        // );
     }
 }
 
@@ -2151,7 +1913,7 @@ class SVGController {
 
 /** -------- Functions -------- */
 
-function morph(fromShape, toShape) {
+function morph(fromShape, toShape, callback) {
 
     currentState = STATES.ANIMATING;
 
@@ -2173,19 +1935,9 @@ function morph(fromShape, toShape) {
 
             destinationIndex = (useLookupArray ? ANIMATION_ORDER[fromShape][toShape][e] : e);
 
-            // console.debug('animating  shapes[fromShape][e]',  shapes[fromShape][e], ' into shape shapes[toShape][destinationIndex]', shapes[toShape][destinationIndex])
-
-
-
-            // console.debug('changing  shapes[fromShape][e]',  shapes[fromShape][e], 'from', shapeAttributes[fromShape][e], ' into ', shapeAttributes[toShape][destinationIndex])
-
-            // console.debug('what is destinationIndex', destinationIndex, 'useLookupArray', useLookupArray)
-
-
             function callbackClosure(argument1, argument2) {
                 return function () {
 
-                    // console.debug('and inside thedest', argument2, 'e', argument1)
                     shapes[fromShape][argument2].attr({
                         fill: '#FCECD2',
                         fillOpacity: 0.0,
@@ -2199,143 +1951,50 @@ function morph(fromShape, toShape) {
                     });
 
                     currentlyAnimating.busyAnimatingPre = false;
-                    // busyAnimatingPre = false;
-                    // if (!busyAnimatingPost) {
-                    //     currentState = STATES.READY;
-                    // }
+
                 };
             }
 
-            // console.debug('fromShape', fromShape, 'e', e, 'shapeAttributes[fromShape][e]', shapeAttributes[fromShape][e], 'being set to', )
-
-
-            // shapes[fromShape][e].animate({fillOpacity: 0.0}, 4000, mina.linear, () => {
                 shapes[fromShape][e].animate({d: shapeAttributes[toShape][destinationIndex]}, ANIMATION_DURATION_USED, mina.linear, callbackClosure(e, destinationIndex));
                 let aa = destinationIndex;
-            // });
-
-
-
-                // console.debug('and inside thedest', thedest)
-
-                // console.debug('now changing  shapes[fromShape][e]',  shapes[fromShape][e], 'from', shapeAttributes[toShape][destinationIndex], ' into ', shapeAttributes[toShape][destinationIndex])
-                // shapes[fromShape][e].attr({
-                //     opacity: 0.0,
-                //     d: shapeAttributes[fromShape][destinationIndex]
-                // });
-                // console.debug('after shit with aa', aa, 'e', e)
-                // shapes[toShape][e].attr({
-                //     opacity: 1.0
-                // });
-            // });
-
-
-            // setTimeout(function() {
-            //     shapes[toShape][e].attr({
-            //         opacity: 1.0
-            //     });
-            // }, ANIMATION_DURATION);
-            // setTimeout(function() {
-            //     shapes[fromShape][e].attr({
-            //         opacity: 0.0
-            //     });
-            // }, ANIMATION_DURATION);
         }
-
-
-        // else {
-        //
-        //     shapes[fromShape][e].animate({opacity: 0.0}, 0.01*ANIMATION_DURATION);
-        //
-        //
-        //     // setTimeout(function() {
-        //     //     shapes[fromShape][e].attr({
-        //     //         opacity: 0.0
-        //     //     });
-        //     // }, 0.99*ANIMATION_DURATION);
-        // }
     }
-
-    // todo: keep
-    // for (let e = 0; e < SHAPES[toShape].imageStop; e++) {
-    //     shapeImages[toShape][e].animate({opacity: 1.0}, 2*ANIMATION_DURATION);
-    // }
-
-    // for (let e = 0; e < SHAPES[fromShape].imageStop; e++) {
-    //     shapeImages[fromShape][e].animate({opacity: 0.0}, ANIMATION_DURATION);
-    // }
-
-
-    //
-    // for (let e = 0; e < SHAPES[fromShape].elements; e++) {
-    //     shapes[fromShape][e].animate({d: shapeAttributes[fromShape][e]}, ANIMATION_DURATION);
-    // }
-
-
-
-    // setTimeout(function() {
-    //     for (let e = 0; e < SHAPES[fromShape].elements; e++) {
-    //         shapes[fromShape][e].animate({d: shapeAttributes[fromShape][e]}, ANIMATION_DURATION);
-    //     }
-    // }, 2*ANIMATION_DURATION);
 
 
     let start = 0, stop = 0, change = 0, largerShape = '';
     if (SHAPES[fromShape].elements < SHAPES[toShape].elements) {
-        // console.debug('toshape is larger')
         start = SHAPES[fromShape].elements-1;
-        // was below
-        // stop = SHAPES[toShape].elements;
         stop = SHAPES[toShape].elements;
-        // change = 'visible';
         change = 1;
         largerShape = toShape;
     } else if (SHAPES[fromShape].elements > SHAPES[toShape].elements) {
-        // console.debug('fromShape is larger')
         start = SHAPES[toShape].elements-1;
         stop = SHAPES[fromShape].elements;
-        // change = 'hidden';
         change = 0;
         largerShape = fromShape;
     }
 
     if (largerShape === '')
         currentlyAnimating.busyAnimatingPost = false;
-        // busyAnimatingPost = false;
-
-    // if something is showing that should not be showing then: do it fast
-    // othersize slowly
 
 
-    // setTimeout(function() {
+    let shouldCallCallback = arguments.length > 2;
+
         for (let e = start; e < stop; e++) {
-            // console.debug('fromShape is largerstart', start, 'stop', stop, 'with change', change, 'with largershape', largerShape);
-            // console.debug('shapes[largerShape][e]', shapes[largerShape][e])
             shapes[largerShape][e].animate({
                 opacity: change,
                 fillOpacity: change
-                //     visibility: 'visible'
-            }, (change*1500 + 200), mina.linear, function () {
-                // console.debug('this went fine')
-
+            }, (change*1000 + 200), mina.linear, function () {
 
                 currentlyAnimating.busyAnimatingPost = false;
 
-                // busyAnimatingPost = false;
-                // if (!busyAnimatingPre) {
-                //     currentState = STATES.READY;
-                // }
+                if (shouldCallCallback)
+                    callback();
+
             });
-            // shapes[largerShape][e].attr({
-            //     visibility: change
-            // });
         }
 
-
-
     currentShape = toShape;
-
-    // }, 0.5*ANIMATION_DURATION);
 }
 
 function moveShape(shapeToMove, toRight) {
@@ -2345,47 +2004,18 @@ function moveShape(shapeToMove, toRight) {
 function showShape(shapeToShow) {
     for (let shape in SHAPES) {
         for (let e = 0; e < SHAPES[shape].elements; e++) {
-            // console.debug('setting shape', shape, 'attr opacity to ', (shape === shapeToShow ? 1.0 : 0.0) )
             shapes[shape][e].attr({
                 opacity: (shape === shapeToShow ? 1.0 : 0.0)
             });
         }
-        // for (let e = 0; e < SHAPES[shape].imageStop; e++) {
-        //     shapeImages[shape][e].attr({
-        //         opacity: (shape === shapeToShow ? 1.0 : 0.0)
-        //     });
-        // }
+
     }
     currentShape = shapeToShow;
 }
 
 function showNothing() {
     for (let shape in SHAPES) {
-        // for (let e = 0; e < SHAPES[shape].elements; e++) {
-        //
-        //         if (shapes[shape][e] == null) {
-        //             console.debug('shape desn work ', shape, 'e', e)
-        //         }
-        //
-        //     shapes[shape][e].attr({
-        //         opacity: 0.0
-        //     });
-        // }
 
-
-
-
-        // for (let e = 0; e < SHAPES[shape].imageStop; e++) {
-        //
-        //     TODO
-        //     if (shapeImages[shape][e] == null) {
-        //         console.debug('shape desn work ', shape, 'e', e)
-        //     }
-        //
-        //     shapeImages[shape][e].attr({
-        //         opacity: 0.0
-        //     });
-        // }
     }
 }
 
@@ -2452,42 +2082,15 @@ function updateTextPathOffset(offset){
 
     requestAnimationFrame(function() {
         temp_2 = offset;
-        // console.log('set startOffset t', temp_2)
         textPath.setAttribute('startOffset', temp_2);
-        // temp_2 += offset + window.innerHeight + 0;
-        // textPath2.setAttribute('startOffset', temp_2);
-        // temp_2 += offset + window.innerHeight + SOME_CONSTANT_INTEGER + (832 - 450);
-        // textPath3.setAttribute('startOffset', temp_2);
-        // temp_2 += offset + window.innerHeight + SOME_CONSTANT_INTEGER + (832 - 626);
-        // textPath4.setAttribute('startOffset', temp_2);
-        // temp_2 += offset + window.innerHeight + SOME_CONSTANT_INTEGER + (832 - 594);
-        // textPath5.setAttribute('startOffset', temp_2);
+
     });
 
-
-
-    // textPath.setAttribute('startOffset', offset);
-    // textPath2.setAttribute('startOffset', offset + 4600);
-    // textPath3.setAttribute('startOffset', offset + 9100);
-    // textPath4.setAttribute('startOffset', offset + 13600);
-    // textPath5.setAttribute('startOffset', offset + 18100);
-
-
-    // textPath.setAttribute('startOffset', offset);
-    // textPath2.setAttribute('startOffset', offset + 4600);
-    // textPath3.setAttribute('startOffset', offset + 9100);
-    // textPath4.setAttribute('startOffset', offset + 13600);
-    // textPath5.setAttribute('startOffset', offset + 18100);
 }
 
 function animateColourChange(element, from, to) {
 
-    console.log('going from', from);
-    console.log('going to', to);
-
-    let redInc = parseInt('0x' + to.substr(1, 2)),
-        greenInc = parseInt('0x' + to.substr(3, 2)),
-        blueInc = parseInt('0x' + to.substr(5, 2));
+    let redInc, greenInc, blueInc;
     let redTo = parseInt('0x' + to.substr(1, 2)),
         greenTo = parseInt('0x' + to.substr(3, 2)),
         blueTo = parseInt('0x' + to.substr(5, 2));
@@ -2505,18 +2108,11 @@ function animateColourChange(element, from, to) {
     let incRed = (redTo > red ? function() {red += redInc;} : function() {red -= redInc;}),
         incGreen = (greenTo > green ? function() {green += greenInc;} : function() {green -= greenInc;}),
         incBlue = (blueTo > blue ? function() {blue += blueInc;} : function() {blue -= blueInc;});
-    // let incRed = new Function((redInc > red ? 'return   red - 1;' : 'return ' + redInc +  ';'));
-    // let incRed = new Function((redInc > red ? 'return ' + redInc + ' - red;' : 'return red - ' + redInc +  ';'));
-        // greenOperator = (greenInc > green ? greenInc - green : green - greenInc);
-        // blueOperator = (blueInc > blue ? blueInc - blue : blue - blueInc);
 
     let animationCounter = 0;
 
     let intervalID = setInterval(function() {
         if (animationCounter < ANIMATION_COLOUR_STEPS) {
-            console.log('#' + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16));
-            // console.log(Math.floor(red).toString(16));
-            console.log('red', red, 'green', green, 'blue', blue);
             element.style.backgroundColor = '#' + Math.floor(red).toString(16) + Math.floor(green).toString(16) + Math.floor(blue).toString(16);
             incRed();
             incGreen();
@@ -2560,16 +2156,6 @@ function animateHomeTextScroll(from, to) {
     animateScrollRec(from, to, from);
 
 
-    // setTimeout(updateTextPathOffset.bind(a), 10);
-    //
-    // console.debug('runininoiolijlkjs')
-    // if (from < to) {
-    //     for (let a = from; a < to; a++)
-    //         setTimeout(updateTextPathOffset.bind(a), 10);
-    // } else {
-    //     for (let a = from; a > to; a--)
-    //         setTimeout(updateTextPathOffset.bind(a), 10);
-    // }
 }
 
 function animatePagesTextScrollRec(current, last, down) {
@@ -2588,57 +2174,94 @@ function animatePagesTextScrollRec(current, last, down) {
 }
 
 function animatePagesTextScroll(down) {
-    // console.debug('TTUTUDOWNUPP')
+
     currentlyAnimating.sideBar = true;
     if (down) {
-        // tmptmp = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]);
-        // console.debug('tmptmp + \'px\'', tmptmp + 'px')
-        // idElementSideBar.style.top = (currentSideTextTop + sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1]) + 'px';
 
-
-        console.debug('TTUTUDOWNUPP')
         if (page !== PAGES.VIDEOS && page !== PAGES.ABOUT && PAGE_LINKAGE[page].next !== PAGES.ABOUT)
             morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].next);
-        // animatePagesTextScrollRec((page === PAGES.WEBSITES ? 0 : sideTextOffsets[PAGES_INDEXES[page]-1]), sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]-1], down);
         animatePagesTextScrollRec(sideTextOffsets[PAGES_INDEXES[page]], sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].next]], down);
 
 
     } else {
-        // idElementSideBar.style.top = (currentSideTextTop + (page === PAGES.APPS ? 0 : sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]-1])) + 'px';
-        // currentSideTextTop = currentSideTextTop - window.innerHeight;
 
-
-
-        console.debug('TTUTUUPP')
         if (page !== PAGES.ABOUT || PAGE_LINKAGE[page].next !== PAGES.ABOUT)
             morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].prev);
-        // animatePagesTextScrollRec(sideTextOffsets[PAGES_INDEXES[page]-1], (page === PAGES.APPS ? 0 : sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]-1]), down);
         animatePagesTextScrollRec(sideTextOffsets[PAGES_INDEXES[page]], sideTextOffsets[PAGES_INDEXES[PAGE_LINKAGE[page].prev]], down);
     }
 }
 
 function animatePageText(up) {
     if (page === PAGES.HOME || (page === PAGES.WEBSITES && up)) {
-        // currentState = STATES.ANIMATING;
-        console.debug('gonna animatePageText', up)
+
         if (up) {
 
             HIDE[PAGES.WEBSITES]();
             currentPageAnimationOffset = -300;
 
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset + 1300);
-            currentPageAnimationOffset += 1300;
         } else {
 
-            currentPageAnimationOffset = 1100;
-            console.debug('gonna elseanimatePageText', up)
+            currentPageAnimationOffset = svgHelloPath.getTotalLength()-300;
             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset - 1600);
-            currentPageAnimationOffset -= 1600;
         }
     } else {
-        console.debug('gonna animatePagesTextScroll')
 
         animatePagesTextScroll(!up);
+    }
+}
+
+// function animatePageText(up) {
+//     if (page === PAGES.HOME || (page === PAGES.WEBSITES && up)) {
+//         // currentState = STATES.ANIMATING;
+//         // console.debug('gonna animatePageText', up)
+//         if (up) {
+//
+//             HIDE[PAGES.WEBSITES]();
+//             currentPageAnimationOffset = -300;
+//
+//             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset + 1300);
+//             currentPageAnimationOffset += 1300;
+//         } else {
+//
+//             currentPageAnimationOffset = 1100;
+//             // console.debug('gonna elseanimatePageText', up)
+//             animateHomeTextScroll(currentPageAnimationOffset, currentPageAnimationOffset - 1600);
+//             currentPageAnimationOffset -= 1600;
+//         }
+//     } else {
+//         // console.debug('gonna animatePagesTextScroll')
+//
+//         animatePagesTextScroll(!up);
+//     }
+// }
+
+function animateDeviceUpright(upright, callback) {
+
+    if (upright) {
+        if (!showingUprightDevice) {
+            showingUprightDevice = true;
+            // currentState = STATES.ANIMATING;
+            ANIMATION_DURATION_USED = 500;
+            if (arguments.length > 1) {
+                morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged, callback);
+            } else {
+                morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged);
+            }
+            ANIMATION_DURATION_USED = ANIMATION_DURATION;
+        }
+    } else {
+        if (showingUprightDevice) {
+            showingUprightDevice = false;
+            // currentState = STATES.ANIMATING;
+            ANIMATION_DURATION_USED = 500;
+            if (arguments.length > 1) {
+                morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr, callback);
+            } else {
+                morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr);
+            }
+            ANIMATION_DURATION_USED = ANIMATION_DURATION;
+        }
     }
 }
 
@@ -2696,59 +2319,6 @@ function useWindowHeight() {
 
 
 
-    // sideTextOffsets[0] = -0.5*(DOM_ELEMENTS.DEVICES.sidebarText.offsetWidth - getTextWidth(MENU_ITEMS[0], '10vw Booster'));
-    // // DOM_ELEMENTS.DEVICES.sidebarText.top = sideTextOffsets[0] + 'px';
-    // sideTextOffsets[1] = -0.5*(DOM_ELEMENTS.DEVICES.sidebarText.offsetWidth - DOM_ELEMENTS.DEVICES.sizeWebsites.clientWidth - DOM_ELEMENTS.DEVICES.sizeApps.clientWidth);
-    // // DOM_ELEMENTS.DEVICES.sidebarText.top = sideTextOffsets[1] + 'px';
-    // sideTextOffsets[2] = -0.5*(sideTextOffsets[1] - DOM_ELEMENTS.DEVICES.sizeVideos.offsetWidth);
-    // // DOM_ELEMENTS.DEVICES.sidebarText.top = sideTextOffsets[2] + 'px';
-    // sideTextOffsets[3] = -0.5*(sideTextOffsets[2] - DOM_ELEMENTS.DEVICES.sizeAbout.offsetWidth);
-    // // DOM_ELEMENTS.DEVICES.sidebarText.top = sideTextOffsets[3] + 'px';
-
-    // DOM_ELEMENTS.DEVICES.sidebarText.style.top = sideTextOffsets[3] + 'px';
-
-
-    // DOM_ELEMENTS.DEVICES.sidebarText.style.left = a;
-    //
-    // DOM_ELEMENTS.DEVICES.tmp.innerText = MENU;
-    //
-    // sideTextOffsets
-
-    // excessPixels = -1;
-    // let sideResult = '';
-    // currentSideTextLength = 0;
-    // for (let m = 0; m < MENU_ITEMS.length; m++) {
-    //     sideResult += MENU_ITEMS[m];
-    //     currentSideTextLength += MENU_ITEMS_PIXEL_SIZES[m];
-    //     let remaining = window.innerHeight - MENU_ITEMS_PIXEL_SIZES[m];
-    //     if (remaining > 0) {
-    //         remaining = Math.floor(remaining/PIXELS_OF_SPACE)+1;
-    //         for (let r = 0; r < remaining; r++) {
-    //             sideResult += ' ';
-    //             currentSideTextLength += PIXELS_OF_SPACE;
-    //         }
-    //     } else {
-    //         sideResult += ' ';
-    //         excessPixels = 72*2;
-    //     }
-    //
-    //     idElementSideBar.innerText = sideResult;
-    //     sideTextOffsets[m] = idElementSideBar.offsetWidth;
-    // }
-    //
-    // currentSideTextLength = idElementSideBar.offsetWidth;
-    //
-    // // console.debug('(-1*currentSideTextLength + window.innerHeight) + \'px\'', (-1*currentSideTextLength + window.innerHeight) + 'px')
-    // currentSideTextTop = (-0.5*currentSideTextLength + window.innerHeight + (page !== PAGES.HOME && page !== PAGES.WEBSITES ? sideTextOffsets[PAGES_INDEXES[page]] : 0) - 150);
-    // idElementSideBar.style.top = currentSideTextTop + 'px';
-    // idElementSideBar.style.left = (-0.5*currentSideTextLength + 140) + 'px';
-    //
-    // // console.debug('(-0.5*currentSideTextLength) + \'px\'', (-0.5*currentSideTextLength) + 'px')
-
-
-
-
-
     SVGController.resize(window.innerWidth, window.innerHeight);
 
 }
@@ -2766,14 +2336,60 @@ function checkQueuedInstructions() {
 
 }
 
-function isReady() {
-    for (let animation in currentlyAnimating) {
-        if (currentlyAnimating[animation]) {
-            return false;
-            break;
+let checkDeviceState = (function () {
+    let timeout, timeoutFunction;
+    return function () {
+
+        timeoutFunction = function () {
+            console.error('running timeout')
+
+            console.error('currentMousePosition ', currentMousePosition)
+            console.error('showingUprightDevice', showingUprightDevice)
+
+            if (isReady('devices')) {
+                if (currentMousePosition === MOUSE_POSITIONS.ON_DEVICE && !showingUprightDevice) {
+                    // morph back
+                    //todo
+                    animateDeviceUpright(true);
+                } else if (currentMousePosition === MOUSE_POSITIONS.OFF_DEVICE && showingUprightDevice) {
+
+                    animateDeviceUpright(false);
+
+                }
+                timeout = undefined;
+            } else {
+                timeout = setTimeout(timeoutFunction, 100);
+            }
+        };
+
+        console.error('whatswhatswhatsup timeout', timeout);
+
+        if (timeout === undefined) {
+
+            timeout = setTimeout(timeoutFunction, 300);
         }
     }
-    return true;
+})();
+
+function isReady() {
+
+    if (arguments.length > 0) {
+        for (let animation of animationOwners[arguments[0]]) {
+            if (currentlyAnimating[animation]) {
+                return false;
+                break;
+            }
+        }
+        return true;
+    } else {
+        for (let animation in currentlyAnimating) {
+            if (currentlyAnimating[animation]) {
+                return false;
+                break;
+            }
+        }
+        return true;
+    }
 }
 
 function initializeContent() {
@@ -2781,37 +2397,15 @@ function initializeContent() {
 
     SVGController.showPage(PAGES.HOME);
 
-
-    // setTimeout(() => {
     SVGController.handleEvent(0, 'HOME');
     SVGController.handleEvent(0, 'WEBSITES');
-    // }, 5000);
-
-    // SVGController.handleEvent('resize', 'WEBSITES');
-
-    // let pageToInitiallyResize = ['HOME', 'DEVICES'];
-    //
-    // console.debug('pageToInitiallyResize', pageToInitiallyResize)
-    //
-    // for (let elementPage = 0; elementPage < pageToInitiallyResize.length; elementPage++) {
-    //     // for (let element in SVG_ELEMENTS[pageToInitiallyResize[elementPage]]) {
-    //     //     SVG_ELEMENTS[pageToInitiallyResize[elementPage]][element]
-    //         SVGController.handleEvent('resize', pageToInitiallyResize[elementPage]);
-    //     // }
-    // }
-
-
-    // SVGController.handleEvent(PAGES.HOME);
 
     SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.start();
 
 
     showShape('computer_tilted');
-    // showShape('video_large');
 
     showNothing();
-
-    // updateTextPathOffset(4390);
 
     let supportsPassive = false;
     try {
@@ -2829,27 +2423,6 @@ function initializeContent() {
     window.addEventListener('keydown', preventDefaultForScrollKeys, false);
 
 
-    // let sideTextResult = '', finalText = '', tempSideTextOffsets =[];
-    // for (let m = 0; m < MENU_ITEMS.length; m++) {
-    //     sideTextResult = '';
-    //     for (let cc = 0; cc < 5; cc++) {
-    //         sideTextResult += MENU_ITEMS[m] + '        ';
-    //     }
-    //     finalText += sideTextResult;
-    //     DOM_ELEMENTS.DEVICES.sidebarText.innerText = sideTextResult;
-    //     tempSideTextOffsets[m] = DOM_ELEMENTS.DEVICES.sidebarText.offsetWidth;
-    //     // if (m > 0)
-    //     //     sideTextOffsets[m] -= sideTextOffsets[m-1];
-    // }
-    //
-    // DOM_ELEMENTS.DEVICES.sidebarText.innerText = finalText;
-    // let sideSum = 0;
-    // for (let m = 0; m < sideTextOffsets.length; m++) {
-    //     sideSum += tempSideTextOffsets[m]
-    //     sideTextOffsets[m] = -0.5*(DOM_ELEMENTS.DEVICES.sidebarText.offsetWidth - sideSum);
-    // }
-    // // DOM_ELEMENTS.DEVICES.sidebarText.innerText = sideTextResult;
-
     useWindowHeight();
 
 }
@@ -2862,7 +2435,6 @@ function initializeVariables() {
     for (let pageDOMElement in DOM_ELEMENTS) {
         for (let domElement in DOM_ELEMENTS[pageDOMElement]) {
             DOM_ELEMENTS[pageDOMElement][domElement] = document.getElementById(pageDOMElement + '_' + domElement);
-            // console.debug('INITIALIZED DOM_ELEMENTS[pageDOMElement][domElement]', DOM_ELEMENTS[pageDOMElement][domElement])
         }
     }
 
@@ -2873,23 +2445,15 @@ function initializeVariables() {
     elementSVGDevices = document.getElementById("svg_devices");
     elementSVGHelloPath = document.querySelector('#svg_hello');
     SVGContainer = [elementSVGCore, elementSVGDevices, elementSVGHelloPath];
-    // idElementSideBar = document.getElementById('DEVICES_sidebar');
 
-
-    // idElementContentInformation = document.getElementById('content_information');
-    // idElementContentTitle = document.getElementById('content_title');
-    // idElementContentDetail = document.getElementById('content_detail');
-
-    textPath = document.querySelector('#text-path');
+    textPath = document.querySelector('#HOME_helloTextPath');
     textPath2 = document.querySelector('#text-path2');
     textPath3 = document.querySelector('#text-path3');
     textPath4 = document.querySelector('#text-path4');
     textPath5 = document.querySelector('#text-path5');
-    // elementHalloPath = document.querySelector( textPath.getAttribute('href') );
     classElementEllipse = document.getElementsByClassName('ellipse');
     classElementScroll = document.getElementsByClassName('scroll');
 
-    // idElementDuckLogo = document.getElementById('HOME_logo');
 
     snapContentInformation = Snap.select('#content_information');
     idElementExitPage = document.getElementById('exit_page');
@@ -2902,9 +2466,9 @@ function initializeVariables() {
 
     snapSVGPageInformation = Snap.select('#GLOBALS_currentPage');
 
-    /** Global Variables */
-    // pathLength = elementHalloPath.getTotalLength();
+    svgHelloPath = document.getElementById('HOME_helloPath');
 
+    /** Global Variables */
     snapSVGMain = Snap(elementSVGDevices);
     shapes = {};
     shapeAttributes = {};
@@ -2914,7 +2478,9 @@ function initializeVariables() {
     previousPage = 'computer_tilted';
 
     currentScrollDelta = 0;
-    currentPageAnimationOffset = 1300;
+    // todo
+    // currentPageAnimationOffset = 1300;
+    currentPageAnimationOffset = 0;
     currentState = STATES.READY;
     currentSideTextTop = 0;
 
@@ -2923,6 +2489,9 @@ function initializeVariables() {
         mainSVG: false,
         busyAnimatingPre: false,
         busyAnimatingPost: false
+    };
+    animationOwners = {
+        devices: ['busyAnimatingPre', 'busyAnimatingPost']
     };
 
     queuedInstruction = null;
@@ -2953,27 +2522,12 @@ function initializeVariables() {
         shapes[shape] = new Array(SHAPES[shape].elements);
         shapeAttributes[shape] = new Array(SHAPES[shape].elements);
         for (let e = 0; e < SHAPES[shape].elements; e++) {
-            // let before;
-            // console.debug('before trying to selection shapes[shape][e] ', shape, 'e', e, shapes[shape][e] )
             shapes[shape][e] = Snap.select('#' + shape + '_' + e);
-            // before = shapes[shape][e];
-            // console.debug('before trying to selection shapes[shape][e] ', shape, 'e', e, shapes[shape][e] )
-
-            // if (before == null)
-            //     console.debug('GOONE RONG')
-
             if (e < SHAPES[shape].stop)
                 shapeAttributes[shape][e] = shapes[shape][e].node.getAttribute('d');
         }
     }
 
-    // for (let focusPage in FOCUS_PAGES) {
-    //     for (let shouldBeMadeVisible in FOCUS_PAGES[focusPage].makeVisible) {
-    //         FOCUS_PAGES[focusPage].makeVisible[shouldBeMadeVisible] = document.getElementById(shouldBeMadeVisible);
-    //         FOCUS_PAGES[focusPage].makeVisible[shouldBeMadeVisible].style.visibility = 'hidden';
-    //     }
-    //
-    // }
 
 
     SVGController.initialize();
@@ -3016,23 +2570,27 @@ function mainScrollHandler(deltaY) {
     console.debug('showingUprightDevice', showingUprightDevice)
     console.debug('isReady()', isReady())
 
-    if (!lockedOnPage && !showingUprightDevice) {
-        if (isReady()) {
-        // if (currentState === STATES.READY) {
-            if (deltaY > 0) {
-                /** scrolled downwards */
-                if (page !== PAGES.ABOUT)
-                    INSTRUCTIONS.SCROLL_DOWN();
-            } else {
-                /** scrolled upwards */
-                if (page !== PAGES.HOME)
-                    INSTRUCTIONS.SCROLL_UP();
-            }
+    if (!lockedOnPage) {
+        if (showingUprightDevice) {
+            animateDeviceUpright(false, () => mainScrollHandler(deltaY));
         } else {
-            // if (queuedInstruction != null) {
-            //     queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
-            //     checkQueuedInstructions();
-            // }
+            if (isReady()) {
+                // if (currentState === STATES.READY) {
+                if (deltaY > 0) {
+                    /** scrolled downwards */
+                    if (page !== PAGES.ABOUT)
+                        INSTRUCTIONS.SCROLL_DOWN();
+                } else {
+                    /** scrolled upwards */
+                    if (page !== PAGES.HOME)
+                        INSTRUCTIONS.SCROLL_UP();
+                }
+            } else {
+                // if (queuedInstruction != null) {
+                //     queuedInstruction = (deltaY > 0 ? INSTRUCTIONS.SCROLL_DOWN : INSTRUCTIONS.SCROLL_UP);
+                //     checkQueuedInstructions();
+                // }
+            }
         }
     }
 
@@ -3128,6 +2686,7 @@ function onMouseClickCloseDeviceFocus() {
     // DOM_ELEMENTS.DEVICES_FOCUS.
     // DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
 
+    SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
     // setFocusPage();
 
     showingFocusDevice = false;
@@ -3178,11 +2737,13 @@ function onMouseClickDevice() {
         DOM_ELEMENTS.DEVICES.sidebarText.style.visibility = 'hidden';
         DOM_ELEMENTS.DEVICES_FOCUS.header.style.visibility = 'visible';
         DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
-
+        SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
 
         DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[page][0].informationImagePath );
 
         setFocusPage();
+
+        SVGController.resize(window.innerWidth, window.innerHeight);
 
     } else {
 
@@ -3191,50 +2752,54 @@ function onMouseClickDevice() {
 
 function onMouseEnterDevice() {
 
+    currentMousePosition = MOUSE_POSITIONS.ON_DEVICE;
+
     // fire event pagein svgcontroller
     // make the page visible
     // call device function to move device in place
 
-    console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page] === 'DEVICES')
-    console.debug('urrentState === STATES.READY', currentState === STATES.READY)
+    console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
+    console.debug(' isReady(\'devices\')',  isReady('devices'))
+    console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
 
 
-    if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' && currentState === STATES.READY) {
-        if (!showingUprightDevice) {
-            showingUprightDevice = true;
-            // currentState = STATES.ANIMATING;
-            ANIMATION_DURATION_USED = 500;
-            morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged);
-            ANIMATION_DURATION_USED = ANIMATION_DURATION;
+    if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES') {
+
+        if (isReady('devices')) {
+            animateDeviceUpright(true);
+        } else {
+            checkDeviceState();
         }
+
+
     }
 
 }
 
 function onMouseLeaveDevice() {
+
+    currentMousePosition = MOUSE_POSITIONS.OFF_DEVICE;
+
     console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
-    console.debug('urrentState === STATES.READY', currentState === STATES.READY)
-    console.debug('currentState', currentState)
+    console.debug(' isReady(\'devices\')',  isReady('devices'))
     console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
-    if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' && currentState === STATES.READY) {
-        if (showingUprightDevice) {
-            showingUprightDevice = false;
-            // currentState = STATES.ANIMATING;
-            ANIMATION_DURATION_USED = 500;
-            morph(PAGE_MORPH_LINKAGE[page].enlarged, PAGE_MORPH_LINKAGE[page].curr);
-            ANIMATION_DURATION_USED = ANIMATION_DURATION;
+    if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' ) {
+
+        if (isReady('devices')) {
+            animateDeviceUpright(false);
+        } else {
+            checkDeviceState();
         }
+
     }
 }
 
 function onMouseEnterCloseButton() {
-    console.debug('lskjdflkja;lakjsdf')
     if (SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance != null)
         SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({fill: 'black'});
 }
 
 function onMouseLeaveCloseButton() {
-    console.debug('lskjdflkja;lakjsdf')
     if (SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance != null)
         SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({fill: 'none'});
 }
@@ -3267,15 +2832,15 @@ function onPageClick(goToPage) {
 window.onload = function() {
     initializeVariables();
     initializeContent();
-    initializeCursor();
+    // initializeCursor();
 
     window.onresize = function() {
 
 
-        for (let s = 0; s < SVGContainer.length; s++) {
-            console.debug('SVGContainer[s]', SVGContainer[s])
-            SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerWidth);
-        }
+        // for (let s = 0; s < SVGContainer.length; s++) {
+        //     console.debug('SVGContainer[s]', SVGContainer[s])
+        //     SVGContainer[s].setAttribute('viewBox', '0 0 ' + window.innerWidth + ' ' +  window.innerWidth);
+        // }
 
         if (typeof timerScheduled === 'undefined') {
             /** Initial size of window. */

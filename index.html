@@ -10,7 +10,7 @@
 
 <!--        <link rel="stylesheet" type="text/css" href="./css/home.css">-->
 <!--        <link rel="stylesheet" type="text/css" href="./css/style.css">-->
-        <link rel="stylesheet" type="text/css" href="./css/cursor.css">
+<!--        <link rel="stylesheet" type="text/css" href="./css/cursor.css">-->
         <link rel="stylesheet" type="text/css" href="./css/core.css">
 <!--        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300&display=swap" rel="stylesheet">-->
 
@@ -23,17 +23,28 @@
 <!--        <script src="./lib/jquery.scrollie.min.js"></script>-->
         <script src="./lib/snap.svg-min.js"></script>
 
+
+
         <script type="text/javascript" src="./js/core.js"></script>
+
+
 
 <!--        <script src="./js/home.js"></script>-->
 <!--        <script  type="text/javascript" src="./js/script.js"></script>-->
 
     </head>
     <body class="">
-        <div id="cursor">
-            <div class="cursorCenter"></div>
-        </div>
+<!--        <div id="cursor">-->
+<!--            <div class="cursorCenter"></div>-->
+<!--        </div>-->
 
+
+<!--    <div style="position: fixed; z-index: 110; font-size: 100px;">-->
+<!--        <div>Stylish Websites Websites Websites Stylish</div>-->
+<!--        <div>Websites Websites Websites Websites Websites</div>-->
+<!--        <div>Websites Websites Professional Websites Websites</div>-->
+<!--        <div>Powerful Websites Websites Websites Websites</div>-->
+<!--    </div>-->
 
 
 
@@ -41,6 +52,7 @@
         <div id="DEVICES_sizeApps" class="devices_sideText_font"></div>
         <div id="DEVICES_sizeVideos" class="devices_sideText_font"></div>
         <div id="DEVICES_sizeAbout" class="devices_sideText_font"></div>
+
 <!--    <h1 class="lava-text">LAVA TEXT</h1>-->
 <!--        <div id="DEVICES_sidebar" style="opacity: 0.0" >WEBSITES</div>-->
         <div id="DEVICES_sidebarText" class="devices_sideText" >Websites Websites Websites Websites Websites Apps   Apps    Apps    Apps    Apps    Apps    Apps    Apps    Videos Videos Videos Videos Videos Videos Contact Contact Contact Contact Contact Contact </div>
@@ -56,9 +68,12 @@
 <!--        </div>-->
 
 
-        <div onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();" style="position: fixed; top: 0; left: 20vw; z-index: 1000000; width: 60vw; height: 100vh;"></div>
+<!--        <div onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();" style="position: fixed; top: 0; left: 20vw; z-index: 1000000; width: 60vw; height: 100vh;"></div>-->
+<!--        <div id="DEVICES_container__hover" style=" position: fixed; top: 0; left: 20vw; z-index: 1000000; width: 60vw; height: 100vh;" onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();">whatshere</div>-->
+<!--        <div id="DEVICES_container__hover" onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();">whatshere</div>-->
+        <div id="DEVICES_container__hover" onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();">whatshere</div>
         <div id="DEVICES_container" onclick="onContentClick();" class="layer">
-            <svg id="svg_devices" viewBox="0 0 1920 1080"  xmlns="http://www.w3.org/2000/svg" width="1885" height="373">
+            <svg id="svg_devices" viewBox="0 0 1920 1080"  xmlns="http://www.w3.org/2000/svg" >
                 <defs>
                     <style>
                         .generic_animation_element {
@@ -552,25 +567,25 @@
 
             <image id="DEVICES_FOCUS_information" xlink:href="./187AAB15__.png" height="1995"/>
 
-            <image id="DEVICES_FOCUS_more" xlink:href="./DB566D3__.png" x="-1987" height="1987"/>
+            <image id="DEVICES_FOCUS_more" xlink:href="./DB566D3__.png" height="1987"/>
 
 <!--            <g id="back" transform="translate(100 100)">-->
 <!--                <polygon style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="1858.3,34.9 1852.9,29.5 1823.6,58.8 1794.3,29.5 1789,34.9 1818.3,64.2 1789,93.5 1794.3,98.8-->
 <!--		            1823.6,69.5 1852.9,98.8 1858.3,93.5 1829,64.2 	"/>-->
 <!--            </g>-->
 
-            <g  id="DEVICES_FOCUS_back" onclick="console.debug('YEEELSSSSS');" onmouseover="evt.target.setAttribute('fill', 'blue');" onmouseout="evt.target.setAttribute('fill','red');">
-                <rect fill="#EC573C" width="10%" height="10%" x="-5%" y="-5%"/>
-                <polygon onmouseover="evt.target.setAttribute('fill', 'blue');" onmouseout="evt.target.setAttribute('fill','red');" onclick="SVG_ELEMENTS.DEVICES_FOCUS.back.dependents.backElement.instance.attr({fill: 'red'});" id="DEVICES_FOCUS_back__backElement" style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="34.7,-29.3 29.3,-34.7 -0.1,-5.4 -29.3,-34.7 -34.7,-29.3 -5.3,0 -34.7,29.3 -29.3,34.7 -0.1,5.3
+            <g  id="DEVICES_FOCUS_back" >
+                <rect fill="#EC573C" width="14vh" height="14vh" x="-7vh" y="-7vh"/>
+                <polygon  id="DEVICES_FOCUS_back__backElement" style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="34.7,-29.3 29.3,-34.7 -0.1,-5.4 -29.3,-34.7 -34.7,-29.3 -5.3,0 -34.7,29.3 -29.3,34.7 -0.1,5.3
                     29.3,34.7 34.7,29.3 5.3,0 		"/>
             </g>
 
-            <rect id="DEVICES_FOCUS_divider" x="0" y="10%" width="100%" height="20" fill="white"/>
+            <rect id="DEVICES_FOCUS_divider" x="0" y="14vh" width="100%" height="20" fill="white"/>
 
         </svg>
 
         <div onmouseenter="onMouseEnterCloseButton();" onmouseleave="onMouseLeaveCloseButton();" onclick="onMouseClickCloseDeviceFocus();" style="position: fixed; top: 0; left: 0; z-index: 100000; width: 10vw; height: 10vw;"></div>
-        <div id="DEVICES_FOCUS_header" style="position: fixed; left: 62vw; top: 3vh; color: white; visibility: hidden" class="font_decorative">Websites</div>
+        <div id="DEVICES_FOCUS_header" style="position: fixed; left: 62vw; top: 1vh; color: white; visibility: hidden" class="font_decorative">Websites</div>
 
 <!--        <svg style="position: fixed; z-index: 100000">-->
 <!--        </svg>-->
@@ -587,14 +602,21 @@
                 </pattern>
             </defs>
 
-            <g id="HOME_helloPath" transform="scale(1, 1)">
-                <path x="100" id="text-curve" d="M192,1080c0-416.2,342.5-540,805.5-540c647.8,0,658.9,0,658.9,0" fill="none"/>
-            <text id = 'helloText' y="40" font-size="200">
-                <textPath preserveAspectRatio="xMidYMid meet" id="text-path"  xlink:href="#text-curve" startOffset="1100" class = "helloText"  >
-<!--                    fill="url(#p1)"-->
-                     Hello
-                </textPath>
+<!--            <g id="HOME_helloPath" transform="scale(1, 1)">-->
+            <g >
+                <path id="HOME_helloPath" d="M192,1080c0-416.2,342.5-540,805.5-540c647.8,0,658.9,0,658.9,0" fill="none" stroke="red"/>
+<!--                <path x="100" id="text-curve" d="M192,1080c0-416.2,342.5-540,805.5-540c647.8,0,658.9,0,658.9,0" fill="none"/>-->
+            <text    font-size="200">
+<!--                <textPath preserveAspectRatio="xMidYMid meet" id="text-path"  xlink:href="#text-curve" startOffset="1100" class = "helloText"  >-->
+<!--                <textPath preserveAspectRatio="xMidYMid meet" id="text-path"  xlink:href="#HOME_helloPath" startOffset="0" class = "helloText"  >-->
+<!--&lt;!&ndash;                    fill="url(#p1)"&ndash;&gt;-->
+<!--                     Hello-->
+<!--                </textPath>-->
 
+                <textPath preserveAspectRatio="xMidYMid meet" id="HOME_helloTextPath"  xlink:href="#HOME_helloPath" startOffset="1000" class = "helloText"  >
+                    <!--                    fill="url(#p1)"-->
+                    Hello
+                </textPath>
 
 <!--                <textPath id="text-path2" href="#text-curve" startOffset="200" class = "helloText">-->
 <!--                    WEBSITES-->
@@ -698,13 +720,6 @@
 <!--            <circle id="circle1" cx="50" cy="50" r="20" fill="red" onmouseover="evt.target.setAttribute('fill', 'blue');" onmouseout="evt.target.setAttribute('fill','red');"/>-->
 <!--            <circle id="circle2" cx="150" cy="50" r="20" fill="green" onmouseover="evt.target.setAttribute('fill', 'blue');" onmouseout="evt.target.setAttribute('fill','green');"/>-->
 <!--        </svg>-->
-
-
-
-
-
-
-
 
 
 
