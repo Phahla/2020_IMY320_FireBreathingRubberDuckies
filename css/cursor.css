@@ -55,7 +55,7 @@ body {
 	position: absolute;
 	pointer-events: none;
 	transition-duration: 300ms;
-	transition-timing-function: ease-out;
+	transition-timing-function: linear;
 	animation: followCursorAnimation 1.0s infinite alternate;
 }
 
@@ -98,7 +98,6 @@ body {
 	border-radius: 50%;
 	background-color: black;
 	opacity: .85;
-	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -108,7 +107,6 @@ body {
 	position: absolute;
 	width: 25px;
 	height: 25px;
-	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -120,18 +118,22 @@ body {
 	height: 216px !important;
 	top: 50%;
 	left: 50%;
+	z-index: -1;
 	transform: translate(-50%, -50%);
-	transition-duration: 300ms !important;
-	transition-timing-function: ease-out !important;
-	/*animation: followCursorAnimation 1.0s infinite alternate;*/
+	/*transition-duration: 300ms !important;
+	transition-timing-function: ease-out !important;*/
+	animation: fadeOutAnimation 2s;
 }
-/*
-.imageCenterHover::after {
-	top: 25%;
-	left: 25%;
-	transform: translate(-25%, -25%);
-	animation: followCursorAnimationAfter 1.0s infinite alternate;
-}*/
+
+@keyframes fadeOutAnimation {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
 
 .removeCircle {
 	border: none !important;

@@ -41,7 +41,7 @@ window.onload = function()
 		{
 			currentImageSet = 'puzzles';
 			currentIndex = puzzleIndex++;
-			displayImageHover(currentImageSet, (currentIndex % setSize));
+			// displayImageHover(currentImageSet, (currentIndex % setSize));
 		});
 
 		puzzleImageHoverElement.addEventListener('mouseout', (event) =>
@@ -54,34 +54,40 @@ window.onload = function()
 	document.addEventListener('mousemove', event => {
 		let differenceX = (event.pageX - offset);
 		let differenceY = (event.pageY - offset);
-		cursor.setAttribute('style', 'top: ' + differenceY + "px; left: " + differenceX + "px;");
-		followCursor.setAttribute('style', 'top: ' + differenceY + "px; left: " + differenceX + "px;");
-		if(currentImageSet !== '' && ( (previousY - differenceY > 75) || (previousY - differenceY < -75) || (previousX - differenceX > 75) || (previousX - differenceX < -75) ))
+		cursor.setAttribute('style', 'top: ' + (event.pageY - offset) + "px; left: " + (event.pageX - offset) + "px;");
+		followCursor.setAttribute('style', 'top: ' + (event.pageY - offset) + "px; left: " + (event.pageX - offset) + "px;");
+		if(currentImageSet !== '' && ( (previousY - differenceY > 150) || (previousY - differenceY < -150) || (previousX - differenceX > 150) || (previousX - differenceX < -150) ))
 		{
-			displayImageHover(currentImageSet, (currentIndex++ % setSize));
+			displayImageHover(currentImageSet, (currentIndex++ % setSize), differenceX, differenceY);
 			previousX = differenceX;
 			previousY = differenceY;
 		}
 	});
 }
 
-function displayImageHover(setName, setIndex)
+function displayImageHover(setName, setIndex, differenceX, differenceY)
 {
 	// cursor.classList.add('removeCircle');
 	// followCursor.classList.add('removeCircle');
 	// offset = 50;
 	let img = document.createElement('img');
 	// text.innerHTML = '<b>click</b>';
+	img.setAttribute('style', 'top: ' + differenceY + "px; left: " + differenceX + "px;");
 	img.setAttribute('src', 'assets/png/' + setName + '_' + setIndex + '.png');
 	img.classList.add('imageCenterHover');
-	cursor.innerHTML = "";
-	cursor.appendChild(img);
+	// cursor.innerHTML = "";
+	// cursor.appendChild(img);
+	document.querySelector('body').appendChild(img);
+
+	setTimeout(function() {
+		img.remove();
+	}, 2000);
 }
 
 function removeImageHover()
 {
-	cursor.classList.remove('removeCircle');
-	followCursor.classList.remove('removeCircle');
+	// cursor.classList.remove('removeCircle');
+	// followCursor.classList.remove('removeCircle');
 	offset = 25;
-	cursor.innerHTML = dot;
+	// cursor.innerHTML = dot;
 }
