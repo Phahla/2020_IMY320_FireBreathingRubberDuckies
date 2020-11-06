@@ -8,6 +8,10 @@
     src: local('Cormorant Garamond'), url(./../assets/fonts/Cormorant_Garamond/CormorantGaramond-Light.ttf) format('truetype');
 }
 @font-face {
+    font-family: 'Cormorant Garamond Medium';
+    src: local('Cormorant Garamond'), url(./../assets/fonts/Cormorant_Garamond/CormorantGaramond-Medium.ttf) format('truetype');
+}
+@font-face {
     font-family: 'Cormorant Garamond SemiBold';
     src: local('Cormorant Garamond'), url(./../assets/fonts/Cormorant_Garamond/CormorantGaramond-SemiBold.ttf) format('truetype');
 }
@@ -22,14 +26,21 @@
     src: local('Booster'), url(./../assets/fonts/booster/Booster.ttf) format('truetype');
 }
 
+/*html {*/
+/*    height: 100%;*/
+/*}*/
+
 body {
     margin: 0px;
     overflow: hidden;
     /*background-color: #FFC6FF;*/
-    background-color: #2B2B2B;
+    /*background-color: #2B2B2B;*/
+    background-color: #EBE0C6;
+
+    /*height: 100%;*/
 }
 
-svg {
+svg.svg_fixed {
     position: fixed;
     top: 0;
     left: 0;
@@ -332,12 +343,20 @@ svg {
     /*float: left;*/
     /*display: inline;*/
     height: 100%;
-    margin-top: 11vw;
+    margin-top: 6vw;
     margin-left: 20vw;
     padding: 40px;
-    font-family: 'Cormorant Garamond Light', serif;
+    padding-right: 60px;
+    font-family: 'Cormorant Garamond Medium', serif;
     /*font-family: 'Piazzolla', serif;*/
     font-size: 18px;
+
+    word-wrap: break-word;
+    /*border: 1px solid red;*/
+}
+
+.focus_information_side_text {
+    width: 93%;
 }
 
 .focus_information_side_header {
@@ -452,4 +471,165 @@ svg {
     /*border: 3px solid purple;*/
     width: 40vw;
     height: 70vh;
+}
+
+
+
+
+
+#path_load {
+    height: 140px;
+    width: 200px;
+}
+
+#path_load path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: dash 3s infinite;
+}
+
+/*#path_load g {*/
+/*    animation: fill-in 10s 1s infinite;*/
+/*    fill-opacity: 0;*/
+/*}*/
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill-in {
+    to {
+        fill-opacity: 1;
+    }
+}
+
+#path_load circle {
+    display: none;
+}
+
+
+
+/*about page*/
+
+#ABOUT_main {
+
+
+    font-family: 'Roboto', sans-serif;
+
+
+    width: 800px;
+    height: 600px;
+    background: #fff;
+    margin: 50px auto;
+    box-sizing: border-box;
+    padding: 40px;
+    padding-top: 0;
+    /*box-shadow: 0 0 20px rgba(72,98,85,0.6);*/
+}
+
+.contact p{
+    /*text-transform: uppercase;*/
+    text-align: left;
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: #EBE0C6;
+    letter-spacing: 1px;
+}
+
+#input1, #input2, #input3,
+#msg #area{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+
+
+    /*border: 2px solid #e9eaea;*/
+    border: 1px solid #EBE0C6 !important;
+
+
+    /*font-size: 14px;*/
+    border-radius: 5px;
+    outline: none;
+    transition: all 0.6s ease;
+}
+
+#login #input1, #input2 {
+    width: 48%;
+    float: left;
+    margin-right: 4%;
+}
+
+#login #input2{
+    margin-right: 0;
+}
+
+#msg #area{
+    height: 200px;
+}
+
+#btn{
+    width: 100px;
+
+    /*background: #486255;*/
+
+
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    /*color: #fff;*/
+    /*text-transform: uppercase;*/
+    margin: 0 auto;
+    border-radius: 5px;
+
+    color: #EBE0C6;
+    background-color: #EBE0C6;
+    /*background-color: transparent;*/
+    font-family: 'Cormorant Garamond Medium', serif;
+    font-size: 16px;
+
+    color: #262626;
+
+    border: 1px solid #EBE0C6 !important;
+}
+
+#input1:focus,
+#input2:focus,
+#input3:focus,
+#msg #area:focus{
+
+    border: 1px solid #EBE0C6 !important;
+
+    /*border: 2px solid #486255;*/
+}
+
+#area {
+    background-color: transparent;
+    font-family: 'Cormorant Garamond SemiBold', serif;
+    font-size: 16px;
+    color: #EBE0C6;
+}
+
+
+input.contact_input {
+    border: 1px solid #EBE0C6 !important;
+    background-color: transparent;
+    font-family: 'Cormorant Garamond Medium', serif;
+    font-size: 16px;
+    color: #EBE0C6;
+}
+
+textarea.contact_input {
+    border: 1px solid #EBE0C6 !important;
+    background-color: transparent;
+    font-family: 'Cormorant Garamond Medium', serif;
+    font-size: 16px;
+    color: #EBE0C6;
+}
+
+.contact_input::placeholder {
+    /*color: blue;*/
+    color: #9e998d;
 }

@@ -3,15 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Fire Breathing Rubber Duckies</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Playfair+Display&display=swap" rel="stylesheet">
 
 <!--        <link rel="stylesheet" type="text/css" href="./css/home.css">-->
 <!--        <link rel="stylesheet" type="text/css" href="./css/style.css">-->
-<!--        <link rel="stylesheet" type="text/css" href="./css/cursor.css">-->
+        <link rel="stylesheet" type="text/css" href="./css/cursor.css">
         <link rel="stylesheet" type="text/css" href="./css/core.css">
+
+        <link rel="icon" href="./assets/png/icon.png">
 
         <script src="./lib/snap.svg-min.js"></script>
 
@@ -20,515 +22,595 @@
     </head>
     <body class="">
 
-
-        <div id="DEVICES_sizeWebsites" class="devices_sideText_font"></div>
-        <div id="DEVICES_sizeApps" class="devices_sideText_font"></div>
-        <div id="DEVICES_sizeVideos" class="devices_sideText_font"></div>
-        <div id="DEVICES_sizeAbout" class="devices_sideText_font"></div>
-
-        <div id="DEVICES_sidebarText" class="devices_sideText" >Websites Websites Websites Websites Websites Apps   Apps    Apps    Apps    Apps    Apps    Apps    Apps    Videos Videos Videos Videos Videos Videos Contact Contact Contact Contact Contact Contact </div>
-
-        <div id="DEVICES_container__hover" onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();"> </div>
-        <div id="DEVICES_container" onclick="onContentClick();" class="layer">
-            <svg id="svg_devices" viewBox="0 0 1920 1080"  xmlns="http://www.w3.org/2000/svg" >
-                <defs>
-                    <style>
-                        .generic_animation_element {
-                            fill:#FCECD2;
-                            fill-opacity: 1.0;
-                            stroke: #000;
-                        }
-                    </style>
-                </defs>
-
-                <g id="DEVICES_group" transform="translate(0 0)" opacity="0">
+        <div id="cursor">
+            <div class="cursorCenter"></div>
+        </div>
+        <div id="followCursor">
+        </div>
 
 
-                <g id="computer_upright" class="">
+<!--        <div style="border: 1px solid; position: fixed; z-index: 100000; top: 10vh; left: 25vw; height: 70vh; width: 70vw;" class="puzzles">thediv</div>-->
+
+        <div style="opacity: 1.0; display: flex;align-items: center;height: 100vh;" id="load_content">
 
 
-                    <path id="computer_upright_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1254.9,727.1H665.1c-10.9,0-19.8-7.6-19.8-17V275.9c0-4.7,2.2-9,5.8-12    c3.6-3.1,8.5-5,14-5h589.9c10.9,0,19.8,7.6,19.8,17V710C1274.7,719.4,1265.9,727.1,1254.9,727.1z"/>
-
-                    <image id="DEVICES_FOCUS_imgWebsite_1" style="overflow:visible;" width="1905" height="1244" xlink:href="./A901664A.png"  transform="matrix(0.3144 0 0 0.3144 660.2725 271.6473)"></image>
-                    <image id="DEVICES_FOCUS_imgWebsite_0" style="overflow:visible;" width="2013" height="1314" xlink:href="./A9016646.png"  transform="matrix(0.2975 0 0 0.2975 660.1479 271.8789)"></image>
-
-                    <!--screen-->
-                    <path id="computer_upright_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1256,661.8H664c-1.8,0-3.2-1.3-3.2-2.8V275.7c0-1.6,1.5-2.8,3.2-2.8h592    c1.8,0,3.2,1.3,3.2,2.8V659C1259.2,660.5,1257.8,661.8,1256,661.8z"/>
-                    <path id="computer_upright_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M842.1,812.4c4.9,9.1,9.1,7.9,15,7.9s206.2,0.9,212.9,0.8    c6.7-0.1,7.2-9.3,7.2-9.3"/>
-                    <path id="computer_upright_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1030,727.1c0,29.2,1.2,43.1,8.9,48.8c7.7,5.7,30.3,26.5,36.2,32    c5.9,5.5-1.4,5.5-9.1,5.9c-7.7,0.4-209.3,0.2-219.4,0c-10.1-0.2-1-6.7,1.8-9.1c2.8-2.4,33.4-29.1,35-32c1.6-3,7.5-11.8,6.1-45.7"/>
-
-
-                </g>
-
-                <g id="computer_tilted" class=" ">
-                    <!--                    outline-->
-                    <path  id="computer_tilted_4" class="generic_animation_element" d="M692,158.3c4.2-3,7.4-2.7,7.7-2.7c2.5,0,5.3,0.9,8.4,2.6l508,293.3    c9.4,5.4,17,17.4,17,26.8v434.1c0,5.5-2.6,8.9-6.7,9.7"/>
-                    <path  id="computer_tilted_0" class="generic_animation_element" d="M1212,921.7L704,628.4c-9.4-5.4-17-17.4-17-26.8V167.5c0-4.7,1.9-7.9,5-9.2    c3.1-1.3,7.3-0.7,12,2l508,293.3c9.4,5.4,17,17.4,17,26.8v434.1C1229,923.9,1221.4,927.1,1212,921.7z"/>
-                    <!--                    screen-->
-                    <path  id="computer_tilted_1" class="generic_animation_element" d="M1214.7,856.4L700.5,559.5c-1.6-0.9-2.8-2.9-2.8-4.4V171.8    c0-1.6,1.3-2.1,2.8-1.2l514.2,296.9c1.6,0.9,2.8,2.9,2.8,4.4v383.2C1217.5,856.7,1216.3,857.3,1214.7,856.4z"/>
-                    <!-- stand bottom-->
-                    <path  id="computer_tilted_3" class="generic_animation_element" d="M1082.6,846.8L992.6,900c-11.1,5.4-28.4,5-38.7-0.9l-100.4-58    c-3.8-2.2-6.2-4.9-7-7.6c-0.4-1.3-0.4-2.6-0.2-3.8"/>
-                    <!--  stand top-->
-                    <path id="computer_tilted_2" class="generic_animation_element" d="M1078.1,844.3L992.6,897c-11.1,5.4-28.4,5-38.7-0.9l-100.4-58    c-10.3-5.9-9.7-15.2,1.4-20.6l104.3-41.9"/>
-
-                </g>
-
-
-
-
-                <g id="mobile_tilted" class="">
-                    <!-- left outline -->
-                    <path id="mobile_tilted_4" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M727.6,238.9c-12.3,14.1-24.3,33.6-14.8,60.4c48,157.6,121.3,398.1,166.1,545
-		c14.2,40.1,44.2,36.7,62.7,34.5c48.6-6.8,147.6-21.6,197.5-28.3c26.3-3.5,35.7-27.7,39.6-37.2"/>
-                    <!-- around the screen outline -->
-                    <path id="mobile_tilted_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M957.3,198.9c18.7-4.1,45.7,5.1,55.1,36.7
-		c39.1,128.3,139.4,460.1,166.3,548.4c13.8,45.2-31.1,47.8-31.1,47.8S958.2,859,938.6,860.3c-24.4,3.3-43.4-18-49.8-39.4
-		c-42.2-142.2-167.3-548.7-167.3-548.7s-10.9-38.7,30.1-44.8C816.7,218.3,914.3,204.9,957.3,198.9z"/>
-                    <!-- screen -->
-                    <path id="mobile_tilted_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M744.8,301.4l259.9-36.5l150,491.9l-260.4,37.3L744.8,301.4z"/>
-                    <!-- front speaker -->
-                    <path id="mobile_tilted_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M847.5,247.6c6.8-0.9,27.1-3.9,36.1-4.9c6.4-0.9,7.3,5.6,1.2,6.6
-		c-6.5,0.9-26.8,3.7-35.7,4.9C844.5,255,841.3,248.9,847.5,247.6z"/>
-                    <!-- button -->
-                    <path id="mobile_tilted_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1063.1,811.9c0,12.5-10.1,20.6-22.6,18.2c-12.5-2.4-22.6-14.5-22.6-27
-		c0-12.5,10.1-20.6,22.6-18.2C1053,787.3,1063.1,799.4,1063.1,811.9z"/>
-                </g>
-
-
-                <g id="mobile_upright" class="">
-
-<!--                    outline-->
-                    <path id="mobile_upright_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1102.3,938.6H884.9h-67.2c-28.1,0-50.9-22.8-50.9-50.9V192.2    c0-28.1,22.8-50.9,50.9-50.9h284.6c28.1,0,50.9,22.8,50.9,50.9v695.5C1153.2,915.9,1130.4,938.6,1102.3,938.6z"/>
-<!--                    top circle-->
-                    <path id="mobile_upright_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M986.6,195.8h-53.2c-2.5,0-4.5-2-4.5-4.5l0,0c0-2.5,2-4.5,4.5-4.5h40.7h12.4    c2.5,0,4.5,2,4.5,4.5l0,0C991.1,193.8,989.1,195.8,986.6,195.8z"/>
-                    <!--                    screen-->
-                    <path id="mobile_upright_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1134.7,230.1v620.2H828.2h-41.5V230.1H1134.7 M1135.7,229.1h-350v622.2h42.5h307.5V229.1L1135.7,229.1z"/>
-<!--                    bottom circle-->
-                    <path id="mobile_upright_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M989.8,895.2c0,16.8-13.6,30.5-30.5,30.5c-16.8,0-30.5-13.6-30.5-30.5    c0-7.9,3-15.2,8-20.6c5.6-6.1,13.6-9.9,22.4-9.9C976.2,864.7,989.8,878.4,989.8,895.2z"/>
-
-                    <image id="DEVICES_FOCUS_imgApps_0" style="overflow:visible;" width="407" height="723" xlink:href="./app2.png"  transform="matrix(0.8578 0 0 0.8578 786.2714 229.6385)"></image>
-                    <image id="DEVICES_FOCUS_imgApps_1" style="overflow:visible;" width="417" height="741" xlink:href="./app3.png"  transform="matrix(0.837 0 0 0.837 786.7 230.1)"></image>
-                    <image id="DEVICES_FOCUS_imgApps_2" style="overflow:visible;" width="406" height="723" xlink:href="./app1.png"  transform="matrix(0.8592 0 0 0.8592 786.7 230.1)"></image>
-                </g>
-
-                <g id="video_large" class=" " >
-                    <!-- screen outline -->
-                    <path id="video_large_1" class="generic_animation_element" d="M1305.8,771.4H621.4V339.5c0-11.5,9.3-21,21-21h642.5c11.5,0,21,9.3,21,21V771.4z"/>
-                    <!-- camera -->
-                    <path id="video_large_2" class="generic_animation_element" d="M967.8,332.1c0,2.5-2.1,4.5-4.5,4.5c-2.5,0-4.5-2.1-4.5-4.5c0-2.5,2.1-4.5,4.5-4.5C965.7,327.5,967.8,329.5,967.8,332.1z"/>
-
-                    <!--                    useless thing-->
-                    <!--                    <path id="video_large_3" class="generic_animation_element" d="M453.8,418.1H104.9v-1.1h169h179.9V418.1z"/>-->
-
-                    <!--                    5-->
-                    <!-- bottom part -->
-                    <path id="video_large_3" class="generic_animation_element" d="M908,771.4H566.3c0,0-0.3,5.2,0,6.9c0.8,4.6,3.5,8.4,6.5,11.4c2.8,2.8,6.7,5.6,9.4,5.6
-                        c173.8,0.2,327.4,0,327.4,0h109.4c0,0,153.6,0.2,327.4,0c2.7,0,6.6-2.8,9.4-5.6c3-3,5.7-6.9,6.5-11.4c0.3-1.7,0-6.9,0-6.9h-341.7
-                        H908z"/>
-
-                    <!-- screen -->
-                    <path id="video_large_0" class="generic_animation_element" d="M1287.9,748.8H639.7V344.6h648.2V748.8z"/>
-                    <!-- video bar -->
-                    <path id="video_large_4" class="generic_animation_element" d="M1280,729.4H645v-1.5h635V729.4z"/>
-
-                    <!-- controls -->
-                    <path id="video_large_5" class="generic_animation_element" d="M655.8,742.7h-2.1v-8.2h2.1V742.7z M660.4,742.7h-2.1v-8.2h2.1V742.7z M674.9,741.7v-6.2l4.3,3.1
-                        L674.9,741.7z M681,741.7h-1v-6.2h1V741.7z M691.4,737.1l2.2,0.1l2.3-2.3v7.6l-2.3-2.2l-2.2-0.1V737.1z M697.1,740.5
-                        c0.6,0,1.2-0.8,1.2-1.9c0-1-0.5-1.9-1.2-1.9 M1268.1,741.7v-3.1h1v2h2v1.1H1268.1z M1276.4,741.7h-3.1v-1h2v-2h1.1V741.7z
-                         M1276.4,733.5v3.1h-1v-2h-2v-1.1H1276.4z M1268.1,733.5h3.1v1h-2v2h-1.1V733.5z"/>
-
-                    <!--                    7-->
-                    <!-- text -->
-                    <text id="video_large_6" transform="matrix(1 0 0 1 709.6185 740.7778)" class="devices_animation_element_g9 devices_animation_element_g10">0:05 / 3:00</text>
-
-                </g>
-
-                <g id="video_small" class="">
-
-                    <g>
-                        <defs>
-                            <path id="video_x5F_large_x5F_clip" d="M1254.6,714.5h-589V347.2h589V714.5z"/>
-                        </defs>
-                        <clipPath id="video_x5F_large_x5F_clip_1_">
-                            <use xlink:href="#video_x5F_large_x5F_clip"  style="overflow:visible;"/>
-                        </clipPath>
-                        <g style="clip-path:url(#video_x5F_large_x5F_clip_1_);">
-
-                            <image id="DEVICES_FOCUS_imgVideo_0" style="overflow:visible;" width="1199" height="675" xlink:href="font_figure_1_.png"  transform="matrix(0.555 0 0 0.555 633.3044 339.9)">
-                            </image>
-                        </g>
+            <svg style="display: block; margin: auto;" id = 'path_load' xmlns="http://www.w3.org/2000/svg" width="344.016" height="278.761" viewBox="0 0 344.016 278.761">
+                <g id="duck_1_" data-name="duck (1)" transform="translate(-0.046 0.005)" opacity="0.7">
+                    <path id="Path_41" data-name="Path 41" d="M210.745,116.108a33.715,33.715,0,0,0,19.049-9.1c7.382-6.321,9.74-6.092,11.994-6.311s6.744-.318,12.74,6.96a125.846,125.846,0,0,1,26.755,77.605,83.881,83.881,0,0,1-10.175,40.053c-10.7,21.3-27.941,29.948-37.974,35.935s-31.9,14.342-67.105,16.376-57.733-.14-79.251-6.636a96.771,96.771,0,0,1-45.708-29.647c-9.632-11.031-11.669-29.555-11.9-40.579S35.8,174.321,41.8,166.122A164.709,164.709,0,0,1,64.407,141.1l6-4.71a24.47,24.47,0,0,1-8.66-6.6,13.468,13.468,0,0,1-2.889-9.493c.064-8.66,5.638-9.74,5.889-12.524a5.24,5.24,0,0,0-4.535-4,10.8,10.8,0,0,1-9.038-8.053c-.887-3.528-2.447-9.416-.194-14.135,1.084-2.25,1.589-3.906,7.014-6.493a23.218,23.218,0,0,1,15.035-.636A101.376,101.376,0,0,1,81.3,49.359,67.337,67.337,0,0,1,106.642,23.49,75.7,75.7,0,0,1,128.8,14.713q4.9-.738,9.852-1.084a34.577,34.577,0,0,1-2.924-6.744,5.72,5.72,0,0,1,1.081-5.673C137.49.6,139.48-.6,142.372,2.8s4.71,6.744,5.345,6.96,2.25-1.271,3.648-1.386,2.565.318,2.565,2.164-.108,3.1.318,3.324,2.034.318,4.49-2.457,4.5-1.4,4.5-.318a7.83,7.83,0,0,1-.432,5.034c1.4,2.285,7.707,2.24,16.484,7.815a68.186,68.186,0,0,1,23.228,24.3,69.6,69.6,0,0,1,8.263,21.928,84.648,84.648,0,0,1-.432,27.861,68.584,68.584,0,0,1-5.889,16.8C204,115.876,210.745,116.108,210.745,116.108Z" transform="translate(62.28 0)" fill="none" stroke="#000" stroke-linejoin="round" stroke-width="1"/>
+                    <path id="Path_42" data-name="Path 42" d="M44.691,26.739A37.274,37.274,0,0,0,61.5,27.985a73.01,73.01,0,0,0,13.064-4.621,5.8,5.8,0,0,1,6.969.445A122.906,122.906,0,0,1,97.1,36.127c5.822,5.638,13.2,13.16,17.892,18.845a73.623,73.623,0,0,1,11.234,15.152c.791,1.687-.292,5.151-6.3,10.694a38.837,38.837,0,0,1-18.171,8.224,140.378,140.378,0,0,1-32.342,2.695,219.939,219.939,0,0,1-27.286-3.019" transform="translate(90.538 47.725)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+                    <path id="Path_43" data-name="Path 43" d="M91.519,55.145a46.229,46.229,0,0,0,21.387,3.814s-12.988,4.481-19.665,6.1a98.662,98.662,0,0,1-25.49,2.577c-6.1-.671-12.988-1.287-17.761-6.006-5.736-5.638-6.766-9.2-6.3-12.512.216-1.611,1.853-3.9-.769-6.969a7.411,7.411,0,0,1-.769-9.448,6.744,6.744,0,0,1,6.213-3.725c4.1.318,5.952,1.4,13.3,6.623a124.063,124.063,0,0,0,29.85,19.541Z" transform="translate(87.646 62.034)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+                    <g id="Group_79" data-name="Group 79" transform="translate(187.389 46.492)">
+                        <path id="Path_44" data-name="Path 44" d="M59.351,29.353a13.7,13.7,0,0,0,5.129,3.5,3.248,3.248,0,0,0,2.781-.464,12.684,12.684,0,0,0,2.078-2.263,100.741,100.741,0,0,1,8.517-9.47c.769-.737,1.538-1.471,2.326-2.164a16.277,16.277,0,0,1,2.619-1.97,11.072,11.072,0,0,1,6.356-1.525,13.8,13.8,0,0,1,6.114,2.024,38.651,38.651,0,0,1,5.012,3.941c-.845-.636-1.7-1.271-2.542-1.885a18.534,18.534,0,0,0-2.673-1.656,13.954,13.954,0,0,0-5.943-1.589,11.288,11.288,0,0,0-3.009.369,11.062,11.062,0,0,0-2.781,1.192,34.781,34.781,0,0,0-4.719,4.049c-3.073,2.879-5.866,6.038-8.66,9.216a13.236,13.236,0,0,1-2.317,2.285,3.648,3.648,0,0,1-3.248.4,9.1,9.1,0,0,1-2.758-1.687,20.937,20.937,0,0,1-2.263-2.272Z" transform="translate(-59.351 -14.969)" fill="none" stroke="#000" stroke-width="1" opacity="0.96"/>
+                    </g>
+                    <path id="Path_45" data-name="Path 45" d="M64.845,28.172a7.494,7.494,0,0,1-3.178,1.948,3.966,3.966,0,0,1-1.98,0,3.019,3.019,0,0,1-1.665-1.192,6.791,6.791,0,0,1-.845-1.742c-.216-.594-.4-1.192-.585-1.776a62.508,62.508,0,0,1-1.583-7.23,10.881,10.881,0,0,0-.779-3.388,3.178,3.178,0,0,0-2.8-1.516,6.1,6.1,0,0,0-3.5.594,5.955,5.955,0,0,1,3.518-1.084,4.6,4.6,0,0,1,1.926.318,3.356,3.356,0,0,1,1.557,1.287,4.98,4.98,0,0,1,.747,1.85l.346,1.808c.229,1.192.464,2.393.737,3.582s.531,2.371.823,3.55a16.085,16.085,0,0,0,1.084,3.334,2.272,2.272,0,0,0,1.179.995,3.442,3.442,0,0,0,1.668.121,7.9,7.9,0,0,0,3.327-1.459Z" transform="translate(103.168 26.76)" fill="none" stroke="#000" stroke-width="1"/>
+                    <g id="Group_80" data-name="Group 80" transform="translate(148.439 40.117)">
+                        <path id="Path_46" data-name="Path 46" d="M54.786,12.963c-3.019,1.084-6.1,6.674-7.252,13.465-1.3,7.729.378,14.135,3.766,14.32s7.014-5.695,8.39-13.182A68.4,68.4,0,0,1,57,16.224a3.67,3.67,0,0,0-2.218-3.261Z" transform="translate(-47.095 -12.963)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+                        <path id="Path_47" data-name="Path 47" d="M49.515,12.963a3.671,3.671,0,0,1,2.225,3.248,68.437,68.437,0,0,0,2.685,11.342" transform="translate(-41.823 -12.963)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
                     </g>
 
-                    <path id="video_small_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1270.9,734.9H649.1V354c0-16.8,13.6-30.5,30.5-30.5h560.9    c16.8,0,30.5,13.6,30.5,30.5V734.9z"/>
-                    <path id="video_small_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1254.6,714.5h-589V347.2h589V714.5z"/>
-                    <path id="video_small_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M963.7,335.8c0,2.3-1.9,4.1-4.1,4.1s-4.1-1.9-4.1-4.1c0-2.3,1.9-4.1,4.1-4.1    S963.7,333.6,963.7,335.8z"/>
-                    <path id="video_small_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M908.8,734.7H598.3c0,0-0.3,4.7,0,6.3c0.7,4.2,3.2,7.6,5.9,10.4    c2.6,2.6,6.1,5.1,8.6,5.1c157.9,0.2,297.5,0,297.5,0h99.4c0,0,139.6,0.2,297.5,0c2.5,0,6-2.5,8.6-5.1c2.7-2.7,5.2-6.2,5.9-10.4    c0.3-1.5,0-6.3,0-6.3h-310.5H908.8z"/>
+                    <path id="Path_50" data-name="Path 50" d="M63.334,31.186a5.4,5.4,0,0,1-1.427,1.084c-1.246,8.58,2.348,15.349,8.355,15.349,6.289,0,12.826-7.414,14.6-16.56,1.427-7.36-.661-13.6-4.818-15.75a12.518,12.518,0,0,0-4.189,2.565A128.5,128.5,0,0,0,63.334,31.186Z" transform="translate(133.07 32.264)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+
+                    <path id="Path_48" data-name="Path 48" d="M54.063,14.989a1.08,1.08,0,0,0-.7-.318c-1.589,0-3.54,3.779-4.328,8.485s-.207,8.53,1.376,8.552,3.54-3.788,4.328-8.485a25.3,25.3,0,0,0,.356-3.419q-.562-2.4-1.03-4.815Zm-1.678,9.74a1.742,1.742,0,1,1,1.4-1.71A1.589,1.589,0,0,1,52.385,24.729Z" transform="translate(104.804 30.874)" stroke="#000" stroke-width="1"/>
+
+                    <path id="Path_49" data-name="Path 49" d="M72.294,17.291c-3.451,0-7.023,4.328-7.977,9.817S65.4,37,68.875,37.023s7.023-4.328,7.977-9.817S75.758,17.313,72.294,17.291Zm.8,9.372a2.447,2.447,0,1,1,2.164-2.434A2.326,2.326,0,0,1,73.1,26.663Z" fill="#000" transform="translate(138.344 36.58)" stroke="#000" stroke-width="1"/>
+                    <path id="Path_51" data-name="Path 51" d="M78.516,52.392C75.551,39.512,80.6,34.837,80.68,34.77a.553.553,0,0,0,0-.661.562.562,0,0,0-.636-.194C79.829,34,56.9,46.134,59.557,65.564c-5.781-5.2-23.259-30.133-6.766-61.436a.575.575,0,0,0-.108-.607.518.518,0,0,0-.563-.13A40.719,40.719,0,0,0,36.739,16.208c-6.191,8.368-11.9,23.164-4.189,46.055a27.181,27.181,0,0,1-5.345,23.2,41.049,41.049,0,0,0,1.44-11.9A27.33,27.33,0,0,0,14.573,49.745a.508.508,0,0,0-.553,0,.518.518,0,0,0-.184.553c0,.194,4.22,19.309-3.127,28.141-6.356,7.627-12.566,20.924-9.2,33.238,2.825,10.284,14.3,26.059,28.856,31.28,20.065,6.5,38.793-1.084,46.239-3.852,7.176-2.619,22.373-13.725,26.841-17.838s10.64-9.817,9.915-14.072c-.562-3.248-8.917,7.166-22.512,2.24A18.775,18.775,0,0,1,80.563,87.508c3.1-8.952,5.358-14.32,5.4-19.233s-6.346-11.1-7.449-15.883Z" transform="translate(0 6.234)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+                    <path id="Path_52" data-name="Path 52" d="M13.941,55.536c3.9-3.852,13.455-15.152,7.478-28.392,3.626,2.1,13.249,9.416,7.576,26.224A13.824,13.824,0,0,0,32.459,66.01a.54.54,0,0,0,.636,0,.518.518,0,0,0,.184-.594c-.175-.432-4.017-10.824,4.328-16.5-.464,2.65-1.147,9.216,1.84,12.782a21.756,21.756,0,0,1,2.294,3.41" transform="translate(29.138 58.039)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1"/>
+                </g>
+            </svg>
+
+<!--            </div>-->
+        </div>
+<!--            style="display: none;"-->
+        <div style="opacity: 0.0;" id="rest_content">
+
+
+            <div id="DEVICES_sizeWebsites" class="devices_sideText_font"></div>
+            <div id="DEVICES_sizeApps" class="devices_sideText_font"></div>
+            <div id="DEVICES_sizeVideos" class="devices_sideText_font"></div>
+            <div id="DEVICES_sizeAbout" class="devices_sideText_font"></div>
+
+            <div id="DEVICES_sidebarText" class="devices_sideText" >Websites Websites Websites Websites Websites Apps   Apps    Apps    Apps    Apps    Apps    Apps    Apps    Videos Videos Videos Videos Videos Videos Contact Contact Contact Contact Contact Contact </div>
+
+            <div style=" z-index: 1000001;" id="DEVICES_container__hover" onmouseenter="onMouseEnterDevice();" onmouseleave="onMouseLeaveDevice();" onclick="onMouseClickDevice();" > </div>
+            <div id="DEVICES_container" onclick="onContentClick();" class="layer">
+                <svg id="svg_devices" viewBox="0 0 1920 1080"  xmlns="http://www.w3.org/2000/svg" class="svg_fixed">
+                    <defs>
+                        <style>
+                            .generic_animation_element {
+                                fill:#FCECD2;
+                                fill-opacity: 1.0;
+                                stroke: #000;
+                            }
+                        </style>
+                    </defs>
+
+                    <g id="DEVICES_group" transform="translate(0 0)" opacity="0">
+
+
+                    <g id="computer_upright" class="">
+
+
+                        <path id="computer_upright_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1254.9,727.1H665.1c-10.9,0-19.8-7.6-19.8-17V275.9c0-4.7,2.2-9,5.8-12    c3.6-3.1,8.5-5,14-5h589.9c10.9,0,19.8,7.6,19.8,17V710C1274.7,719.4,1265.9,727.1,1254.9,727.1z"/>
+
+                        <image id="DEVICES_FOCUS_imgWebsite_1" style="overflow:visible;" width="1905" height="1244" xlink:href="./A901664A.png"  transform="matrix(0.3144 0 0 0.3144 660.2725 271.6473)"></image>
+                        <image id="DEVICES_FOCUS_imgWebsite_0" style="overflow:visible;" width="2013" height="1314" xlink:href="./A9016646.png"  transform="matrix(0.2975 0 0 0.2975 660.1479 271.8789)"></image>
+
+                        <!--screen-->
+                        <path id="computer_upright_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1256,661.8H664c-1.8,0-3.2-1.3-3.2-2.8V275.7c0-1.6,1.5-2.8,3.2-2.8h592    c1.8,0,3.2,1.3,3.2,2.8V659C1259.2,660.5,1257.8,661.8,1256,661.8z"/>
+                        <path id="computer_upright_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M842.1,812.4c4.9,9.1,9.1,7.9,15,7.9s206.2,0.9,212.9,0.8    c6.7-0.1,7.2-9.3,7.2-9.3"/>
+                        <path id="computer_upright_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1030,727.1c0,29.2,1.2,43.1,8.9,48.8c7.7,5.7,30.3,26.5,36.2,32    c5.9,5.5-1.4,5.5-9.1,5.9c-7.7,0.4-209.3,0.2-219.4,0c-10.1-0.2-1-6.7,1.8-9.1c2.8-2.4,33.4-29.1,35-32c1.6-3,7.5-11.8,6.1-45.7"/>
+
+
+                    </g>
+
+                    <g id="computer_tilted" class=" ">
+                        <!--                    outline-->
+                        <path  id="computer_tilted_4" class="generic_animation_element" d="M692,158.3c4.2-3,7.4-2.7,7.7-2.7c2.5,0,5.3,0.9,8.4,2.6l508,293.3    c9.4,5.4,17,17.4,17,26.8v434.1c0,5.5-2.6,8.9-6.7,9.7"/>
+                        <path  id="computer_tilted_0" class="generic_animation_element" d="M1212,921.7L704,628.4c-9.4-5.4-17-17.4-17-26.8V167.5c0-4.7,1.9-7.9,5-9.2    c3.1-1.3,7.3-0.7,12,2l508,293.3c9.4,5.4,17,17.4,17,26.8v434.1C1229,923.9,1221.4,927.1,1212,921.7z"/>
+                        <!--                    screen-->
+                        <path  id="computer_tilted_1" class="generic_animation_element" d="M1214.7,856.4L700.5,559.5c-1.6-0.9-2.8-2.9-2.8-4.4V171.8    c0-1.6,1.3-2.1,2.8-1.2l514.2,296.9c1.6,0.9,2.8,2.9,2.8,4.4v383.2C1217.5,856.7,1216.3,857.3,1214.7,856.4z"/>
+                        <!-- stand bottom-->
+                        <path  id="computer_tilted_3" class="generic_animation_element" d="M1082.6,846.8L992.6,900c-11.1,5.4-28.4,5-38.7-0.9l-100.4-58    c-3.8-2.2-6.2-4.9-7-7.6c-0.4-1.3-0.4-2.6-0.2-3.8"/>
+                        <!--  stand top-->
+                        <path id="computer_tilted_2" class="generic_animation_element" d="M1078.1,844.3L992.6,897c-11.1,5.4-28.4,5-38.7-0.9l-100.4-58    c-10.3-5.9-9.7-15.2,1.4-20.6l104.3-41.9"/>
+
+                    </g>
+
+
+
+
+                    <g id="mobile_tilted" class="">
+                        <!-- left outline -->
+                        <path id="mobile_tilted_4" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M727.6,238.9c-12.3,14.1-24.3,33.6-14.8,60.4c48,157.6,121.3,398.1,166.1,545
+            c14.2,40.1,44.2,36.7,62.7,34.5c48.6-6.8,147.6-21.6,197.5-28.3c26.3-3.5,35.7-27.7,39.6-37.2"/>
+                        <!-- around the screen outline -->
+                        <path id="mobile_tilted_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M957.3,198.9c18.7-4.1,45.7,5.1,55.1,36.7
+            c39.1,128.3,139.4,460.1,166.3,548.4c13.8,45.2-31.1,47.8-31.1,47.8S958.2,859,938.6,860.3c-24.4,3.3-43.4-18-49.8-39.4
+            c-42.2-142.2-167.3-548.7-167.3-548.7s-10.9-38.7,30.1-44.8C816.7,218.3,914.3,204.9,957.3,198.9z"/>
+                        <!-- screen -->
+                        <path id="mobile_tilted_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M744.8,301.4l259.9-36.5l150,491.9l-260.4,37.3L744.8,301.4z"/>
+                        <!-- front speaker -->
+                        <path id="mobile_tilted_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M847.5,247.6c6.8-0.9,27.1-3.9,36.1-4.9c6.4-0.9,7.3,5.6,1.2,6.6
+            c-6.5,0.9-26.8,3.7-35.7,4.9C844.5,255,841.3,248.9,847.5,247.6z"/>
+                        <!-- button -->
+                        <path id="mobile_tilted_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1063.1,811.9c0,12.5-10.1,20.6-22.6,18.2c-12.5-2.4-22.6-14.5-22.6-27
+            c0-12.5,10.1-20.6,22.6-18.2C1053,787.3,1063.1,799.4,1063.1,811.9z"/>
+                    </g>
+
+
+                    <g id="mobile_upright" class="">
+
+    <!--                    outline-->
+                        <path id="mobile_upright_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1102.3,938.6H884.9h-67.2c-28.1,0-50.9-22.8-50.9-50.9V192.2    c0-28.1,22.8-50.9,50.9-50.9h284.6c28.1,0,50.9,22.8,50.9,50.9v695.5C1153.2,915.9,1130.4,938.6,1102.3,938.6z"/>
+    <!--                    top circle-->
+                        <path id="mobile_upright_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M986.6,195.8h-53.2c-2.5,0-4.5-2-4.5-4.5l0,0c0-2.5,2-4.5,4.5-4.5h40.7h12.4    c2.5,0,4.5,2,4.5,4.5l0,0C991.1,193.8,989.1,195.8,986.6,195.8z"/>
+                        <!--                    screen-->
+                        <path id="mobile_upright_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1134.7,230.1v620.2H828.2h-41.5V230.1H1134.7 M1135.7,229.1h-350v622.2h42.5h307.5V229.1L1135.7,229.1z"/>
+    <!--                    bottom circle-->
+                        <path id="mobile_upright_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M989.8,895.2c0,16.8-13.6,30.5-30.5,30.5c-16.8,0-30.5-13.6-30.5-30.5    c0-7.9,3-15.2,8-20.6c5.6-6.1,13.6-9.9,22.4-9.9C976.2,864.7,989.8,878.4,989.8,895.2z"/>
+
+                        <image id="DEVICES_FOCUS_imgApps_0" style="overflow:visible;" width="407" height="723" xlink:href="./app2.png"  transform="matrix(0.8578 0 0 0.8578 786.2714 229.6385)"></image>
+                        <image id="DEVICES_FOCUS_imgApps_1" style="overflow:visible;" width="417" height="741" xlink:href="./app3.png"  transform="matrix(0.837 0 0 0.837 786.7 230.1)"></image>
+                        <image id="DEVICES_FOCUS_imgApps_2" style="overflow:visible;" width="406" height="723" xlink:href="./app1.png"  transform="matrix(0.8592 0 0 0.8592 786.7 230.1)"></image>
+                    </g>
+
+                    <g id="video_large" class=" " >
+                        <!-- screen outline -->
+                        <path id="video_large_1" class="generic_animation_element" d="M1305.8,771.4H621.4V339.5c0-11.5,9.3-21,21-21h642.5c11.5,0,21,9.3,21,21V771.4z"/>
+                        <!-- camera -->
+                        <path id="video_large_2" class="generic_animation_element" d="M967.8,332.1c0,2.5-2.1,4.5-4.5,4.5c-2.5,0-4.5-2.1-4.5-4.5c0-2.5,2.1-4.5,4.5-4.5C965.7,327.5,967.8,329.5,967.8,332.1z"/>
+
+                        <!--                    useless thing-->
+                        <!--                    <path id="video_large_3" class="generic_animation_element" d="M453.8,418.1H104.9v-1.1h169h179.9V418.1z"/>-->
+
+                        <!--                    5-->
+                        <!-- bottom part -->
+                        <path id="video_large_3" class="generic_animation_element" d="M908,771.4H566.3c0,0-0.3,5.2,0,6.9c0.8,4.6,3.5,8.4,6.5,11.4c2.8,2.8,6.7,5.6,9.4,5.6
+                            c173.8,0.2,327.4,0,327.4,0h109.4c0,0,153.6,0.2,327.4,0c2.7,0,6.6-2.8,9.4-5.6c3-3,5.7-6.9,6.5-11.4c0.3-1.7,0-6.9,0-6.9h-341.7
+                            H908z"/>
+
+                        <!-- screen -->
+                        <path id="video_large_0" class="generic_animation_element" d="M1287.9,748.8H639.7V344.6h648.2V748.8z"/>
+                        <!-- video bar -->
+                        <path id="video_large_4" class="generic_animation_element" d="M1280,729.4H645v-1.5h635V729.4z"/>
+
+                        <!-- controls -->
+                        <path id="video_large_5" class="generic_animation_element" d="M655.8,742.7h-2.1v-8.2h2.1V742.7z M660.4,742.7h-2.1v-8.2h2.1V742.7z M674.9,741.7v-6.2l4.3,3.1
+                            L674.9,741.7z M681,741.7h-1v-6.2h1V741.7z M691.4,737.1l2.2,0.1l2.3-2.3v7.6l-2.3-2.2l-2.2-0.1V737.1z M697.1,740.5
+                            c0.6,0,1.2-0.8,1.2-1.9c0-1-0.5-1.9-1.2-1.9 M1268.1,741.7v-3.1h1v2h2v1.1H1268.1z M1276.4,741.7h-3.1v-1h2v-2h1.1V741.7z
+                             M1276.4,733.5v3.1h-1v-2h-2v-1.1H1276.4z M1268.1,733.5h3.1v1h-2v2h-1.1V733.5z"/>
+
+                        <!--                    7-->
+                        <!-- text -->
+                        <text id="video_large_6" transform="matrix(1 0 0 1 709.6185 740.7778)" class="devices_animation_element_g9 devices_animation_element_g10">0:05 / 3:00</text>
+
+                    </g>
+
+                    <g id="video_small" class="">
+
+                        <g>
+                            <defs>
+                                <path id="video_x5F_large_x5F_clip" d="M1254.6,714.5h-589V347.2h589V714.5z"/>
+                            </defs>
+                            <clipPath id="video_x5F_large_x5F_clip_1_">
+                                <use xlink:href="#video_x5F_large_x5F_clip"  style="overflow:visible;"/>
+                            </clipPath>
+                            <g style="clip-path:url(#video_x5F_large_x5F_clip_1_);">
+
+                                <image id="DEVICES_FOCUS_imgVideo_0" style="overflow:visible;" width="1199" height="675" xlink:href="font_figure_1_.png"  transform="matrix(0.555 0 0 0.555 633.3044 339.9)">
+                                </image>
+                            </g>
+                        </g>
+
+                        <path id="video_small_0" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1270.9,734.9H649.1V354c0-16.8,13.6-30.5,30.5-30.5h560.9    c16.8,0,30.5,13.6,30.5,30.5V734.9z"/>
+                        <path id="video_small_1" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M1254.6,714.5h-589V347.2h589V714.5z"/>
+                        <path id="video_small_2" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M963.7,335.8c0,2.3-1.9,4.1-4.1,4.1s-4.1-1.9-4.1-4.1c0-2.3,1.9-4.1,4.1-4.1    S963.7,333.6,963.7,335.8z"/>
+                        <path id="video_small_3" stroke="#000" fill="#FCECD2" fill-opacity="1.0" d="M908.8,734.7H598.3c0,0-0.3,4.7,0,6.3c0.7,4.2,3.2,7.6,5.9,10.4    c2.6,2.6,6.1,5.1,8.6,5.1c157.9,0.2,297.5,0,297.5,0h99.4c0,0,139.6,0.2,297.5,0c2.5,0,6-2.5,8.6-5.1c2.7-2.7,5.2-6.2,5.9-10.4    c0.3-1.5,0-6.3,0-6.3h-310.5H908.8z"/>
+                    </g>
+
+                    </g>
+
+
+                </svg>
+            </div>
+
+            <svg id="svg_core" version="1.1" id="home_rect_topRight"  x="0px" y="0px" viewBox="0 0 1920 1080" xml:space="preserve" class="svg_fixed">
+                <defs>
+                    <style type="text/css">
+
+                        .show_nothing {
+                            display: none;
+                        }
+
+
+                        #HOME_corner {
+                            fill:#EBE0C6;
+                            stroke:#000000;
+                            stroke-miterlimit:10;
+                            stroke-width:3;
+                        }
+
+                        .internal_HOME_sideInformationText_0{fill:#FFFFFF;}
+                        .internal_HOME_sideInformationText_1{font-family: 'Cormorant Garamond', serif;}
+                        .internal_HOME_sideInformationText_2{font-size:22px;}
+                        .internal_HOME_sideInformationText_3{letter-spacing:2;}
+                        .internal_HOME_sideInformationText_4{font-family:'CormorantGaramond-Regular';}
+                        .internal_HOME_sideInformationText_5{font-size:25px;}
+
+
+                        .internal_HOME_sideInformation_0{fill:none;stroke-miterlimit:10;}
+                        .internal_HOME_sideInformation_1{fill:#FFFFFF;}
+                        .internal_HOME_sideInformation_2{font-family:'Cormorant Garamond', serif;}
+                        .internal_HOME_sideInformation_5{font-size:46px;}
+                        .internal_HOME_sideInformation_4{letter-spacing:8;}
+                        .internal_HOME_sideInformation_6{letter-spacing:1;}
+                        .internal_HOME_sideInformation_7{letter-spacing:3;}
+
+
+                        .internal_HOME_logo_0{fill:none;stroke:#000000;stroke-linejoin:round;stroke-miterlimit:10;}
+                        .internal_HOME_logo_1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+                        .internal_HOME_logo_2{opacity:0.96;}
+                        .internal_HOME_logo_3{fill:none;}
+
+                        .devices_animation_element_g1{fill:#FFFFFF;}
+
+                        .cardFace {
+                            font-size: 600%;
+                            font-weight: bold;
+                            font-style: italic;
+                            color: white;
+                            stroke: black;
+                            text-align:center;
+                            vertical-align: middle;
+                        }
+                        .internal_home_rect_topRightOutline {
+                            fill: url(#imgDo); /* INTEL blue */
+                            /*stroke-width: 3;*/
+                            /*stroke: black;*/
+                        }
+
+                        #as_path{
+                            fill: url(#imgAs);
+                        }
+
+
+                        .mobile_tilted_cls-1 {
+                            fill: none;
+                            stroke: #000;
+                            stroke-miterlimit: 10;
+                        }
+
+
+                        .devices_animatsion_element_g0{fill:none;stroke:red;stroke-miterlimit:10;}
+                        /*.devices_animation_element_g7{display:none;}*/
+                        .devices_animation_element_g8{display:inline;}
+                        .devices_animation_element_g9{font-family:'Roboto-Regular';}
+                        .devices_animation_element_g10{font-size:9px;}
+
+
+                        .internal_logo_0{fill:none;stroke:#000000;stroke-linejoin:round;stroke-miterlimit:10;}
+                        .internal_logo_1{fill:none;stroke:#000000;stroke-miterlimit:10;}
+                        .internal_logo_2{opacity:0.96;}
+                        .internal_logo_3{fill:none;}
+
+
+
+                        /*<![CDATA[*/
+                        /*  .filtered{*/
+                        /*      filter: url(#myfilter);*/
+                        /*      …*/
+                        /*  }*/
+                        /*]]>*/
+
+                    </style>
+
+                    <filter id="myfilter">
+    <!--<filter id="myfilter" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">-->
+    <!--    	<feTurbulence type="turbulence" baseFrequency="0.089 0.1" numOctaves="7" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence1"/>-->
+                        <feTurbulence type="fractalNoise" baseFrequency='0.04' result='noise' numOctaves="5" />
+
+                        <feDiffuseLighting in='noise' lighting-color='white' surfaceScale='2'>
+                <feDistantLight azimuth='45' elevation='60' />
+    </feDiffuseLighting>
+    <!--</filter>-->
+
+                    </filter>
+
+                    <g id="card1">
+
+                        <image id="HOME_topRight__backgroundImage" xlink:href="paper_white.png" x="0" y="0" width="1829" height="1829" clip-path="url(#internal_home_rect_topRightClip)" />
+                        <use xlink:href="#HOME_topRight" class="internal_home_rect_topRightOutline" />
+                    </g>
+                    <clipPath id="internal_home_rect_topRightClip">
+                        <use xlink:href="#HOME_topRight"/>
+                    </clipPath>
+
+                    <rect id="HOME_topRight" class="internal_home_rect_topRightOutline"  x="50" y="0" width="1000" height="500"/>
+
+
+                </defs>
+
+                <image id="HOME_side" width="2001" height="2001" xlink:href="187AAB0B__.png" style="outline: 3px solid black"></image>
+
+                <rect id="HOME_corner" x="640.5" y="288.6" class="st2" width="500" height="500"/>
+
+                <use xlink:href="#card1"/>
+
+
+                <g id="HOME_logo" >
+                    <path class="internal_HOME_logo_0"  d="M164.5,124c2.2-0.2,4.5-1.1,7.4-3.5c2.9-2.4,3.8-2.4,4.6-2.4c0.9-0.1,2.6-0.1,4.9,2.7s5.3,7.7,7.5,13.6s3.1,13.6,2.9,16.4c-0.2,2.9,0.2,7.3-3.9,15.5c-4.1,8.2-10.8,11.6-14.7,13.9c-3.9,2.3-12.3,5.6-26,6.3c-13.6,0.8-22.3-0.1-30.7-2.6
+                       s-14-7.2-17.7-11.5s-4.5-11.4-4.6-15.7s2.6-10.2,4.9-13.4c2.3-3.2,6.4-7.8,8.7-9.7c2.3-1.8,2.3-1.8,2.3-1.8s-2.1-0.9-3.4-2.6
+                        c-0.7-0.9-1.1-1.8-1.1-3.7c0-3.4,2.2-3.8,2.3-4.8c-0.1-0.9-0.9-1.4-1.8-1.6c-1.1-0.3-2.9-0.9-3.5-3.1c-0.3-1.4-0.9-3.6-0.1-5.5
+                        c0.4-0.9,0.6-1.5,2.7-2.5c2.6-1.3,5.8-0.2,5.8-0.2s1.1-6,3.2-9.7c2.7-4.8,6.5-8.2,9.8-10c2.7-1.5,5.9-3,8.6-3.4
+                        c1.8-0.3,3.8-0.4,3.8-0.4s-1-1.8-1.1-2.6s-0.2-1.6,0.4-2.2c0.3-0.2,1-0.7,2.2,0.6c1.1,1.3,1.8,2.6,2.1,2.7s0.9-0.5,1.4-0.5
+                        c0.5,0,1,0.1,1,0.8s0,1.2,0.1,1.3s0.8,0.1,1.7-1c1-1.1,1.7-0.5,1.7-0.1s0.3,1.1-0.2,1.9c0.5,0.9,3,0.9,6.4,3c3.6,2.3,6.8,5.4,9,9.4
+                        c1.3,2.3,2.7,5.3,3.2,8.5c0.7,4.3,0.3,8.7-0.2,10.8c-0.7,3.6-2.1,6.1-2.3,6.5S164.5,124,164.5,124z"/>
+                    <path class="internal_HOME_logo_1" d="M111.2,107.9c2.2,0.7,5,0.8,6.5,0.5c1.6-0.3,3.8-1.2,5.1-1.8c1.3-0.6,1.8-0.4,2.7,0.2c0.9,0.6,3.8,2.6,6,4.8
+                        c2.3,2.2,5.1,5.1,6.9,7.3c1.2,1.5,3.2,3.5,4.3,5.9c0.3,0.7-0.1,2-2.4,4.1c-2.3,2.1-5.2,2.7-7,3.2c-1.4,0.4-7.2,1.3-12.5,1
+                        c-3.8-0.2-9.2-0.8-10.6-1.2"/>
+                    <path class="internal_HOME_logo_1" d="M128.2,124.5c4.1,1.9,8.3,1.5,8.3,1.5s-5,1.7-7.6,2.4c-2.6,0.6-7.5,1.3-9.9,1c-2.4-0.3-5-0.5-6.9-2.3
+                        c-2.2-2.2-2.6-3.6-2.4-4.8c0.1-0.6,0.7-1.5-0.3-2.7c-1.3-1.5-0.8-2.6-0.3-3.7c0.5-1,1.6-1.5,2.4-1.4c1.6,0.1,2.3,0.5,5.1,2.6
+                        C118.2,118,121.2,121.2,128.2,124.5z"/>
+                    <g class="internal_HOME_logo_2">
+                    <path d="M131.4,102.7c0.6,0.5,1.3,1.1,2,1.2c0.4,0.1,0.7,0,0.9-0.2c0.3-0.2,0.5-0.5,0.7-0.9c1-1.3,2.1-2.6,3.3-3.7
+                        c0.6-0.6,1.2-1.2,2-1.6c0.8-0.4,1.7-0.7,2.6-0.6c0.9,0.1,1.7,0.4,2.4,0.9c0.7,0.5,1.3,1,1.9,1.6c-0.7-0.4-1.4-1-2.1-1.3
+                        c-0.7-0.3-1.5-0.5-2.2-0.5c-0.7,0-1.5,0.2-2.1,0.6c-0.6,0.4-1.2,1-1.8,1.5c-1.2,1.1-2.3,2.3-3.4,3.5c-0.3,0.3-0.5,0.6-1,0.9
+                        c-0.4,0.3-1,0.3-1.4,0.1C132.4,103.9,131.9,103.3,131.4,102.7z"/>
+                    </g>
+
+                    <g>
+                        <path d="M123.9,100.4c-0.3,0.4-0.7,0.7-1.2,0.9c-0.3,0.1-0.5,0.1-0.9,0.1c-0.3-0.1-0.6-0.3-0.8-0.5c-0.6-1-0.7-1.9-1-2.8
+                            c-0.1-0.5-0.2-0.9-0.3-1.4l-0.1-0.7c0-0.2-0.1-0.4-0.1-0.5c-0.1-0.3-0.4-0.5-0.9-0.6c-0.4-0.1-0.9-0.1-1.4,0.1
+                            c0.3-0.3,0.9-0.5,1.4-0.6c0.5-0.1,1.2,0.1,1.5,0.6c0.2,0.2,0.3,0.5,0.3,0.8l0.2,0.7l0.3,1.4c0.1,0.5,0.2,0.9,0.3,1.4
+                            c0.1,0.4,0.2,0.9,0.4,1.2c0.1,0.3,0.5,0.5,0.9,0.4C123,100.8,123.4,100.6,123.9,100.4z"/>
+                    </g>
+
+                    <path class="internal_HOME_logo_1" d="M119.3,94.6c-1.2,0.4-2.4,2.6-2.8,5.2c-0.5,3,0.1,5.5,1.5,5.5c1.3,0.1,2.7-2.2,3.2-5.1c-0.4-1-0.9-3.5-1-4.4
+                        C120,95.1,119.7,94.8,119.3,94.6z"/>
+                    <path d="M120.3,96.8c-0.1-0.1-0.2-0.1-0.3-0.1c-0.6,0-1.4,1.5-1.7,3.3c-0.3,1.8-0.1,3.3,0.5,3.3c0.6,0,1.4-1.5,1.7-3.3
+                        c0.1-0.5,0.1-0.9,0.1-1.3C120.6,98.1,120.4,97.4,120.3,96.8z M119.7,100.6c-0.3,0-0.5-0.3-0.5-0.7c0-0.4,0.2-0.7,0.5-0.7
+                        s0.5,0.3,0.5,0.7C120.2,100.3,120,100.6,119.7,100.6z"/>
+                    <path d="M140.4,99.9c-1.3,0-2.7,1.7-3.1,3.8c-0.4,2.1,0.4,3.8,1.8,3.8c1.3,0,2.7-1.7,3.1-3.8C142.5,101.7,141.7,100,140.4,99.9z
+                         M140.7,103.6c-0.5,0-0.9-0.4-0.9-0.9c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9C141.5,103.2,141.2,103.6,140.7,103.6z"/>
+                    <path class="internal_HOME_logo_1" d="M134.9,103.7c-0.2,0.2-0.3,0.3-0.6,0.4c-0.5,3.3,0.9,5.9,3.2,5.9c2.4,0,5-2.9,5.7-6.4c0.6-2.8-0.3-5.3-1.9-6.1
+                        c-0.5,0.2-1.1,0.5-1.6,1C136.9,101.1,135.5,103,134.9,103.7z"/>
+                    <path class="internal_HOME_logo_1" d="M89.2,101.8c-1.2-5,0.8-6.8,0.8-6.8c0.1-0.1,0.1-0.2,0-0.3c0-0.1-0.1-0.1-0.2-0.1c-0.1,0-9,4.7-7.9,12.2
+                        c-2.2-2-9-11.7-2.6-23.8c0-0.1,0-0.2,0-0.2c-0.1-0.1-0.1-0.1-0.2-0.1c-0.1,0.1-3.4,1.5-6,5c-2.4,3.2-4.6,9-1.6,17.8
+                        c1.1,4.2-1,7.5-2.1,9c0.3-1,0.6-2.7,0.6-4.6c-0.1-2.8-1.1-6.7-5.4-9.2c-0.1,0-0.1,0-0.2,0c-0.1,0.1-0.1,0.1-0.1,0.2
+                        c0,0.1,1.6,7.5-1.2,10.9c-2.5,3-4.9,8.1-3.6,12.9c1.1,4,5.5,10.1,11.2,12.1c7.8,2.5,15-0.4,17.9-1.5c2.8-1,8.7-5.3,10.4-6.9
+                        c1.8-1.6,4.1-3.8,3.8-5.4c-0.2-1.3-3.5,2.8-8.7,0.9c-2.7-1-5.2-5-4-8.5c1.2-3.5,2.1-5.5,2.1-7.4C92.2,106.1,89.7,103.6,89.2,101.8z
+                        "/>
+                    <path class="internal_HOME_logo_1" d="M75.5,123.1c1.5-1.5,5.2-5.9,2.9-11c1.4,0.8,5.1,3.6,2.9,10.2c-0.7,2.8,1.3,4.8,1.3,4.9c0.1,0.1,0.2,0.1,0.2,0
+                        c0.1,0,0.1-0.1,0.1-0.2c-0.1-0.2-1.6-4.2,1.7-6.4c-0.2,1-0.4,3.6,0.7,5c0.3,0.4,0.6,0.8,0.9,1.3"/>
+                    <text transform="matrix(0.1609 -0.987 0.987 0.1609 29.4622 124.3936)">
+                        <tspan x="0" y="0" class="st6 st7 st8">F</tspan>
+                        <tspan x="15.2" y="0.3" class="st6 st7 st8" rotate="6.6">I</tspan>
+                        <tspan x="23.5" y="1" class="st6 st7 st8" rotate="13.9">R</tspan>
+                        <tspan x="40.6" y="5.5" class="st6 st7 st8" rotate="23.3">E</tspan>
+                        <tspan x="55.4" y="12.2" class="st6 st7 st8" rotate="30.5"> </tspan>
+                        <tspan x="63.8" y="17.2" class="st6 st7 st8" rotate="36"> </tspan>
+                        <tspan x="71.6" y="23" class="st6 st7 st8" rotate="41.5"> </tspan>
+                        <tspan x="78.8" y="29.5" class="st6 st7 st8" rotate="47"> </tspan>
+                        <tspan x="85.4" y="36.7" class="st6 st7 st8" rotate="52.4"> </tspan>
+                        <tspan x="91.4" y="44.2" class="st6 st7 st8" rotate="60">B</tspan>
+                        <tspan x="100" y="59.3" class="st6 st7 st8" rotate="69.7">R</tspan>
+                        <tspan x="106" y="75.9" class="st6 st7 st8" rotate="79.2">E</tspan>
+                        <tspan x="109" y="91.7" class="st6 st7 st8" rotate="89.2">A</tspan>
+                        <tspan x="109" y="111.5" class="st6 st7 st8" rotate="99.4">T</tspan>
+                        <tspan x="106.4" y="127.6" class="st6 st7 st8" rotate="109.8">H</tspan>
+                        <tspan x="98.7" y="147.5" class="st6 st7 st8" rotate="118">I</tspan>
+                        <tspan x="95.2" y="155" class="st6 st7 st8" rotate="126.6">N</tspan>
+                        <tspan x="81.9" y="172.5" class="st6 st7 st8" rotate="138.6">G</tspan>
+                        <tspan x="65.8" y="186" class="st6 st7 st8" rotate="147.1"> </tspan>
+                        <tspan x="57.5" y="191.2" class="st6 st7 st8" rotate="152.6"> </tspan>
+                        <tspan x="48.8" y="195.7" class="st6 st7 st8" rotate="158"> </tspan>
+                        <tspan x="39.7" y="199.3" class="st6 st7 st8" rotate="163.5"> </tspan>
+                        <tspan x="30.4" y="202" class="st6 st7 st8" rotate="168.9"> </tspan>
+                        <tspan x="21" y="204" class="st6 st7 st8" rotate="176.6">R</tspan>
+                        <tspan x="3.4" y="205" class="st6 st7 st8" rotate="-172.7">U</tspan>
+                        <tspan x="-16.7" y="202.1" class="st6 st7 st8" rotate="-162.6">B</tspan>
+                        <tspan x="-33.2" y="196.8" class="st6 st7 st8" rotate="-152.6">B</tspan>
+                        <tspan x="-48.6" y="188.6" class="st6 st7 st8" rotate="-143.2">E</tspan>
+                        <tspan x="-61.4" y="179" class="st6 st7 st8" rotate="-133.7">R</tspan>
+                        <tspan x="-73.4" y="165.8" class="st6 st7 st8" rotate="-126"> </tspan>
+                        <tspan x="-79.1" y="157.9" class="st6 st7 st8" rotate="-120.6"> </tspan>
+                        <tspan x="-84" y="149.5" class="st6 st7 st8" rotate="-115.2"> </tspan>
+                        <tspan x="-88.1" y="140.6" class="st6 st7 st8" rotate="-109.8"> </tspan>
+                        <tspan x="-91.3" y="131.4" class="st6 st7 st8" rotate="-104.3"> </tspan>
+                        <tspan x="-94" y="122.2" class="st6 st7 st8" rotate="-95.7">D</tspan>
+                        <tspan x="-95.9" y="101.3" class="st6 st7 st8" rotate="-84.1">U</tspan>
+                        <tspan x="-93.6" y="81.1" class="st6 st7 st8" rotate="-73">C</tspan>
+                        <tspan x="-87.7" y="62.5" class="st6 st7 st8" rotate="-62.9">K</tspan>
+                        <tspan x="-79.6" y="47.5" class="st6 st7 st8" rotate="-55.8">I</tspan>
+                        <tspan x="-75.1" y="40.6" class="st6 st7 st8" rotate="-48.9">E</tspan>
+                        <tspan x="-64.4" y="28.5" class="st6 st7 st8" rotate="-39.8">S</tspan>
+                    </text>
+                    </text>
                 </g>
 
+
+                <g id="GLOBALS_sidePageInformation" >
+                    <line stroke="#EBE0C6" visibility="visible" id="GLOBALS_sidePageInformation__line" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="574.4" />
+
+                    <g id="GLOBALS_sidePageInformation__textGroup" transform="translate(0 0)" fill="#FFFFFF">
+
+                        <text transform="matrix(1 0 0 1 39.7703 29.1105)" style="color: '#EBE0C6'; font-family: 'Cormorant Garamond', serif; font-size:22px; letter-spacing:4;">4</text>
+
+                        <text id='GLOBALS_currentPage' transform="matrix(1 0 0 1 12.7812 11.1873)" style="color: '#EBE0C6'; font-family: 'Cormorant Garamond', serif; font-size:22px; letter-spacing:4;">0</text>
+
+                        <text transform="matrix(1 0 0 1 25.7484 23.6823)" style="color: '#EBE0C6'; font-family: 'Cormorant Garamond', serif; font-size:27px; letter-spacing:5;">/</text>
+                    </g>
+
+                    <line stroke="#EBE0C6" visibility="visible" id="GLOBALS_sidePageInformation__lineBottom" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="0" opacity="0.0"/>
+
+                    <g id="GLOBALS_sidePageInformation__arrow" >
+                        <g>
+                            <g>
+                                <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="70.8"/>
+                                <g>
+                                    <polygon class="internal_HOME_sideInformation_1" points="26.7,64.9 27.7,64.5 29.9,70.7 32.1,64.5 33.1,64.9 29.9,73.6 						"/>
+                                </g>
+                            </g>
+                        </g>
+                        <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="37.8" y1="50.6" x2="31.3" y2="68.3"/>
+                        <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="22" y1="50.6" x2="28.6" y2="68.4"/>
+                    </g>
+                </g>
+
+
+                <rect id="DEVICES_sideBackground" x="0" y="0" width="100" height="300" stroke="black" stroke-width="3" fill="#e1654f" onclick=""/>
+
+
+
+                <image id="DEVICES_FOCUS_information" xlink:href="./187AAB15__.png" height="1995"/>
+<!--                <image id="DEVICES_FOCUS_information" xlink:href="./7E76A5CA.png" height="1995"/>-->
+
+                <image id="DEVICES_FOCUS_more" xlink:href="./DB566D3__.png" height="1987"/>
+
+
+                <g  id="DEVICES_FOCUS_back" >
+                    <rect fill="#EC573C" width="14vh" height="14vh" x="-7vh" y="-7vh"/>
+                    <polygon  id="DEVICES_FOCUS_back__backElement" style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="34.7,-29.3 29.3,-34.7 -0.1,-5.4 -29.3,-34.7 -34.7,-29.3 -5.3,0 -34.7,29.3 -29.3,34.7 -0.1,5.3
+                        29.3,34.7 34.7,29.3 5.3,0 		"/>
+                </g>
+
+                <rect id="DEVICES_FOCUS_divider" x="0" y="14vh" width="100%" height="20" fill="white"/>
+
+            </svg>
+
+            <div onmouseenter="onMouseEnterCloseButton();" onmouseleave="onMouseLeaveCloseButton();" onclick="onMouseClickCloseDeviceFocus();" style=" position: fixed; top: 0; left: 0; z-index: 100000; width: 10vw; height: 10vw;"></div>
+            <div id="DEVICES_FOCUS_header" style="position: fixed; left: 62vw; top: 1vh; color: white; visibility: hidden" class="font_decorative">Websites</div>
+
+
+
+            <svg id="svg_hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" class="layer svg_fixed" >
+                <defs>
+
+                    <pattern id="p1" patternUnits="userSpaceOnUse" width="1920" height="1080">
+                        <image xlink:href="DD8F5BA9_crop.png" width="1920" height="1080"/>
+                    </pattern>
+                </defs>
+
+                <g >
+                    <path id="HOME_helloPath" d="M192,1080c0-416.2,342.5-540,805.5-540c647.8,0,658.9,0,658.9,0" fill="none" />
+                <text    font-size="200">
+
+                    <textPath preserveAspectRatio="xMidYMid meet" id="HOME_helloTextPath"  xlink:href="#HOME_helloPath" startOffset="1000" class = "helloText" >
+                        Hello
+                    </textPath>
+
+
+                </text>
                 </g>
 
 
             </svg>
-        </div>
 
-        <svg id="svg_core" version="1.1" id="home_rect_topRight"  x="0px" y="0px" viewBox="0 0 1920 1080" xml:space="preserve">
-            <defs>
-                <style type="text/css">
+            <div id="DEVICES_FOCUS">
 
-                    .show_nothing {
-                        display: none;
-                    }
 
+                <div class="focus_moreStuff_side">
+    <!--                white block-->
+                    <div id="DEVICES_FOCUS_closeButton">
 
-                    #HOME_corner {
-                        fill:#EBE0C6;
-                        stroke:#000000;
-                        stroke-miterlimit:10;
-                        stroke-width:3;
-                    }
-
-                    .internal_HOME_sideInformationText_0{fill:#FFFFFF;}
-                    .internal_HOME_sideInformationText_1{font-family: 'Cormorant Garamond', serif;}
-                    .internal_HOME_sideInformationText_2{font-size:22px;}
-                    .internal_HOME_sideInformationText_3{letter-spacing:2;}
-                    .internal_HOME_sideInformationText_4{font-family:'CormorantGaramond-Regular';}
-                    .internal_HOME_sideInformationText_5{font-size:25px;}
-
-
-                    .internal_HOME_sideInformation_0{fill:none;stroke-miterlimit:10;}
-                    .internal_HOME_sideInformation_1{fill:#FFFFFF;}
-                    .internal_HOME_sideInformation_2{font-family:'Cormorant Garamond', serif;}
-                    .internal_HOME_sideInformation_5{font-size:46px;}
-                    .internal_HOME_sideInformation_4{letter-spacing:8;}
-                    .internal_HOME_sideInformation_6{letter-spacing:1;}
-                    .internal_HOME_sideInformation_7{letter-spacing:3;}
-
-
-                    .internal_HOME_logo_0{fill:none;stroke:#000000;stroke-linejoin:round;stroke-miterlimit:10;}
-                    .internal_HOME_logo_1{fill:none;stroke:#000000;stroke-miterlimit:10;}
-                    .internal_HOME_logo_2{opacity:0.96;}
-                    .internal_HOME_logo_3{fill:none;}
-
-                    .devices_animation_element_g1{fill:#FFFFFF;}
-
-                    .cardFace {
-                        font-size: 600%;
-                        font-weight: bold;
-                        font-style: italic;
-                        color: white;
-                        stroke: black;
-                        text-align:center;
-                        vertical-align: middle;
-                    }
-                    .internal_home_rect_topRightOutline {
-                        fill: url(#imgDo); /* INTEL blue */
-                        /*stroke-width: 3;*/
-                        /*stroke: black;*/
-                    }
-
-                    #as_path{
-                        fill: url(#imgAs);
-                    }
-
-
-                    .mobile_tilted_cls-1 {
-                        fill: none;
-                        stroke: #000;
-                        stroke-miterlimit: 10;
-                    }
-
-
-                    .devices_animatsion_element_g0{fill:none;stroke:red;stroke-miterlimit:10;}
-                    /*.devices_animation_element_g7{display:none;}*/
-                    .devices_animation_element_g8{display:inline;}
-                    .devices_animation_element_g9{font-family:'Roboto-Regular';}
-                    .devices_animation_element_g10{font-size:9px;}
-
-
-                    .internal_logo_0{fill:none;stroke:#000000;stroke-linejoin:round;stroke-miterlimit:10;}
-                    .internal_logo_1{fill:none;stroke:#000000;stroke-miterlimit:10;}
-                    .internal_logo_2{opacity:0.96;}
-                    .internal_logo_3{fill:none;}
-
-
-
-                    /*<![CDATA[*/
-                    /*  .filtered{*/
-                    /*      filter: url(#myfilter);*/
-                    /*      …*/
-                    /*  }*/
-                    /*]]>*/
-
-                </style>
-
-                <filter id="myfilter">
-<!--<filter id="myfilter" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">-->
-<!--    	<feTurbulence type="turbulence" baseFrequency="0.089 0.1" numOctaves="7" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence1"/>-->
-                    <feTurbulence type="fractalNoise" baseFrequency='0.04' result='noise' numOctaves="5" />
-
-                    <feDiffuseLighting in='noise' lighting-color='white' surfaceScale='2'>
-            <feDistantLight azimuth='45' elevation='60' />
-</feDiffuseLighting>
-<!--</filter>-->
-
-                </filter>
-
-                <g id="card1">
-
-                    <image id="HOME_topRight__backgroundImage" xlink:href="paper_white.png" x="0" y="0" width="1829" height="1829" clip-path="url(#internal_home_rect_topRightClip)" />
-                    <use xlink:href="#HOME_topRight" class="internal_home_rect_topRightOutline" />
-                </g>
-                <clipPath id="internal_home_rect_topRightClip">
-                    <use xlink:href="#HOME_topRight"/>
-                </clipPath>
-
-                <rect id="HOME_topRight" class="internal_home_rect_topRightOutline"  x="50" y="0" width="1000" height="500"/>
-
-
-            </defs>
-
-            <image id="HOME_side" width="2001" height="2001" xlink:href="187AAB0B__.png" style="outline: 3px solid black"></image>
-
-            <rect id="HOME_corner" x="640.5" y="288.6" class="st2" width="500" height="500"/>
-
-            <use xlink:href="#card1"/>
-
-
-            <g id="HOME_logo" >
-                <path class="internal_HOME_logo_0"  d="M164.5,124c2.2-0.2,4.5-1.1,7.4-3.5c2.9-2.4,3.8-2.4,4.6-2.4c0.9-0.1,2.6-0.1,4.9,2.7s5.3,7.7,7.5,13.6s3.1,13.6,2.9,16.4c-0.2,2.9,0.2,7.3-3.9,15.5c-4.1,8.2-10.8,11.6-14.7,13.9c-3.9,2.3-12.3,5.6-26,6.3c-13.6,0.8-22.3-0.1-30.7-2.6
-                   s-14-7.2-17.7-11.5s-4.5-11.4-4.6-15.7s2.6-10.2,4.9-13.4c2.3-3.2,6.4-7.8,8.7-9.7c2.3-1.8,2.3-1.8,2.3-1.8s-2.1-0.9-3.4-2.6
-                    c-0.7-0.9-1.1-1.8-1.1-3.7c0-3.4,2.2-3.8,2.3-4.8c-0.1-0.9-0.9-1.4-1.8-1.6c-1.1-0.3-2.9-0.9-3.5-3.1c-0.3-1.4-0.9-3.6-0.1-5.5
-                    c0.4-0.9,0.6-1.5,2.7-2.5c2.6-1.3,5.8-0.2,5.8-0.2s1.1-6,3.2-9.7c2.7-4.8,6.5-8.2,9.8-10c2.7-1.5,5.9-3,8.6-3.4
-                    c1.8-0.3,3.8-0.4,3.8-0.4s-1-1.8-1.1-2.6s-0.2-1.6,0.4-2.2c0.3-0.2,1-0.7,2.2,0.6c1.1,1.3,1.8,2.6,2.1,2.7s0.9-0.5,1.4-0.5
-                    c0.5,0,1,0.1,1,0.8s0,1.2,0.1,1.3s0.8,0.1,1.7-1c1-1.1,1.7-0.5,1.7-0.1s0.3,1.1-0.2,1.9c0.5,0.9,3,0.9,6.4,3c3.6,2.3,6.8,5.4,9,9.4
-                    c1.3,2.3,2.7,5.3,3.2,8.5c0.7,4.3,0.3,8.7-0.2,10.8c-0.7,3.6-2.1,6.1-2.3,6.5S164.5,124,164.5,124z"/>
-                <path class="internal_HOME_logo_1" d="M111.2,107.9c2.2,0.7,5,0.8,6.5,0.5c1.6-0.3,3.8-1.2,5.1-1.8c1.3-0.6,1.8-0.4,2.7,0.2c0.9,0.6,3.8,2.6,6,4.8
-                    c2.3,2.2,5.1,5.1,6.9,7.3c1.2,1.5,3.2,3.5,4.3,5.9c0.3,0.7-0.1,2-2.4,4.1c-2.3,2.1-5.2,2.7-7,3.2c-1.4,0.4-7.2,1.3-12.5,1
-                    c-3.8-0.2-9.2-0.8-10.6-1.2"/>
-                <path class="internal_HOME_logo_1" d="M128.2,124.5c4.1,1.9,8.3,1.5,8.3,1.5s-5,1.7-7.6,2.4c-2.6,0.6-7.5,1.3-9.9,1c-2.4-0.3-5-0.5-6.9-2.3
-                    c-2.2-2.2-2.6-3.6-2.4-4.8c0.1-0.6,0.7-1.5-0.3-2.7c-1.3-1.5-0.8-2.6-0.3-3.7c0.5-1,1.6-1.5,2.4-1.4c1.6,0.1,2.3,0.5,5.1,2.6
-                    C118.2,118,121.2,121.2,128.2,124.5z"/>
-                <g class="internal_HOME_logo_2">
-                <path d="M131.4,102.7c0.6,0.5,1.3,1.1,2,1.2c0.4,0.1,0.7,0,0.9-0.2c0.3-0.2,0.5-0.5,0.7-0.9c1-1.3,2.1-2.6,3.3-3.7
-                    c0.6-0.6,1.2-1.2,2-1.6c0.8-0.4,1.7-0.7,2.6-0.6c0.9,0.1,1.7,0.4,2.4,0.9c0.7,0.5,1.3,1,1.9,1.6c-0.7-0.4-1.4-1-2.1-1.3
-                    c-0.7-0.3-1.5-0.5-2.2-0.5c-0.7,0-1.5,0.2-2.1,0.6c-0.6,0.4-1.2,1-1.8,1.5c-1.2,1.1-2.3,2.3-3.4,3.5c-0.3,0.3-0.5,0.6-1,0.9
-                    c-0.4,0.3-1,0.3-1.4,0.1C132.4,103.9,131.9,103.3,131.4,102.7z"/>
-                </g>
-
-                <g>
-                    <path d="M123.9,100.4c-0.3,0.4-0.7,0.7-1.2,0.9c-0.3,0.1-0.5,0.1-0.9,0.1c-0.3-0.1-0.6-0.3-0.8-0.5c-0.6-1-0.7-1.9-1-2.8
-                        c-0.1-0.5-0.2-0.9-0.3-1.4l-0.1-0.7c0-0.2-0.1-0.4-0.1-0.5c-0.1-0.3-0.4-0.5-0.9-0.6c-0.4-0.1-0.9-0.1-1.4,0.1
-                        c0.3-0.3,0.9-0.5,1.4-0.6c0.5-0.1,1.2,0.1,1.5,0.6c0.2,0.2,0.3,0.5,0.3,0.8l0.2,0.7l0.3,1.4c0.1,0.5,0.2,0.9,0.3,1.4
-                        c0.1,0.4,0.2,0.9,0.4,1.2c0.1,0.3,0.5,0.5,0.9,0.4C123,100.8,123.4,100.6,123.9,100.4z"/>
-                </g>
-
-                <path class="internal_HOME_logo_1" d="M119.3,94.6c-1.2,0.4-2.4,2.6-2.8,5.2c-0.5,3,0.1,5.5,1.5,5.5c1.3,0.1,2.7-2.2,3.2-5.1c-0.4-1-0.9-3.5-1-4.4
-                    C120,95.1,119.7,94.8,119.3,94.6z"/>
-                <path d="M120.3,96.8c-0.1-0.1-0.2-0.1-0.3-0.1c-0.6,0-1.4,1.5-1.7,3.3c-0.3,1.8-0.1,3.3,0.5,3.3c0.6,0,1.4-1.5,1.7-3.3
-                    c0.1-0.5,0.1-0.9,0.1-1.3C120.6,98.1,120.4,97.4,120.3,96.8z M119.7,100.6c-0.3,0-0.5-0.3-0.5-0.7c0-0.4,0.2-0.7,0.5-0.7
-                    s0.5,0.3,0.5,0.7C120.2,100.3,120,100.6,119.7,100.6z"/>
-                <path d="M140.4,99.9c-1.3,0-2.7,1.7-3.1,3.8c-0.4,2.1,0.4,3.8,1.8,3.8c1.3,0,2.7-1.7,3.1-3.8C142.5,101.7,141.7,100,140.4,99.9z
-                     M140.7,103.6c-0.5,0-0.9-0.4-0.9-0.9c0-0.5,0.4-0.9,0.9-0.9c0.5,0,0.9,0.4,0.9,0.9C141.5,103.2,141.2,103.6,140.7,103.6z"/>
-                <path class="internal_HOME_logo_1" d="M134.9,103.7c-0.2,0.2-0.3,0.3-0.6,0.4c-0.5,3.3,0.9,5.9,3.2,5.9c2.4,0,5-2.9,5.7-6.4c0.6-2.8-0.3-5.3-1.9-6.1
-                    c-0.5,0.2-1.1,0.5-1.6,1C136.9,101.1,135.5,103,134.9,103.7z"/>
-                <path class="internal_HOME_logo_1" d="M89.2,101.8c-1.2-5,0.8-6.8,0.8-6.8c0.1-0.1,0.1-0.2,0-0.3c0-0.1-0.1-0.1-0.2-0.1c-0.1,0-9,4.7-7.9,12.2
-                    c-2.2-2-9-11.7-2.6-23.8c0-0.1,0-0.2,0-0.2c-0.1-0.1-0.1-0.1-0.2-0.1c-0.1,0.1-3.4,1.5-6,5c-2.4,3.2-4.6,9-1.6,17.8
-                    c1.1,4.2-1,7.5-2.1,9c0.3-1,0.6-2.7,0.6-4.6c-0.1-2.8-1.1-6.7-5.4-9.2c-0.1,0-0.1,0-0.2,0c-0.1,0.1-0.1,0.1-0.1,0.2
-                    c0,0.1,1.6,7.5-1.2,10.9c-2.5,3-4.9,8.1-3.6,12.9c1.1,4,5.5,10.1,11.2,12.1c7.8,2.5,15-0.4,17.9-1.5c2.8-1,8.7-5.3,10.4-6.9
-                    c1.8-1.6,4.1-3.8,3.8-5.4c-0.2-1.3-3.5,2.8-8.7,0.9c-2.7-1-5.2-5-4-8.5c1.2-3.5,2.1-5.5,2.1-7.4C92.2,106.1,89.7,103.6,89.2,101.8z
-                    "/>
-                <path class="internal_HOME_logo_1" d="M75.5,123.1c1.5-1.5,5.2-5.9,2.9-11c1.4,0.8,5.1,3.6,2.9,10.2c-0.7,2.8,1.3,4.8,1.3,4.9c0.1,0.1,0.2,0.1,0.2,0
-                    c0.1,0,0.1-0.1,0.1-0.2c-0.1-0.2-1.6-4.2,1.7-6.4c-0.2,1-0.4,3.6,0.7,5c0.3,0.4,0.6,0.8,0.9,1.3"/>
-                <text transform="matrix(0.1609 -0.987 0.987 0.1609 29.4622 124.3936)">
-                    <tspan x="0" y="0" class="st6 st7 st8">F</tspan>
-                    <tspan x="15.2" y="0.3" class="st6 st7 st8" rotate="6.6">I</tspan>
-                    <tspan x="23.5" y="1" class="st6 st7 st8" rotate="13.9">R</tspan>
-                    <tspan x="40.6" y="5.5" class="st6 st7 st8" rotate="23.3">E</tspan>
-                    <tspan x="55.4" y="12.2" class="st6 st7 st8" rotate="30.5"> </tspan>
-                    <tspan x="63.8" y="17.2" class="st6 st7 st8" rotate="36"> </tspan>
-                    <tspan x="71.6" y="23" class="st6 st7 st8" rotate="41.5"> </tspan>
-                    <tspan x="78.8" y="29.5" class="st6 st7 st8" rotate="47"> </tspan>
-                    <tspan x="85.4" y="36.7" class="st6 st7 st8" rotate="52.4"> </tspan>
-                    <tspan x="91.4" y="44.2" class="st6 st7 st8" rotate="60">B</tspan>
-                    <tspan x="100" y="59.3" class="st6 st7 st8" rotate="69.7">R</tspan>
-                    <tspan x="106" y="75.9" class="st6 st7 st8" rotate="79.2">E</tspan>
-                    <tspan x="109" y="91.7" class="st6 st7 st8" rotate="89.2">A</tspan>
-                    <tspan x="109" y="111.5" class="st6 st7 st8" rotate="99.4">T</tspan>
-                    <tspan x="106.4" y="127.6" class="st6 st7 st8" rotate="109.8">H</tspan>
-                    <tspan x="98.7" y="147.5" class="st6 st7 st8" rotate="118">I</tspan>
-                    <tspan x="95.2" y="155" class="st6 st7 st8" rotate="126.6">N</tspan>
-                    <tspan x="81.9" y="172.5" class="st6 st7 st8" rotate="138.6">G</tspan>
-                    <tspan x="65.8" y="186" class="st6 st7 st8" rotate="147.1"> </tspan>
-                    <tspan x="57.5" y="191.2" class="st6 st7 st8" rotate="152.6"> </tspan>
-                    <tspan x="48.8" y="195.7" class="st6 st7 st8" rotate="158"> </tspan>
-                    <tspan x="39.7" y="199.3" class="st6 st7 st8" rotate="163.5"> </tspan>
-                    <tspan x="30.4" y="202" class="st6 st7 st8" rotate="168.9"> </tspan>
-                    <tspan x="21" y="204" class="st6 st7 st8" rotate="176.6">R</tspan>
-                    <tspan x="3.4" y="205" class="st6 st7 st8" rotate="-172.7">U</tspan>
-                    <tspan x="-16.7" y="202.1" class="st6 st7 st8" rotate="-162.6">B</tspan>
-                    <tspan x="-33.2" y="196.8" class="st6 st7 st8" rotate="-152.6">B</tspan>
-                    <tspan x="-48.6" y="188.6" class="st6 st7 st8" rotate="-143.2">E</tspan>
-                    <tspan x="-61.4" y="179" class="st6 st7 st8" rotate="-133.7">R</tspan>
-                    <tspan x="-73.4" y="165.8" class="st6 st7 st8" rotate="-126"> </tspan>
-                    <tspan x="-79.1" y="157.9" class="st6 st7 st8" rotate="-120.6"> </tspan>
-                    <tspan x="-84" y="149.5" class="st6 st7 st8" rotate="-115.2"> </tspan>
-                    <tspan x="-88.1" y="140.6" class="st6 st7 st8" rotate="-109.8"> </tspan>
-                    <tspan x="-91.3" y="131.4" class="st6 st7 st8" rotate="-104.3"> </tspan>
-                    <tspan x="-94" y="122.2" class="st6 st7 st8" rotate="-95.7">D</tspan>
-                    <tspan x="-95.9" y="101.3" class="st6 st7 st8" rotate="-84.1">U</tspan>
-                    <tspan x="-93.6" y="81.1" class="st6 st7 st8" rotate="-73">C</tspan>
-                    <tspan x="-87.7" y="62.5" class="st6 st7 st8" rotate="-62.9">K</tspan>
-                    <tspan x="-79.6" y="47.5" class="st6 st7 st8" rotate="-55.8">I</tspan>
-                    <tspan x="-75.1" y="40.6" class="st6 st7 st8" rotate="-48.9">E</tspan>
-                    <tspan x="-64.4" y="28.5" class="st6 st7 st8" rotate="-39.8">S</tspan>
-                </text>
-                </text>
-            </g>
-
-
-            <g id="GLOBALS_sidePageInformation" >
-                <line stroke="#EBE0C6" visibility="visible" id="GLOBALS_sidePageInformation__line" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="574.4" />
-
-                <g id="GLOBALS_sidePageInformation__textGroup" transform="translate(0 0)" fill="#FFFFFF">
-
-				    <text transform="matrix(1 0 0 1 39.7703 29.1105)" style=" font-family: 'Cormorant Garamond', serif; font-size:22px; letter-spacing:4;">4</text>
-
-                    <text id='GLOBALS_currentPage' transform="matrix(1 0 0 1 12.7812 11.1873)" style=" font-family: 'Cormorant Garamond', serif; font-size:22px; letter-spacing:4;">0</text>
-
-                    <text transform="matrix(1 0 0 1 25.7484 23.6823)" style="font-family: 'Cormorant Garamond', serif; font-size:27px; letter-spacing:5;">/</text>
-		        </g>
-
-                <line stroke="#EBE0C6" visibility="visible" id="GLOBALS_sidePageInformation__lineBottom" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="0" opacity="0.0"/>
-
-                <g id="GLOBALS_sidePageInformation__arrow" >
-                    <g>
-                        <g>
-                            <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="29.9" y1="0" x2="29.9" y2="70.8"/>
-                            <g>
-                                <polygon class="internal_HOME_sideInformation_1" points="26.7,64.9 27.7,64.5 29.9,70.7 32.1,64.5 33.1,64.9 29.9,73.6 						"/>
-                            </g>
-                        </g>
-                    </g>
-                    <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="37.8" y1="50.6" x2="31.3" y2="68.3"/>
-                    <line stroke="#EBE0C6" class="internal_HOME_sideInformation_0" x1="22" y1="50.6" x2="28.6" y2="68.4"/>
-                </g>
-            </g>
-
-
-            <rect id="DEVICES_sideBackground" x="0" y="0" width="100" height="300" stroke="black" stroke-width="3" fill="#e1654f" onclick=""/>
-
-
-
-            <image id="DEVICES_FOCUS_information" xlink:href="./187AAB15__.png" height="1995"/>
-
-            <image id="DEVICES_FOCUS_more" xlink:href="./DB566D3__.png" height="1987"/>
-
-
-            <g  id="DEVICES_FOCUS_back" >
-                <rect fill="#EC573C" width="14vh" height="14vh" x="-7vh" y="-7vh"/>
-                <polygon  id="DEVICES_FOCUS_back__backElement" style="fill:none;stroke:#000000;stroke-miterlimit:10;" points="34.7,-29.3 29.3,-34.7 -0.1,-5.4 -29.3,-34.7 -34.7,-29.3 -5.3,0 -34.7,29.3 -29.3,34.7 -0.1,5.3
-                    29.3,34.7 34.7,29.3 5.3,0 		"/>
-            </g>
-
-            <rect id="DEVICES_FOCUS_divider" x="0" y="14vh" width="100%" height="20" fill="white"/>
-
-        </svg>
-
-        <div onmouseenter="onMouseEnterCloseButton();" onmouseleave="onMouseLeaveCloseButton();" onclick="onMouseClickCloseDeviceFocus();" style="position: fixed; top: 0; left: 0; z-index: 100000; width: 10vw; height: 10vw;"></div>
-        <div id="DEVICES_FOCUS_header" style="position: fixed; left: 62vw; top: 1vh; color: white; visibility: hidden" class="font_decorative">Websites</div>
-
-
-
-        <svg id="svg_hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" class="layer" >
-            <defs>
-
-                <pattern id="p1" patternUnits="userSpaceOnUse" width="1920" height="1080">
-                    <image xlink:href="DD8F5BA9_crop.png" width="1920" height="1080"/>
-                </pattern>
-            </defs>
-
-            <g >
-                <path id="HOME_helloPath" d="M192,1080c0-416.2,342.5-540,805.5-540c647.8,0,658.9,0,658.9,0" fill="none" />
-            <text    font-size="200">
-
-                <textPath preserveAspectRatio="xMidYMid meet" id="HOME_helloTextPath"  xlink:href="#HOME_helloPath" startOffset="1000" class = "helloText"  >
-                    Hello
-                </textPath>
-
-
-            </text>
-            </g>
-
-
-        </svg>
-
-        <div id="DEVICES_FOCUS">
-
-
-            <div class="focus_moreStuff_side">
-<!--                white block-->
-                <div id="DEVICES_FOCUS_closeButton">
-
-                </div>
-                <div id="DEVICES_FOCUS_websiteList">
-                    <div id="DEVICES_FOCUS_websiteControl0" class="pageItem selectedPage" onclick="onPageClick(0)">
-                        Data Visualization Generator
                     </div>
-                    <div id="DEVICES_FOCUS_websiteControl1" class="pageItem" onclick="onPageClick(1)" >
-                        Art Collections Website
+                    <div id="DEVICES_FOCUS_websiteList">
+                        <div id="DEVICES_FOCUS_websiteControl0" class="pageItem selectedPage" onclick="onPageClick(0)">
+                            Data Visualization Generator
+                        </div>
+                        <div id="DEVICES_FOCUS_websiteControl1" class="pageItem" onclick="onPageClick(1)" >
+                            Art Collections Website
+                        </div>
                     </div>
                 </div>
+
+                <div class="focus_information_side">
+    <!--                color block, chose one frm below -->
+                    <div id="DEVICES_FOCUS_website0" class="devicePage">
+                        <div class="focus_information_side_header">
+                            Data Visualization Generator
+                        </div>
+                        <div class="focus_information_side_text">
+                            Big Data is an ever-growing source of information, with governments and corporations generating more Big Data than ever. It proves to be extremely valuable for companies and governments to be able to extract trends and patterns from this data and use this information to better prepare and/or optimize any services they offer.
+                            <br/>
+                            <br/>
+                            This repository represents the visualisation of Big Data. However, the catch comes in where, instead of manually creating these visualisations of Big Data, an Interactive Genetic Algorithm (IGA) will be implemented and let the user be able to select/choose the best visualisation of the given data, be it a graph/chart/scatter plot etc.
+                        </div>
+                    </div>
+
+                    <div id="DEVICES_FOCUS_website1" class="devicePage">
+                        <div class="focus_information_side_header">
+                            Art Collections Website
+                        </div>
+                        <div class="focus_information_side_text">
+                            In publishing, art, and communication, content is the information and experiences that are directed toward an end-user or audience. Content is "something that is to be expressed through some medium, as speech, writing or any of various arts". Content can be delivered via many different media including the Internet, cinema, television, radio, smartphones, audio CDs, books, e-books, magazines, and live events, such as speeches, conferences, and stage performances.
+
+                        </div>
+                    </div>
+
+                    <div id="DEVICES_FOCUS_apps" class="devicePage">
+                        <div class="focus_information_side_header">
+                            Gifts App
+                        </div>
+                        <div class="focus_information_side_text">
+                            In publishing, art, and communication, content is the information and experiences that are directed toward an end-user or audience. Content is "something that is to be expressed through some medium, as speech, writing or any of various arts". Content can be delivered via many different media including the Internet, cinema, television, radio, smartphones, audio CDs, books, e-books, magazines, and live events, such as speeches, conferences, and stage performances.
+
+                        </div>
+                    </div>
+
+                    <div id="DEVICES_FOCUS_video" class="devicePage">
+                        <div class="focus_information_side_header">
+                            The Ornament Short Film
+                        </div>
+                        <div class="focus_information_side_text">
+
+                            The film starts off introducing John, a student working the night before his birthday. John received an African sculpture ornament as a gift from his aunt. The ornament is on his book shelf. After his friends called– Michael and Ezekiel – the ornament quickly became the topic of discussion. Micheal found a link to a webpage explaining the ominous meaning behind the ornament. John thought of it as nothing more than a joke, but what he did not know, is that it would mark the beginning of a dreadful evening.
+                            <br/>
+                            John prepares orders himself a pizza, as he does, the ornament starts moving ever so slightly. John plops down in front of his computer. After a little while, John receives a text message from an unknown number. Nothing is said on the message, it just contains an upside-down smiley emoji. John shrugs it off and continues working. He then receives another message, more eerie than the last. John immediately blocks the number. But that was not the last he would hear from them.
+                            <br/>
+                            John inspects the kitchen after he herd questionable noises. As the tension rises. The pizza man knocks on the front door. John answers the knock and pays for his pizza. Suddenly, Ezekiel jumps in front of John at an attempt of scaring John. Ezekiel wanted to give John his birthday gift.
+                            <br/>
+                            John is put at ease as he realizes Ezekiel is also responsible for the unknown text messages. The relief he feels from this encounter is short lived, for shortly after he meets the true culprit.
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="focus_information_side">
-<!--                color block, chose one frm below -->
-                <div id="DEVICES_FOCUS_website0" class="devicePage">
-                    <div class="focus_information_side_header">
-                        Data Visualization Generator
-                    </div>
-                    <div class="focus_information_side_text">
-                        Big Data is an ever-growing source of information, with governments and corporations generating more Big Data than ever. It proves to be extremely valuable for companies and governments to be able to extract trends and patterns from this data and use this information to better prepare and/or optimize any services they offer.
-                        <br/>
-                        <br/>
-                        This repository represents the visualisation of Big Data. However, the catch comes in where, instead of manually creating these visualisations of Big Data, an Interactive Genetic Algorithm (IGA) will be implemented and let the user be able to select/choose the best visualisation of the given data, be it a graph/chart/scatter plot etc.
-                    </div>
-                </div>
 
-                <div id="DEVICES_FOCUS_website1" class="devicePage">
-                    <div class="focus_information_side_header">
-                        Art Collections Website
-                    </div>
-                    <div class="focus_information_side_text">
-                        In publishing, art, and communication, content is the information and experiences that are directed toward an end-user or audience. Content is "something that is to be expressed through some medium, as speech, writing or any of various arts". Content can be delivered via many different media including the Internet, cinema, television, radio, smartphones, audio CDs, books, e-books, magazines, and live events, such as speeches, conferences, and stage performances.
+<!--            <div id="ABOUT_main" style="position: fixed; top: 40%; left: 25%; visibility: hidden" class="about_main">Email: email@account.com</div>-->
 
-                    </div>
-                </div>
+            <div id="contact_us_main" style="position: fixed; top: 10vh; left: 40vw; z-index: 1000000; opacity: 0.0; width: 40vw;">
 
-                <div id="DEVICES_FOCUS_apps" class="devicePage">
-                    <div class="focus_information_side_header">
-                        Gifts App
-                    </div>
-                    <div class="focus_information_side_text">
-                        In publishing, art, and communication, content is the information and experiences that are directed toward an end-user or audience. Content is "something that is to be expressed through some medium, as speech, writing or any of various arts". Content can be delivered via many different media including the Internet, cinema, television, radio, smartphones, audio CDs, books, e-books, magazines, and live events, such as speeches, conferences, and stage performances.
+                <form action="https://formspree.io/f/mnqovrva" method="POST" id="my-form" style="z-index: 1000000">
+                    <div class="contact" >
+                        <p style="font-family: 'Cormorant Garamond Medium', serif; color: '#EBE0C6'">Contact Us</p>
 
-                    </div>
-                </div>
+                        <div id="login" class="contact">
+                            <input name="firstName" type="text" id="input1" class="contact contact_input" placeholder="Your Name" >
+                            <input name="email" type="email" id="input2" class="contact contact_input" placeholder="Your Email Address">
+                        </div>
 
-                <div id="DEVICES_FOCUS_video" class="devicePage">
-                    <div class="focus_information_side_header">
-                        The Ornament Short Film
-                    </div>
-                    <div class="focus_information_side_text">
-                        In publishing, art, and communication, content is the information and experiences that are directed toward an end-user or audience. Content is "something that is to be expressed through some medium, as speech, writing or any of various arts". Content can be delivered via many different media including the Internet, cinema, television, radio, smartphones, audio CDs, books, e-books, magazines, and live events, such as speeches, conferences, and stage performances.
+                        <div id="subject" class="contact">
+                            <input name="subject" type="text" class="contact contact_input" id="input3" placeholder="Subject">
+                        </div>
 
+                        <div id="msg" class="contact">
+                            <textarea name="message" id="area" class="contact contact_input" placeholder="Leave a message"></textarea>
+                        </div>
+
+<!--                        <div id="btn" class="contact">-->
+                        <div  class="contact">
+                            <button type="submit" id="btn" class="contact contact_input">
+                                Submit
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
-
-
-        <div id="ABOUT_main" style="position: fixed; top: 40%; left: 25%; visibility: hidden" class="about_main">Email: email@account.com</div>
 
     <script>
 

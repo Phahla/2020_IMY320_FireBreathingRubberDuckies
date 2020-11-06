@@ -403,25 +403,32 @@ const PAGE_COLOURS = {
             } else if (page === PAGES.WEBSITES) {
                 SVG_ELEMENTS.HOME.helloPath.instance.attr({visibility: 'visible'});
 
+                elementOverDevice.classList.remove('clickable');
+                removeClickable();
+                // initializeCursor();
 
 
             } else if (page === PAGES.VIDEOS) {
                 SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
             } else if (page === PAGES.ABOUT) {
+                elementOverDevice.classList.add('clickable');
+                initializeCursor();
 
-                DOM_ELEMENTS.ABOUT.main.style.visibility = 'hidden';
+                animateContactUs(false);
+                // DOM_ELEMENTS.ABOUT.main.style.visibility = 'hidden';
             }
 
 
             if (page === PAGES.WEBSITES) {
                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.3*window.innerHeight}, 1000);
                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '0.0'});
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate(0 ' + (0.33*window.innerHeight) + ')'}, 1000);
             } else {
                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '1.0'});
                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: (((PAGES_INDEXES[PAGE_LINKAGE[page].prev]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
                 SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.animate({y1: (((PAGES_INDEXES[page]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate(0 ' + (((PAGES_INDEXES[PAGE_LINKAGE[page].prev]+1)/5*0.8*window.innerHeight)+16) + ')'}, 1000);
             }
-            SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate(0 ' + (((PAGES_INDEXES[PAGE_LINKAGE[page].prev]+1)/5*0.8*window.innerHeight)+16) + ')'}, 1000);
 
 
             DISPLAY[SVG_PAGE_LOOKUP[page]](false);
@@ -458,6 +465,14 @@ const PAGE_COLOURS = {
 
 
             if (page === PAGES.HOME) {
+
+                elementOverDevice.classList.add('clickable');
+                initializeCursor();
+
+
+                DOM_ELEMENTS.DEVICES.sidebarText.visibility = 'visible';
+
+
                 // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK);
 
                 // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.3*window.innerHeight}, 1000);
@@ -477,9 +492,13 @@ const PAGE_COLOURS = {
             } else {
                 if (page === PAGES.VIDEOS) {
                     SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
-                    DOM_ELEMENTS.ABOUT.main.style.visibility = 'visible';
+                    // DOM_ELEMENTS.ABOUT.main.style.visibility = 'visible';
 
+                    elementOverDevice.classList.remove('clickable');
+                    removeClickable();
+                    // initializeCursor();
 
+                    animateContactUs(true);
                 }
 
 
@@ -1660,10 +1679,34 @@ const PAGE_COLOURS = {
     let idElementExitPage;
     let elementBody;
     let idElementPageInformation;
+    let elementContactMain, elementOverDevice;
 
 /** ----------------------------------- */
 
 /** ------------ Classes ------------ */
+
+function animateContactUs(show) {
+
+    let currentOpacity = (show ? 0.0 : 1.0), currentCount = 0;
+    let ANIMATION_STEPS = 100;
+    let timeout;
+
+    timeout = setInterval(function() {
+
+        if (currentCount < ANIMATION_STEPS) {
+            if (show) {
+                currentOpacity += 1/ANIMATION_STEPS;
+            } else {
+                currentOpacity -= 1/ANIMATION_STEPS;
+            }
+            elementContactMain.style.opacity = currentOpacity.toString();
+        } else {
+            clearInterval(timeout);
+        }
+        currentCount++;
+    }, 1000/ANIMATION_STEPS);
+
+}
 
 function animateWrapper(element, animation, changes) {
 
@@ -2165,36 +2208,158 @@ function setFocusPage() {
     page = 'DEVICES_FOCUS';
 }
 
-function initializeCursor() {
-    const cursor = document.querySelector('#cursor');
-    const clickableElements = document.querySelectorAll('.clickable');
-    offset = 25;
-    dot = cursor.innerHTML;
+let clickableElements;
+let offsetTheUniqueOne, dotTheUniqueOne;
 
+let clickableMouseOver = (event) =>
+{
+    followCursor.classList.add('goAway');
+
+    cursor.classList.add('cursorHover');
+    offsetTheUniqueOne = 50;
+    let text = document.createElement('div');
+    text.innerHTML = 'Click';
+    text.classList.add('cursorCenterHover');
+    cursor.innerHTML = "";
+    cursor.appendChild(text);
+};
+let clickableMouseOut = (event) =>
+{
+
+    followCursor.classList.remove('goAway');
+
+    cursor.classList.remove('cursorHover');
+    offsetTheUniqueOne = 25;
+    cursor.innerHTML = dotTheUniqueOne;
+};
+
+function removeClickable() {
+
+    for(let clickableElement of clickableElements) {
+        clickableElement.removeEventListener('mouseover', clickableMouseOver);
+        clickableElement.removeEventListener('mouseout', clickableMouseOut);
+    }
+}
+
+function initializeCursor() {
+    let puzzleIndex = 0;
+    // todo: se tto the amuont
+    let setSize = 5;
+    let currentImageSet = "";
+    let previousX, previousY;
+
+
+    // const cursor = document.querySelector('#cursor');
+    // const clickableElements = document.querySelectorAll('.clickable');
+    // offsetTheUniqueOne = 25;
+    // dotTheUniqueOne = cursor.innerHTML;
+    //
+    // for(clickableElement of clickableElements)
+    // {
+    //     clickableElement.addEventListener('mouseover', (event) =>
+    //     {
+    //         cursor.classList.add('cursorHover');
+    //         offsetTheUniqueOne = 50;
+    //         let text = document.createElement('div');
+    //         text.innerHTML = 'CLICK';
+    //         text.classList.add('cursorCenterHover');
+    //         cursor.innerHTML = "";
+    //         cursor.appendChild(text);
+    //     });
+    //
+    //     clickableElement.addEventListener('mouseout', (event) =>
+    //     {
+    //         cursor.classList.remove('cursorHover');
+    //         offsetTheUniqueOne = 25;
+    //         cursor.innerHTML = dotTheUniqueOne;
+    //     });
+    // }
+    //
+    // document.addEventListener('mousemove', event => {
+    //     cursor.setAttribute('style', 'top: ' + (event.pageY - offsetTheUniqueOne) + "px; left: " + (event.pageX - offsetTheUniqueOne) + "px;");
+    // });
+
+
+    const cursor = document.querySelector('#cursor');
+    const followCursor = document.querySelector('#followCursor');
+    clickableElements = document.querySelectorAll('.clickable');
+    const puzzleImageHoverElements = document.querySelectorAll('.puzzles');
+    offsetTheUniqueOne = 25;
+    dotTheUniqueOne = cursor.innerHTML;
+    previousY = previousX = 0;
     for(clickableElement of clickableElements)
     {
-        clickableElement.addEventListener('mouseover', (event) =>
+        clickableElement.addEventListener('mouseover', clickableMouseOver);
+
+        clickableElement.addEventListener('mouseout', clickableMouseOut);
+    }
+
+    for(puzzleImageHoverElement of puzzleImageHoverElements)
+    {
+        // console.error('lkajsdlkfjasdlkfj')
+        puzzleImageHoverElement.addEventListener('mouseover', (event) =>
         {
-            cursor.classList.add('cursorHover');
-            offset = 50;
-            let text = document.createElement('div');
-            text.innerHTML = 'CLICK';
-            text.classList.add('cursorCenterHover');
-            cursor.innerHTML = "";
-            cursor.appendChild(text);
+
+            followCursor.classList.add('goAway');
+
+
+            console.error('lkajsdlkfjasdlkfj')
+            currentImageSet = 'puzzles';
+            currentIndex = puzzleIndex++;
+            displayImageHover(currentImageSet, (currentIndex % setSize));
         });
 
-        clickableElement.addEventListener('mouseout', (event) =>
+        puzzleImageHoverElement.addEventListener('mouseout', (event) =>
         {
-            cursor.classList.remove('cursorHover');
-            offset = 25;
-            cursor.innerHTML = dot;
+
+
+            followCursor.classList.remove('goAway');
+
+            currentImageSet = '';
+            removeImageHover();
         });
     }
 
     document.addEventListener('mousemove', event => {
-        cursor.setAttribute('style', 'top: ' + (event.pageY - offset) + "px; left: " + (event.pageX - offset) + "px;");
+        let differenceX = (event.pageX - offsetTheUniqueOne);
+        let differenceY = (event.pageY - offsetTheUniqueOne);
+        cursor.setAttribute('style', 'top: ' + (event.pageY - offsetTheUniqueOne) + "px; left: " + (event.pageX - offsetTheUniqueOne) + "px;");
+        followCursor.setAttribute('style', 'top: ' + (event.pageY - offsetTheUniqueOne) + "px; left: " + (event.pageX - offsetTheUniqueOne) + "px;");
+        if(currentImageSet !== '' && ( (previousY - differenceY > 50) || (previousY - differenceY < -50) || (previousX - differenceX > 50) || (previousX - differenceX < -50) ))
+        {
+            displayImageHover(currentImageSet, (currentIndex++ % setSize), differenceX, differenceY);
+            previousX = differenceX;
+            previousY = differenceY;
+        }
     });
+
+
+    function displayImageHover(setName, setIndex, differenceX, differenceY)
+    {
+        // cursor.classList.add('removeCircle');
+        // followCursor.classList.add('removeCircle');
+        // offsetTheUniqueOne = 50;
+        let img = document.createElement('img');
+        // text.innerHTML = '<b>click</b>';
+        img.setAttribute('style', 'top: ' + differenceY + "px; left: " + differenceX + "px;");
+        img.setAttribute('src', 'assets/png/' + setName + '_' + setIndex + '.png');
+        img.classList.add('imageCenterHover');
+        // cursor.innerHTML = "";
+        // cursor.appendChild(img);
+        document.querySelector('body').appendChild(img);
+
+        setTimeout(function() {
+            img.remove();
+        }, 2000);
+    }
+
+    function removeImageHover()
+    {
+        // cursor.classList.remove('removeCircle');
+        // followCursor.classList.remove('removeCircle');
+        offsetTheUniqueOne = 25;
+        // cursor.innerHTML = dotTheUniqueOne;
+    }
 }
 
 function updateTextPathOffset(offset){
@@ -2587,6 +2752,10 @@ function initializeVariables() {
 
     svgHelloPath = document.getElementById('HOME_helloPath');
 
+    elementContactMain = document.getElementById('contact_us_main');
+
+    elementOverDevice = document.getElementById('DEVICES_container__hover');
+
     /** Global Variables */
     snapSVGMain = Snap(elementSVGDevices);
     shapes = {};
@@ -2961,12 +3130,24 @@ function onPageClick(goToPage) {
 /** Overwritten Functions */
 
 window.onload = function() {
+
+
     initializeVariables();
     initializeContent();
-    // initializeCursor();
+    initializeCursor();
+
+
+    let elementRestContent = document.getElementById('rest_content');
+    let elementLoadContent = document.getElementById('load_content');
+
+    elementRestContent.style.opacity = '1.0';
+    elementLoadContent.style.opacity = '0.0';
+    // elementLoadContent.style.display = 'none';
+    // elementRestContent.style.display = 'block';
+
+    elementBody.style.backgroundColor = BLACK_COLOUR;
 
     window.onresize = function() {
-
 
         // for (let s = 0; s < SVGContainer.length; s++) {
         //     console.debug('SVGContainer[s]', SVGContainer[s])
@@ -3002,3 +3183,48 @@ window.onload = function() {
 };
 
 
+
+
+window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+
+    var form = document.getElementById("my-form");
+    // var button = document.getElementById("my-form-button");
+
+    // Success and Error functions for after the form is submitted
+
+    function success() {
+        form.reset();
+        alert("Thanks!");
+    }
+
+    function error() {
+        alert("Oops! There was a problem.");
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+        ev.preventDefault();
+        var data = new FormData(form);
+        ajax(form.method, form.action, data, success, error);
+    });
+});
+
+// helper function for sending an AJAX request
+
+function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+        if (xhr.status === 200) {
+            success(xhr.response, xhr.responseType);
+        } else {
+            error(xhr.status, xhr.response, xhr.responseType);
+        }
+    };
+    xhr.send(data);
+}

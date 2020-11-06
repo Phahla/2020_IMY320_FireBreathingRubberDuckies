@@ -1,34 +1,33 @@
 body {
-	/*margin: 0;*/
-	/*height: 100vh;*/
+	margin: 0;
+	height: 100vh;
 	cursor: none;
 }
 
 #cursor {
-	width: 50px;
-	height: 50px;
-	border: 1px solid black;
+	width: 16px;
+	height: 16px;
+	background-color: black;
+	/*border: 1px solid red;*/
 	border-radius: 50%;
 	/*opacity: .75;*/
 	position: fixed;
-	z-index: 10000;
 	pointer-events: none;
-	animation: cursorAnimation 1.0s infinite alternate;
-
-	font-family: 'Open Sans', sans-serif;
+	z-index: 1000000;
+	/*animation: cursorAnimation 1.0s infinite alternate;*/
 }
 
 #cursor::after {
 	content: "";
-	width: 50px;
-	height: 50px;
+	width: 16px;
+	height: 16px;
 	position: absolute;
-	border: 4px solid black;
+	/*border: 4px solid black;*/
 	opacity: .25;
 	border-radius: 50%;
-	top: -4px;
-	left: -4px;
-	animation: cursorAnimationAfter 1.0s infinite alternate;
+	top: -8px;
+	left: -8px;
+	/*animation: cursorAnimationAfter 1.0s infinite alternate;*/
 }
 
 @keyframes cursorAnimation {
@@ -49,6 +48,55 @@ body {
 	}
 }
 
+#followCursor {
+	width: 50px;
+	height: 50px;
+	/*border: 1px solid black;*/
+	border-radius: 50%;
+	/*opacity: .75;*/
+	position: fixed;
+	top: -44px;
+	left: -44px;
+	z-index: 999999;
+	pointer-events: none;
+	transition-duration: 300ms;
+	transition-timing-function: linear;
+	/*animation: followCursorAnimation 1.0s infinite alternate;*/
+}
+
+#followCursor::after {
+	content: "";
+	background-color: #EBE0C6;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	/*border: 4px solid black;*/
+	/*opacity: .25;*/
+	border-radius: 50%;
+	top: -17px;
+	left: -17px;
+	/*animation: followCursorAnimationAfter 1.0s infinite alternate;*/
+	opacity: 0.7;
+}
+
+@keyframes followCursorAnimation {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.9);
+	}
+}
+
+@keyframes followCursorAnimationAfter {
+	from {
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.85);
+	}
+}
+
 .cursorCenter {
 	position: absolute;
 	width: 5px;
@@ -57,32 +105,73 @@ body {
 	border-radius: 50%;
 	background-color: black;
 	opacity: .85;
+	top: 50%;
+	left: 50%;
+	/*top: 10%;*/
+	/*left: 10%;*/
+	transform: translate(-50%, -50%);
+}
+
+.cursorCenterHover {
+	/*color: blue;*/
+
 	position: absolute;
+	/*width: 25px;*/
+	/*height: 25px;*/
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
 
-.cursorCenterHover {
+.imageCenterHover {
 	position: absolute;
-	width: 25px;
-	height: 25px;
-	position: absolute;
-	top: 48%;
-	left: 40%;
+	width: 384px !important;
+	height: 216px !important;
+	top: 50%;
+	left: 50%;
+	z-index: -1;
 	transform: translate(-50%, -50%);
+	/*transition-duration: 300ms !important;
+	transition-timing-function: ease-out !important;*/
+	animation: fadeOutAnimation 2s;
+}
+
+@keyframes fadeOutAnimation {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+.removeCircle {
+	border: none !important;
+}
+
+.removeCircle::after {
+	border: none !important;
 }
 
 .cursorHover {
-	width: 100px !important;
-	height: 100px !important;
+	width: 80px !important;
+	height: 80px !important;
+
+	color: #EBE0C6;
+
+	text-align: center;
 }
 
 .cursorHover::after {
-	width: 100px !important;
-	height: 100px !important;
+	width: 80px !important;
+	height: 80px !important;
 }
 
 .clickable {
 	cursor: none;
+}
+
+.goAway {
+	visibility: hidden;
 }
