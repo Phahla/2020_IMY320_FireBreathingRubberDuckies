@@ -438,7 +438,7 @@ svg {
 
 
 #svg_devices {
-    border: 3px solid red;
+    /*border: 3px solid red;*/
     margin-left: 10vw;
 }
 
@@ -449,7 +449,7 @@ svg {
     left: 40vw;
     top: 10vh;
 
-    border: 3px solid purple;
+    /*border: 3px solid purple;*/
     width: 40vw;
     height: 70vh;
 }

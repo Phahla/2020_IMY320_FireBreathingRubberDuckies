@@ -27,7 +27,11 @@ let temp_2 = 0;
     const DUCK_HEIGHT_HALF = 0.5*DUCK_HEIGHT;
     const PRIMARY_COLOUR = '#EBE0C6';
     const SECONDARY_COLOUR = '#EC573C';
+    const BLACK_COLOUR = '#262626';
     const ANIMATION_COLOUR_STEPS = 100;
+    const IND_MARGIN = {
+        value: 0.05*window.innerHeight
+    };
 
     const SHAPES = {
 
@@ -150,14 +154,32 @@ let temp_2 = 0;
         }
     };
 
-    const PAGE_COLOURS = {
-        HOME: '#262626',
-        WEBSITES: '#F5CB67',
-        APPS: '#619B99',
-        VIDEOS: '#B5A852',
-        ABOUT: '#B84100',
-        DEVICES_FOCUS: '#262626'
-    };
+    // const PAGE_COLOURS = {
+    //     HOME: '#262626',
+    //     WEBSITES: '#F5CB67',
+    //     APPS: '#619B99',
+    //     VIDEOS: '#B5A852',
+    //     ABOUT: '#B84100',
+    //     DEVICES_FOCUS: '#262626'
+    // };
+
+// const PAGE_COLOURS = {
+//     HOME: '#262626',
+//     WEBSITES: '#BA8589',
+//     APPS: '#D7A491',
+//     VIDEOS: '#EFEBCF',
+//     ABOUT: '#D6CD96',
+//     DEVICES_FOCUS: '#262626'
+// };
+
+const PAGE_COLOURS = {
+    HOME: '#262626',
+    WEBSITES: '#573C41',
+    APPS: '#493D30',
+    VIDEOS: '#4E3E0F',
+    ABOUT: '#0A3538',
+    DEVICES_FOCUS: '#262626'
+};
 
     const PAGE_INFORMATION = {
         WEBSITES: {
@@ -253,21 +275,28 @@ let temp_2 = 0;
                 settings.visibility = 'hidden';
             }
 
-                for (let domElement in DOM_ELEMENTS.DEVICES) {
-                    if (domElement === 'container')
-                        settings.visibility = 'visible';
+            for (let domElement in DOM_ELEMENTS.DEVICES) {
+                if (domElement === 'container')
+                    settings.visibility = 'visible';
 
 
-                        console.debug('what id domElement', domElement)
-                        DOM_ELEMENTS.DEVICES[domElement].style.visibility = settings.visibility;
+                    console.debug('what id domElement', domElement)
+                    DOM_ELEMENTS.DEVICES[domElement].style.visibility = settings.visibility;
 
-                }
+            }
         },
         WEBSITES: function(show) {
             // todo: add optimization
             DISPLAY.DEVICES(show);
             DOM_ELEMENTS.DEVICES.sidebarText.style.opacity = '0.7';
         },
+        // ABOUT: function(show) {
+        //     if (show) {
+        //         console.error('showing about')
+        //     } else {
+        //         console.error('not showing about')
+        //     }
+        // },
         LOCKED: function (show) {
             lockedOnPage = true;
             idElementExitPage.style.opacity = '1.0';
@@ -368,8 +397,14 @@ let temp_2 = 0;
 
             if (page === PAGES.HOME) {
                 // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_WHITE);
+
+
+
             } else if (page === PAGES.WEBSITES) {
                 SVG_ELEMENTS.HOME.helloPath.instance.attr({visibility: 'visible'});
+
+
+
             } else if (page === PAGES.VIDEOS) {
                 SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
             } else if (page === PAGES.ABOUT) {
@@ -378,8 +413,19 @@ let temp_2 = 0;
             }
 
 
-                DISPLAY[SVG_PAGE_LOOKUP[page]](false);
-                DISPLAY[SVG_PAGE_LOOKUP[PAGE_LINKAGE[page].prev]](true);
+            if (page === PAGES.WEBSITES) {
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.3*window.innerHeight}, 1000);
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '0.0'});
+            } else {
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '1.0'});
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: (((PAGES_INDEXES[PAGE_LINKAGE[page].prev]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.animate({y1: (((PAGES_INDEXES[page]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
+            }
+            SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate(0 ' + (((PAGES_INDEXES[PAGE_LINKAGE[page].prev]+1)/5*0.8*window.innerHeight)+16) + ')'}, 1000);
+
+
+            DISPLAY[SVG_PAGE_LOOKUP[page]](false);
+            DISPLAY[SVG_PAGE_LOOKUP[PAGE_LINKAGE[page].prev]](true);
 
             animatePageText(true);
 
@@ -399,10 +445,6 @@ let temp_2 = 0;
             // elementBody.style.backgroundColor = PAGE_COLOURS[PAGE_LINKAGE[page].next];
 
 
-
-
-
-
             DISPLAY[SVG_PAGE_LOOKUP[page]](false);
             DISPLAY[SVG_PAGE_LOOKUP[PAGE_LINKAGE[page].next]](true);
 
@@ -415,13 +457,47 @@ let temp_2 = 0;
             }
 
 
-
             if (page === PAGES.HOME) {
                 // DOM_ELEMENTS.topRight__backgroundImage.setAttribute( "xlink:href", "./" + IMG_PATHS.HOME.PAPER_BLACK);
-            } else if (page === PAGES.VIDEOS) {
-                SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
-                DOM_ELEMENTS.ABOUT.main.style.visibility = 'visible';
+
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.3*window.innerHeight}, 1000);
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '0.0'});
+
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.animate({y2: 0.8*window.innerHeight}, 1000);
+
+
+
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({stroke: BLACK_COLOUR});
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.attr({stroke: BLACK_COLOUR});
+                //
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.attr({fill: BLACK_COLOUR});
+
+
+
+            } else {
+                if (page === PAGES.VIDEOS) {
+                    SVG_ELEMENTS.DEVICES.group.instance.attr({visibility: 'hidden'});
+                    DOM_ELEMENTS.ABOUT.main.style.visibility = 'visible';
+
+
+                }
+
+
+
+
             }
+
+            if (page === PAGES.VIDEOS) {
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '0.0'});
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.6*window.innerHeight}, 1000);
+            } else {
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.attr({opacity: '1.0'});
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: (((PAGES_INDEXES[PAGE_LINKAGE[page].next]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
+                SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.lineBottom.instance.animate({y1: (((PAGES_INDEXES[PAGE_LINKAGE[PAGE_LINKAGE[page].next].next]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value}, 1000);
+                // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate()'}, 1000);
+            }
+
+            SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.textGroup.instance.animate({transform: 'translate(0 ' + (((PAGES_INDEXES[PAGE_LINKAGE[page].next]+1)/5*0.8*window.innerHeight)+16) + ')'}, 1000);
 
             // SVGController.nextPage();
 
@@ -474,8 +550,42 @@ let temp_2 = 0;
                                      y2: {
                                          enabled: [true],
                                          lookupStop: 2,
+                                         parameter: [],
+                                         instruction: () => {
+                                             if (page === PAGES.HOME)
+                                                return 0.3*window.innerHeight;
+                                             else if (page === PAGES.ABOUT)
+                                                 return 0.6*window.innerHeight;
+                                             else
+                                                 return (((PAGES_INDEXES[PAGE_LINKAGE[page].next]+1)/5)*0.8*window.innerHeight) - IND_MARGIN.value;
+                                         },
+                                         animate: true, // animate has to be specified
+                                         animation: null
+                                     }
+                                 }
+                             }
+                         }
+                     },
+                     lineBottom: {
+                         instance: null,
+                         events: {
+                             resize: {
+                                 changes: {
+                                     y1: {
+                                         enabled: [true],
+                                         lookupStop: 2,
                                          parameter: ['height'],
-                                         instruction: ([h]) => {return 0.3*h;},
+                                         instruction: ([h]) => {
+                                             if (page === PAGES.HOME) return 0; else return (((PAGES_INDEXES[PAGE_LINKAGE[PAGE_LINKAGE[page].next].next]+1)/5)*0.8*window.innerHeight) + IND_MARGIN.value;
+                                         },
+                                         animate: true, // animate has to be specified
+                                         animation: null
+                                     },
+                                     y2: {
+                                         enabled: [true],
+                                         lookupStop: 2,
+                                         parameter: ['height'],
+                                         instruction: ([h]) => { if (page === PAGES.HOME) return 0.3*h; else return 0.8*h},
                                          animate: true, // animate has to be specified
                                          animation: null
                                      }
@@ -492,7 +602,12 @@ let temp_2 = 0;
                                          enabled: [true],
                                          lookupStop: 2,
                                          parameter: ['height'],
-                                         instruction: ([h]) => {return 'translate(0 ' + 0.33*h + ')';},
+                                         instruction: ([h]) => {
+                                             if (page === PAGES.HOME)
+                                                return 'translate(0 ' + 0.33*h + ')';
+                                             else
+                                                 return 'translate(0 ' + (PAGES_INDEXES[page]+1)/5*0.8*h + ')';
+                                         },
                                          animate: true, // animate has to be specified
                                          animation: null
                                      }
@@ -545,6 +660,7 @@ let temp_2 = 0;
                              pageIn: {
                                  callback: () => {
                                      // console.debug('pagein callback');
+                                     SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.halt = false;
                                      if (!SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.running)
                                         SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.animation.start();
                                  },
@@ -707,11 +823,14 @@ let temp_2 = 0;
                     start: () => {
                         if (!SVG_ELEMENTS.HOME.side.animation.halt) {
                             SVG_ELEMENTS.HOME.side.animation.running = true;
-                            SVG_ELEMENTS.HOME.side.instance.stop().animate(
+                            console.error('ANIMATEION SVG_ELEMENTS.HOME.side.animation.direction', SVG_ELEMENTS.HOME.side.animation.direction)
+                            SVG_ELEMENTS.HOME.side.instance.animate(
                                 {x: -SVG_ELEMENTS.HOME.side.instance.attr('width') + (SVG_ELEMENTS.HOME.side.animation.direction ? 0.2*window.innerWidth-1 : 0)},
                                 1000,
                                 mina.linear,
-                                () => {SVG_ELEMENTS.HOME.side.animation.running = false;}
+                                () => {
+                                    SVG_ELEMENTS.HOME.side.animation.running = false;
+                                }
                             );
                         } else {
                             SVG_ELEMENTS.HOME.side.animation.running = false;
@@ -2557,6 +2676,9 @@ function initializeVariables() {
 
     // SVGController.inst();
 
+
+    SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.line.instance.animate({y2: 0.3*window.innerHeight}, 1000);
+
 }
 
 
@@ -2686,7 +2808,10 @@ function onMouseClickCloseDeviceFocus() {
     // DOM_ELEMENTS.DEVICES_FOCUS.
     // DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
 
-    SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
+    // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
+    // SVG_ELEMENTS.GLOBALS.sidePageInformation.instance.attr({visibility: 'hidden'});
+    SVG_ELEMENTS.GLOBALS.sidePageInformation.instance.attr({opacity: '1.0'});
+
     // setFocusPage();
 
     showingFocusDevice = false;
@@ -2699,7 +2824,9 @@ function onMouseClickDevice() {
         console.log('FIRE CLICK EVENT');
         showingFocusDevice = true;
 
-        SVGController.showPageExact('DEVICES_FOCUS');
+        // todo: was uncommented
+        // SVGController.showPageExact('DEVICES_FOCUS');
+        SVG_ELEMENTS.DEVICES_FOCUS.divider.instance.attr({visibility: 'visible'});
 
         // if (!showingUprightDevice) {
         //     morph(PAGE_MORPH_LINKAGE[page].curr, PAGE_MORPH_LINKAGE[page].enlarged);
@@ -2737,7 +2864,10 @@ function onMouseClickDevice() {
         DOM_ELEMENTS.DEVICES.sidebarText.style.visibility = 'hidden';
         DOM_ELEMENTS.DEVICES_FOCUS.header.style.visibility = 'visible';
         DOM_ELEMENTS.DEVICES_FOCUS.header.innerText = DEVICES_FOCUS_PAGE_HEADERS[page];
-        SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
+
+        // SVG_ELEMENTS.GLOBALS.sidePageInformation.dependents.arrow.instance.attr({visibility: 'hidden'});
+        // SVG_ELEMENTS.GLOBALS.sidePageInformation.instance.attr({visibility: 'hidden'});
+        SVG_ELEMENTS.GLOBALS.sidePageInformation.instance.attr({opacity: '0.0'});
 
         DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[page][0].informationImagePath );
 
@@ -2753,6 +2883,7 @@ function onMouseClickDevice() {
 function onMouseEnterDevice() {
 
     currentMousePosition = MOUSE_POSITIONS.ON_DEVICE;
+
 
     // fire event pagein svgcontroller
     // make the page visible
