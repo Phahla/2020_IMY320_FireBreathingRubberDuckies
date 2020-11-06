@@ -406,6 +406,7 @@ const PAGE_COLOURS = {
                 elementOverDevice.classList.remove('clickable');
                 removeClickable();
                 // initializeCursor();
+                elementScrollTextHome.style.opacity = '1.0';
 
 
             } else if (page === PAGES.VIDEOS) {
@@ -465,6 +466,9 @@ const PAGE_COLOURS = {
 
 
             if (page === PAGES.HOME) {
+
+                elementScrollTextHome.style.opacity = '0.0';
+
 
                 elementOverDevice.classList.add('clickable');
                 initializeCursor();
@@ -1680,6 +1684,7 @@ const PAGE_COLOURS = {
     let elementBody;
     let idElementPageInformation;
     let elementContactMain, elementOverDevice;
+    let elementScrollTextHome;
 
 /** ----------------------------------- */
 
@@ -2230,7 +2235,8 @@ let clickableMouseOut = (event) =>
 
     cursor.classList.remove('cursorHover');
     offsetTheUniqueOne = 25;
-    cursor.innerHTML = dotTheUniqueOne;
+    // cursor.innerHTML = dotTheUniqueOne;
+    cursor.innerHTML = '';
 };
 
 function removeClickable() {
@@ -2756,6 +2762,8 @@ function initializeVariables() {
 
     elementOverDevice = document.getElementById('DEVICES_container__hover');
 
+    elementScrollTextHome = document.getElementById('scrollTextHome');
+
     /** Global Variables */
     snapSVGMain = Snap(elementSVGDevices);
     shapes = {};
@@ -2857,9 +2865,9 @@ function mainScrollHandler(deltaY) {
     // if (SCROLL_DELTA === -1)
     //     SCROLL_DELTA = deltaY;
 
-    console.debug('lockedOnPage', lockedOnPage)
-    console.debug('showingUprightDevice', showingUprightDevice)
-    console.debug('isReady()', isReady())
+    // console.debug('lockedOnPage', lockedOnPage)
+    // console.debug('showingUprightDevice', showingUprightDevice)
+    // console.debug('isReady()', isReady())
 
     if (!lockedOnPage) {
         if (showingUprightDevice) {
@@ -2933,6 +2941,11 @@ function onBackClick() {
 
 function onMouseClickCloseDeviceFocus() {
 
+
+    elementOverDevice.classList.add('clickable');
+    initializeCursor();
+
+
     page = previousDevicePage;
 
     // SVGController.showPageExact('DEVICES');
@@ -2990,7 +3003,12 @@ function onMouseClickDevice() {
 
 
     if (SVG_PAGE_LOOKUP[page] === 'DEVICES' && !showingFocusDevice) {
-        console.log('FIRE CLICK EVENT');
+
+        elementOverDevice.classList.remove('clickable');
+        removeClickable();
+        initializeCursor();
+
+
         showingFocusDevice = true;
 
         // todo: was uncommented
@@ -3057,10 +3075,10 @@ function onMouseEnterDevice() {
     // fire event pagein svgcontroller
     // make the page visible
     // call device function to move device in place
-
-    console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
-    console.debug(' isReady(\'devices\')',  isReady('devices'))
-    console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
+    //
+    // console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
+    // console.debug(' isReady(\'devices\')',  isReady('devices'))
+    // console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
 
 
     if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES') {
