@@ -280,7 +280,7 @@ const PAGE_COLOURS = {
                     settings.visibility = 'visible';
 
 
-                    console.debug('what id domElement', domElement)
+                    // console.debug('what id domElement', domElement)
                     DOM_ELEMENTS.DEVICES[domElement].style.visibility = settings.visibility;
 
             }
@@ -846,7 +846,7 @@ const PAGE_COLOURS = {
                     start: () => {
                         if (!SVG_ELEMENTS.HOME.side.animation.halt) {
                             SVG_ELEMENTS.HOME.side.animation.running = true;
-                            console.error('ANIMATEION SVG_ELEMENTS.HOME.side.animation.direction', SVG_ELEMENTS.HOME.side.animation.direction)
+                            // console.error('ANIMATEION SVG_ELEMENTS.HOME.side.animation.direction', SVG_ELEMENTS.HOME.side.animation.direction)
                             SVG_ELEMENTS.HOME.side.instance.animate(
                                 {x: -SVG_ELEMENTS.HOME.side.instance.attr('width') + (SVG_ELEMENTS.HOME.side.animation.direction ? 0.2*window.innerWidth-1 : 0)},
                                 1000,
@@ -1132,7 +1132,7 @@ const PAGE_COLOURS = {
                             1000,
                             mina.linear,
                             () => {
-                                currentState = STATES.READY;  console.debug(' SETTING currentState', currentState);
+                                // currentState = STATES.READY;  console.debug(' SETTING currentState', currentState);
                                 animationCallback();
                             }
                         );
@@ -1685,6 +1685,7 @@ const PAGE_COLOURS = {
     let idElementPageInformation;
     let elementContactMain, elementOverDevice;
     let elementScrollTextHome;
+    let elementPuzzle;
 
 /** ----------------------------------- */
 
@@ -2309,7 +2310,7 @@ function initializeCursor() {
             followCursor.classList.add('goAway');
 
 
-            console.error('lkajsdlkfjasdlkfj')
+            // console.error('lkajsdlkfjasdlkfj')
             currentImageSet = 'puzzles';
             currentIndex = puzzleIndex++;
             displayImageHover(currentImageSet, (currentIndex % setSize));
@@ -2631,10 +2632,10 @@ let checkDeviceState = (function () {
     return function () {
 
         timeoutFunction = function () {
-            console.error('running timeout')
-
-            console.error('currentMousePosition ', currentMousePosition)
-            console.error('showingUprightDevice', showingUprightDevice)
+            // console.error('running timeout')
+            //
+            // console.error('currentMousePosition ', currentMousePosition)
+            // console.error('showingUprightDevice', showingUprightDevice)
 
             if (isReady('devices')) {
                 if (currentMousePosition === MOUSE_POSITIONS.ON_DEVICE && !showingUprightDevice) {
@@ -2652,7 +2653,7 @@ let checkDeviceState = (function () {
             }
         };
 
-        console.error('whatswhatswhatsup timeout', timeout);
+        // console.error('whatswhatswhatsup timeout', timeout);
 
         if (timeout === undefined) {
 
@@ -2763,6 +2764,8 @@ function initializeVariables() {
     elementOverDevice = document.getElementById('DEVICES_container__hover');
 
     elementScrollTextHome = document.getElementById('scrollTextHome');
+
+    elementPuzzle = document.getElementById('DEVICES_FOCUS_website2');
 
     /** Global Variables */
     snapSVGMain = Snap(elementSVGDevices);
@@ -3098,9 +3101,9 @@ function onMouseLeaveDevice() {
 
     currentMousePosition = MOUSE_POSITIONS.OFF_DEVICE;
 
-    console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
-    console.debug(' isReady(\'devices\')',  isReady('devices'))
-    console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
+    // console.debug('SVG_PAGE_LOOKUP[page] === \'DEVICES\'', SVG_PAGE_LOOKUP[page]  === 'DEVICES')
+    // console.debug(' isReady(\'devices\')',  isReady('devices'))
+    // console.debug('VG_PAGE_LOOKUP[page]', SVG_PAGE_LOOKUP[page])
     if (!showingFocusDevice && SVG_PAGE_LOOKUP[page] === 'DEVICES' ) {
 
         if (isReady('devices')) {
@@ -3124,11 +3127,13 @@ function onMouseLeaveCloseButton() {
 
 function onPageClick(goToPage) {
 
+
     for (let p = 0; p < DEVICE_FOCUS_PAGES[previousDevicePage].length; p++) {
         for (let s = 0; s < DEVICE_FOCUS_PAGES[previousDevicePage][p].SVG_ELEMENTS.length; s++) {
             DEVICE_FOCUS_PAGES[previousDevicePage][p].SVG_ELEMENTS[s].instance.attr({visibility: (p === goToPage ? 'visible' : 'hidden')});
         }
         for (let s = 0; s < DEVICE_FOCUS_PAGES[previousDevicePage][p].DOM_ELEMENTS.length; s++) {
+            // if (!(p === 0 && s === 0)) {
             if (!(p === 0 && s === 0)) {
                 DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[previousDevicePage][p].DOM_ELEMENTS[s]].style.display = (p === goToPage ? 'block' : 'none');
             }
@@ -3138,9 +3143,17 @@ function onPageClick(goToPage) {
         else
             DOM_ELEMENTS.DEVICES_FOCUS[DEVICE_FOCUS_PAGES[previousDevicePage][p].control].classList.remove('selectedPage');
     }
-    DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[previousDevicePage][goToPage].informationImagePath );
+    DOM_ELEMENTS.DEVICES_FOCUS.information.setAttribute( "xlink:href", "./" + DEVICE_FOCUS_PAGES[previousDevicePage][goToPage].informationImagePath);
+
+
+    // let elementPuzzle = document.getElementById('DEVICES_FOCUS_website2');
+    elementPuzzle.style.opacity = (goToPage === 1 ? '1.0' : '0.0');
+
+
+    DOM_ELEMENTS.DEVICES_FOCUS.website1.style.display = (goToPage === 1 ? 'block' : 'none');
 
 }
+
 
 /** ---------------------------------- */
 
