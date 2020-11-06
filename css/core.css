@@ -223,6 +223,14 @@ svg.svg_fixed {
     z-index: 1000;
 }
 
+#ornament_video{
+    position: fixed;
+    right: 7.3vw;
+    top: 41vh;
+    width: 27.1vw;
+    height: 34.4vh;
+}
+
 .image_fade_in {
 
     -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
